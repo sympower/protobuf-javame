@@ -90,12 +90,10 @@ public final class MainClassBuilderImpl implements MainClassBuilder {
 		final StringBuilder builder = new StringBuilder();
 
 		builder.append(resourceFormat.getString(MainClassConstants.KEY_CONSTRUCTOR, className));
+        builder.append(resourceFormat.getString(MainClassConstants.KEY_CONSTRUCTOR_IF_START));
 
-		boolean containsRequired = false;
-
-		builder.append(resourceFormat.getString(MainClassConstants.KEY_CONSTRUCTOR_IF_START));
-
-		for (int i = 0; i < protoInput.getFields().size(); i++) {
+        boolean containsRequired = false;
+        for (int i = 0; i < protoInput.getFields().size(); i++) {
 			final FieldData field = protoInput.getFields().get(i);
 
 			if (field.getScope() == ValidScopes.REQUIRED) {
