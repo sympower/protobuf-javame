@@ -1,8 +1,0 @@
-package this.is.not.used;
-
-option java_package = invalid.package";
-option java_outer_classname = "this.is.not.used";
-
-message JunitTestMainObject {
-	required int32 id = 1;
-}
