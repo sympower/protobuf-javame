@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component inherit-compiler-output="true">
-    <exclude-output />
-    <testFolder url="file://$MODULE_DIR$/src/test/generated" />
-    <testFolder url="file://$MODULE_DIR$/src/test/java" />
-    <excludeFolder url="file://$MODULE_DIR$/target" />
-</component>
-
