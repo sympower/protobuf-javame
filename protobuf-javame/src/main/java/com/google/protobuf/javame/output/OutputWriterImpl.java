@@ -28,7 +28,7 @@ public class OutputWriterImpl implements OutputWriter {
 	public OutputWriterImpl(final byte[] dataHolder, final OutputStream output) {
 		this.output = output;
 		this.dataHolder = dataHolder;
-
+		
 		codedOutput = CodedOutputStream.newInstance(this.dataHolder);
 	}
 
@@ -116,6 +116,7 @@ public class OutputWriterImpl implements OutputWriter {
 		
 		if (output != null) {
 			output.write(dataHolder);
+			output.flush();
 		}
 	}
 }
