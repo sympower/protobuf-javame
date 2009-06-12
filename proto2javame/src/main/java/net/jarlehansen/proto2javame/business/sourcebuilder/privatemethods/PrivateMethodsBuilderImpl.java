@@ -84,7 +84,7 @@ public final class PrivateMethodsBuilderImpl implements PrivateMethodsBuilder {
             }
         }
 
-        builder.append(resourceFormat.getString(PrivateMethodsConstants.KEY_METHOD_END));
+        builder.append(resourceFormat.getString(PrivateMethodsConstants.KEY_PRIVATE_WRITEFIELDS_END));
         return builder.toString();
     }
 
