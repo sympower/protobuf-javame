@@ -36,7 +36,7 @@ public final class SourceFileWriterImpl implements SourceFileWriter {
                 try {
                     output.close();
                 } catch (IOException io) {
-                    System.out.println("Problem closing the BufferedWriter, " + io.getMessage());
+                    System.out.println("Unable to close the BufferedWriter, " + io.getMessage());
                 }
             }
         }
