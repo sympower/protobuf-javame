@@ -7,6 +7,8 @@ import net.jarlehansen.proto2javame.domain.proto.FieldData;
 import net.jarlehansen.proto2javame.domain.proto.ProtoFileInput;
 import net.jarlehansen.proto2javame.domain.proto.ValidScopes;
 
+import java.util.Date;
+
 /**
  * 
  * @author hansjar@gmail.com Jarle Hansen
@@ -47,7 +49,7 @@ public final class MainClassBuilderImpl implements MainClassBuilder {
 	}
 	
 	private String createImports() {
-		return resourceFormat.getString(MainClassConstants.KEY_IMPORTS, ResourceFormatUtil.COMMON
+		return resourceFormat.getString(MainClassConstants.KEY_IMPORTS, new Date().toString(), ResourceFormatUtil.COMMON
 				.getString(CommonResourceConstants.KEY_IMPORTS_GOOGLE_PACKAGE), ResourceFormatUtil.COMMON
 				.getString(CommonResourceConstants.KEY_IMPORTS_INTERNAL_PACKAGE));
 	}
