@@ -7,8 +7,6 @@ package net.jarlehansen.proto2javame.business.sourcebuilder.privatemethods;
  */
 enum PrivateMethodsConstants {
 	;
-
-	public static final String KEY_METHOD_END = "private.method.end";
 	
 	public static final String KEY_PRIVATE_CREATEBYTEARRAY_START = "private.create.bytearray.start";
 	public static final String KEY_PRIVATE_CREATEBYTEARRAY_FIELDS = "private.create.bytearray.fields";
