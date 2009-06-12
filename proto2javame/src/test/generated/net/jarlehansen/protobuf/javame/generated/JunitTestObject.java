@@ -59,100 +59,7 @@ public final class JunitTestObject {
 				" id:" + builder.hasId + " longNumber:" + builder.hasLongNumber + " bytesObject:" + builder.hasBytesObject + " floatObject:" + builder.hasFloatObject + " amount:" + builder.hasAmount + ", all fields that are false are mandatory but were not added");
 		}
 	}
-
-	public static class Builder {
-		private int id;
-		private boolean hasId = false;
-
-		private long longNumber;
-		private boolean hasLongNumber = false;
-
-		private String name;
-		private boolean hasName = false;
-
-		private java.util.Vector addressList = new java.util.Vector();
-		private boolean hasAddressList = false;
-
-		private com.google.protobuf.ByteString bytesObject;
-		private boolean hasBytesObject = false;
-
-		private float floatObject;
-		private boolean hasFloatObject = false;
-
-		private boolean boolObj;
-		private boolean hasBoolObj = false;
-
-		private double amount;
-		private boolean hasAmount = false;
-
-
-		private Builder() {
-		}
-
-		public Builder setId(final int id) {
-			this.id = id;
-			this.hasId = true;
-			return this;
-		}
-
-		public Builder setLongNumber(final long longNumber) {
-			this.longNumber = longNumber;
-			this.hasLongNumber = true;
-			return this;
-		}
-
-		public Builder setName(final String name) {
-			this.name = name;
-			this.hasName = true;
-			return this;
-		}
-
-		public Builder setAddressList(final java.util.Vector addressList) {
-			if(!hasAddressList) {
-				hasAddressList = true;
-			}
-			this.addressList = addressList;
-			return this;
-		}
-
-
-		public Builder addElementAddressList(final String element) {
-			if(!hasAddressList) {
-				hasAddressList = true;
-			}
-			addressList.addElement(element);
-			return this;
-		}
-
-		public Builder setBytesObject(final com.google.protobuf.ByteString bytesObject) {
-			this.bytesObject = bytesObject;
-			this.hasBytesObject = true;
-			return this;
-		}
-
-		public Builder setFloatObject(final float floatObject) {
-			this.floatObject = floatObject;
-			this.hasFloatObject = true;
-			return this;
-		}
-
-		public Builder setBoolObj(final boolean boolObj) {
-			this.boolObj = boolObj;
-			this.hasBoolObj = true;
-			return this;
-		}
-
-		public Builder setAmount(final double amount) {
-			this.amount = amount;
-			this.hasAmount = true;
-			return this;
-		}
-
-		public JunitTestObject build() {
-			return new JunitTestObject(this);
-		}
-	}
-
+	public static class Builder {		private int id;		private boolean hasId = false;		private long longNumber;		private boolean hasLongNumber = false;		private String name;		private boolean hasName = false;		private java.util.Vector addressList = new java.util.Vector();		private boolean hasAddressList = false;		private com.google.protobuf.ByteString bytesObject;		private boolean hasBytesObject = false;		private float floatObject;		private boolean hasFloatObject = false;		private boolean boolObj;		private boolean hasBoolObj = false;		private double amount;		private boolean hasAmount = false;		private Builder() {		}		public Builder setId(final int id) {			this.id = id;			this.hasId = true;			return this;		}		public Builder setLongNumber(final long longNumber) {			this.longNumber = longNumber;			this.hasLongNumber = true;			return this;		}		public Builder setName(final String name) {			this.name = name;			this.hasName = true;			return this;		}		public Builder setAddressList(final java.util.Vector addressList) {			if(!hasAddressList) {				hasAddressList = true;			}			this.addressList = addressList;			return this;		}		public Builder addElementAddressList(final String element) {			if(!hasAddressList) {				hasAddressList = true;			}			addressList.addElement(element);			return this;		}		public Builder setBytesObject(final com.google.protobuf.ByteString bytesObject) {			this.bytesObject = bytesObject;			this.hasBytesObject = true;			return this;		}		public Builder setFloatObject(final float floatObject) {			this.floatObject = floatObject;			this.hasFloatObject = true;			return this;		}		public Builder setBoolObj(final boolean boolObj) {			this.boolObj = boolObj;			this.hasBoolObj = true;			return this;		}		public Builder setAmount(final double amount) {			this.amount = amount;			this.hasAmount = true;			return this;		}		public JunitTestObject build() {			return new JunitTestObject(this);		}	}
 	public int getId() {
 		return id;
 	}
