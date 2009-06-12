@@ -22,9 +22,9 @@ public final class Proto2JavaMe {
             final String className = codeGen.generateJavaSourceCode(args);
             System.out.println("SUCCESS! Created the java-object: " + className);
         } catch(Proto2JavaMeException protoException) {
-            System.out.println("Error: " + protoException.getMessage());
+            System.err.println("Error: " + protoException.getMessage());
         }
 
-		System.out.println("\nFINISHED");
+        System.out.println("\nFINISHED");
 	}
 }
