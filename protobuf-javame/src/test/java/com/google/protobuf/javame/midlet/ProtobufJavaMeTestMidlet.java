@@ -5,7 +5,7 @@ import jmunit.framework.cldc11.TestSuite;
 import com.google.protobuf.javame.InputAndOutputImplListTest;
 import com.google.protobuf.javame.InputAndOutputImplTest;
 import com.google.protobuf.javame.JavaMeProtoFactoryTest;
-import com.google.protobuf.javame.generated.GeneratedJavaMeObjectTest;
+import com.google.protobuf.javame.generatedobjtest.GeneratedJavaMeObjectTest;
 import com.google.protobuf.javame.output.ComputeSizeUtilTest;
 
 /**
