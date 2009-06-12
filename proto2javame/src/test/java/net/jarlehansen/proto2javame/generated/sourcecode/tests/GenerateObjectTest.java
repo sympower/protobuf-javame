@@ -14,7 +14,7 @@ import java.io.File;
  */
 public class GenerateObjectTest {
 	private static final String JAVA_OUT = "--java_out=src/test/generated";
-	private static final String PROTO_FILE = "src/test/resources/JUnitTest2.proto";
+	private static final String PROTO_FILE = "src/test/resources/JunitTestMain.proto";
 	
 	@Test
 	public void testGenerateObject() {
