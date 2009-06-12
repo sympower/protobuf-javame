@@ -121,7 +121,7 @@ createTask('build-zip-file', dependsOn: 'main-package') {
 }
 
 createTask('generate-test-files') {
-	ant.java(jar: lib + '/generate/proto2javame-0.5.0.jar', fork: 'true', failonerror: 'true') {
+	ant.java(jar: lib + '/generate/proto2javame-0.6.0.jar', fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/test/java')
 		arg(value: 'src/test/resources/proto-file/JUnitTest.proto')
 	}
