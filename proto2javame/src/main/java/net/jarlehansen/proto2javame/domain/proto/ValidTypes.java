@@ -10,7 +10,7 @@ public enum ValidTypes {
 	FLOAT("float", "float", "DATA_TYPE_FLOAT"), 
 	INT32("int32", "int", "DATA_TYPE_INT"), 
 	INT64("int64", "long", "DATA_TYPE_LONG"), 
-	BOOL("bool", "boolean", "DATA_TYPE_BOOLEAN"), // Boolean should never be used in list
+	BOOL("bool", "boolean", "DATA_TYPE_BOOLEAN"),
 	STRING("string", "String", "DATA_TYPE_STRING"),
 	BYTES("bytes", "com.google.protobuf.ByteString", "DATA_TYPE_BYTESTRING");
 	
