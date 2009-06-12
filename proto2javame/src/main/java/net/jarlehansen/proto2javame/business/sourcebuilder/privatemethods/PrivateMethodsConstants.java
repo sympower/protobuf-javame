@@ -20,6 +20,7 @@ enum PrivateMethodsConstants {
 	public static final String KEY_PRIVATE_WRITEFIELDS_FIELDS = "private.writefields.fields";
 	public static final String KEY_PRIVATE_WRITEFIELDS_FIELDS_LIST = "private.writefields.fields.list";
     public static final String KEY_PRIVATE_WRITEFIELDS_FIELDS_OPTIONAL = "private.writefields.fields.optional";
+    public static final String KEY_PRIVATE_WRITEFIELDS_END = "private.writefields.end";
 	
 	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_START = "private.static.parsefields.start";
 	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS = "private.static.parsefields.fields";
