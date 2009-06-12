@@ -27,7 +27,26 @@ public final class JunitTestMainObject {
 				" id:" + builder.hasId + ", all fields that are false are mandatory but were not added");
 		}
 	}
-	public static class Builder {		private int id;		private boolean hasId = false;		private Builder() {		}		public Builder setId(final int id) {			this.id = id;			this.hasId = true;			return this;		}		public JunitTestMainObject build() {			return new JunitTestMainObject(this);		}	}
+
+	public static class Builder {
+		private int id;
+		private boolean hasId = false;
+
+
+		private Builder() {
+		}
+
+		public Builder setId(final int id) {
+			this.id = id;
+			this.hasId = true;
+			return this;
+		}
+
+		public JunitTestMainObject build() {
+			return new JunitTestMainObject(this);
+		}
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -52,7 +71,6 @@ public final class JunitTestMainObject {
 	public void writeTo(final byte[] data) throws IOException {
 		final OutputWriter writer = JavaMeProtoFactory.createOutputUtil(data);
 		writeFields(writer);
-		writer.writeData();
 	}
 
 	public void writeTo(final OutputStream outputStream) throws IOException {
@@ -60,7 +78,6 @@ public final class JunitTestMainObject {
 
 		final OutputWriter writer = JavaMeProtoFactory.createOutputUtil(outputData, outputStream);
 		writeFields(writer);
-		writer.writeData();
 	}
 
 	private byte[] createByteArray() {
@@ -72,6 +89,7 @@ public final class JunitTestMainObject {
 
 	private void writeFields(final OutputWriter writer) throws IOException {
 		writer.writeInt(fieldNumberId, id);
+		writer.writeData();
 	}
 
 	private static JunitTestMainObject parseFields(final InputReader reader) throws IOException {
