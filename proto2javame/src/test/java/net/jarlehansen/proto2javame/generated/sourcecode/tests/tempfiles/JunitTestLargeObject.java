@@ -521,27 +521,13 @@ public final class JunitTestLargeObject {
 		retValue += "amount = " + this.amount + TAB;
 		retValue += "floatNum = " + this.floatNum + TAB;
 		retValue += "byteStringObj = " + this.byteStringObj + TAB;
-		if(hasIdOptional) {
-			retValue += "idOptional = " + this.idOptional + TAB;
-		}
-		if(hasNumber2Optional) {
-			retValue += "number2Optional = " + this.number2Optional + TAB;
-		}
-		if(hasNameOptional) {
-			retValue += "nameOptional = " + this.nameOptional + TAB;
-		}
-		if(hasBoolValOptional) {
-			retValue += "boolValOptional = " + this.boolValOptional + TAB;
-		}
-		if(hasAmountOptional) {
-			retValue += "amountOptional = " + this.amountOptional + TAB;
-		}
-		if(hasFloatNumOptional) {
-			retValue += "floatNumOptional = " + this.floatNumOptional + TAB;
-		}
-		if(hasByteStringObjOptional) {
-			retValue += "byteStringObjOptional = " + this.byteStringObjOptional + TAB;
-		}
+		if(hasIdOptional) retValue += "idOptional = " + this.idOptional + TAB;
+		if(hasNumber2Optional) retValue += "number2Optional = " + this.number2Optional + TAB;
+		if(hasNameOptional) retValue += "nameOptional = " + this.nameOptional + TAB;
+		if(hasBoolValOptional) retValue += "boolValOptional = " + this.boolValOptional + TAB;
+		if(hasAmountOptional) retValue += "amountOptional = " + this.amountOptional + TAB;
+		if(hasFloatNumOptional) retValue += "floatNumOptional = " + this.floatNumOptional + TAB;
+		if(hasByteStringObjOptional) retValue += "byteStringObjOptional = " + this.byteStringObjOptional + TAB;
 		retValue += "idList = " + this.idList + TAB;
 		retValue += "number2List = " + this.number2List + TAB;
 		retValue += "nameList = " + this.nameList + TAB;
@@ -564,7 +550,6 @@ public final class JunitTestLargeObject {
 	public void writeTo(final byte[] data) throws IOException {
 		final OutputWriter writer = JavaMeProtoFactory.createOutputUtil(data);
 		writeFields(writer);
-		writer.writeData();
 	}
 
 	public void writeTo(final OutputStream outputStream) throws IOException {
@@ -572,7 +557,6 @@ public final class JunitTestLargeObject {
 
 		final OutputWriter writer = JavaMeProtoFactory.createOutputUtil(outputData, outputStream);
 		writeFields(writer);
-		writer.writeData();
 	}
 
 	private byte[] createByteArray() {
@@ -584,27 +568,13 @@ public final class JunitTestLargeObject {
 		totalSize += ComputeSizeUtil.computeDoubleSize(fieldNumberAmount, amount);
 		totalSize += ComputeSizeUtil.computeFloatSize(fieldNumberFloatNum, floatNum);
 		totalSize += ComputeSizeUtil.computeByteStringSize(fieldNumberByteStringObj, byteStringObj);
-		if(hasIdOptional) {
-			totalSize += ComputeSizeUtil.computeIntSize(fieldNumberIdOptional, idOptional);
-		}
-		if(hasNumber2Optional) {
-			totalSize += ComputeSizeUtil.computeLongSize(fieldNumberNumber2Optional, number2Optional);
-		}
-		if(hasNameOptional) {
-			totalSize += ComputeSizeUtil.computeStringSize(fieldNumberNameOptional, nameOptional);
-		}
-		if(hasBoolValOptional) {
-			totalSize += ComputeSizeUtil.computeBooleanSize(fieldNumberBoolValOptional, boolValOptional);
-		}
-		if(hasAmountOptional) {
-			totalSize += ComputeSizeUtil.computeDoubleSize(fieldNumberAmountOptional, amountOptional);
-		}
-		if(hasFloatNumOptional) {
-			totalSize += ComputeSizeUtil.computeFloatSize(fieldNumberFloatNumOptional, floatNumOptional);
-		}
-		if(hasByteStringObjOptional) {
-			totalSize += ComputeSizeUtil.computeByteStringSize(fieldNumberByteStringObjOptional, byteStringObjOptional);
-		}
+		if(hasIdOptional) totalSize += ComputeSizeUtil.computeIntSize(fieldNumberIdOptional, idOptional);
+		if(hasNumber2Optional) totalSize += ComputeSizeUtil.computeLongSize(fieldNumberNumber2Optional, number2Optional);
+		if(hasNameOptional) totalSize += ComputeSizeUtil.computeStringSize(fieldNumberNameOptional, nameOptional);
+		if(hasBoolValOptional) totalSize += ComputeSizeUtil.computeBooleanSize(fieldNumberBoolValOptional, boolValOptional);
+		if(hasAmountOptional) totalSize += ComputeSizeUtil.computeDoubleSize(fieldNumberAmountOptional, amountOptional);
+		if(hasFloatNumOptional) totalSize += ComputeSizeUtil.computeFloatSize(fieldNumberFloatNumOptional, floatNumOptional);
+		if(hasByteStringObjOptional) totalSize += ComputeSizeUtil.computeByteStringSize(fieldNumberByteStringObjOptional, byteStringObjOptional);
 		totalSize += ComputeSizeUtil.computeListSize(fieldNumberIdList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_INT, idList);
 		totalSize += ComputeSizeUtil.computeListSize(fieldNumberNumber2List, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_LONG, number2List);
 		totalSize += ComputeSizeUtil.computeListSize(fieldNumberNameList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_STRING, nameList);
@@ -624,27 +594,13 @@ public final class JunitTestLargeObject {
 		writer.writeDouble(fieldNumberAmount, amount);
 		writer.writeFloat(fieldNumberFloatNum, floatNum);
 		writer.writeByteString(fieldNumberByteStringObj, byteStringObj);
-		if(hasIdOptional) {
-			writer.writeInt(fieldNumberIdOptional, idOptional);
-		}
-		if(hasNumber2Optional) {
-			writer.writeLong(fieldNumberNumber2Optional, number2Optional);
-		}
-		if(hasNameOptional) {
-			writer.writeString(fieldNumberNameOptional, nameOptional);
-		}
-		if(hasBoolValOptional) {
-			writer.writeBoolean(fieldNumberBoolValOptional, boolValOptional);
-		}
-		if(hasAmountOptional) {
-			writer.writeDouble(fieldNumberAmountOptional, amountOptional);
-		}
-		if(hasFloatNumOptional) {
-			writer.writeFloat(fieldNumberFloatNumOptional, floatNumOptional);
-		}
-		if(hasByteStringObjOptional) {
-			writer.writeByteString(fieldNumberByteStringObjOptional, byteStringObjOptional);
-		}
+		if(hasIdOptional) writer.writeInt(fieldNumberIdOptional, idOptional);
+		if(hasNumber2Optional) writer.writeLong(fieldNumberNumber2Optional, number2Optional);
+		if(hasNameOptional) writer.writeString(fieldNumberNameOptional, nameOptional);
+		if(hasBoolValOptional) writer.writeBoolean(fieldNumberBoolValOptional, boolValOptional);
+		if(hasAmountOptional) writer.writeDouble(fieldNumberAmountOptional, amountOptional);
+		if(hasFloatNumOptional) writer.writeFloat(fieldNumberFloatNumOptional, floatNumOptional);
+		if(hasByteStringObjOptional) writer.writeByteString(fieldNumberByteStringObjOptional, byteStringObjOptional);
 		writer.writeList(fieldNumberIdList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_INT, idList);
 		writer.writeList(fieldNumberNumber2List, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_LONG, number2List);
 		writer.writeList(fieldNumberNameList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_STRING, nameList);
@@ -652,6 +608,7 @@ public final class JunitTestLargeObject {
 		writer.writeList(fieldNumberAmountList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_DOUBLE, amountList);
 		writer.writeList(fieldNumberFloatNumList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_FLOAT, floatNumList);
 		writer.writeList(fieldNumberByteStringObjList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_BYTESTRING, byteStringObjList);
+		writer.writeData();
 	}
 
 	private static JunitTestLargeObject parseFields(final InputReader reader) throws IOException {
