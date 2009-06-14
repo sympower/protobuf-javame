@@ -1,9 +1,10 @@
 package com.google.protobuf.javame;
 
+import net.jarlehansen.protobuf.javame.factory.JavaMeProtoFactory;
+import net.jarlehansen.protobuf.javame.input.InputReader;
+import net.jarlehansen.protobuf.javame.output.OutputWriter;
 import jmunit.framework.cldc11.TestCase;
 
-import com.google.protobuf.javame.input.InputReader;
-import com.google.protobuf.javame.output.OutputWriter;
 
 /**
  * 

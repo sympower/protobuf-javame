@@ -4,11 +4,13 @@ package com.google.protobuf.javame.generated;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import com.google.protobuf.UninitializedMessageException;
-import com.google.protobuf.javame.JavaMeProtoFactory;
-import com.google.protobuf.javame.input.InputReader;
-import com.google.protobuf.javame.output.ComputeSizeUtil;
-import com.google.protobuf.javame.output.OutputWriter;
+
+import net.jarlehansen.protobuf.javame.UninitializedMessageException;
+import net.jarlehansen.protobuf.javame.factory.JavaMeProtoFactory;
+import net.jarlehansen.protobuf.javame.input.InputReader;
+import net.jarlehansen.protobuf.javame.output.OutputWriter;
+import net.jarlehansen.protobuf.javame.util.ComputeSizeUtil;
+
 
 public final class JunitTestObject {
 	private final int id;
@@ -24,7 +26,7 @@ public final class JunitTestObject {
 	private final java.util.Vector addressList;
 	private static final int fieldNumberAddressList = 4;
 
-	private final com.google.protobuf.ByteString bytesObject;
+	private final net.jarlehansen.protobuf.javame.ByteString bytesObject;
 	private static final int fieldNumberBytesObject = 5;
 
 	private final float floatObject;
@@ -73,7 +75,7 @@ public final class JunitTestObject {
 		private java.util.Vector addressList = new java.util.Vector();
 		private boolean hasAddressList = false;
 
-		private com.google.protobuf.ByteString bytesObject;
+		private net.jarlehansen.protobuf.javame.ByteString bytesObject;
 		private boolean hasBytesObject = false;
 
 		private float floatObject;
@@ -124,7 +126,7 @@ public final class JunitTestObject {
 			return this;
 		}
 
-		public Builder setBytesObject(final com.google.protobuf.ByteString bytesObject) {
+		public Builder setBytesObject(final net.jarlehansen.protobuf.javame.ByteString bytesObject) {
 			this.bytesObject = bytesObject;
 			this.hasBytesObject = true;
 			return this;
@@ -173,7 +175,7 @@ public final class JunitTestObject {
 		return addressList;
 	}
 
-	public com.google.protobuf.ByteString getBytesObject() {
+	public net.jarlehansen.protobuf.javame.ByteString getBytesObject() {
 		return bytesObject;
 	}
 
@@ -234,7 +236,7 @@ public final class JunitTestObject {
 		totalSize += ComputeSizeUtil.computeIntSize(fieldNumberId, id);
 		totalSize += ComputeSizeUtil.computeLongSize(fieldNumberLongNumber, longNumber);
 		if(hasName) totalSize += ComputeSizeUtil.computeStringSize(fieldNumberName, name);
-		totalSize += ComputeSizeUtil.computeListSize(fieldNumberAddressList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_STRING, addressList);
+		totalSize += ComputeSizeUtil.computeListSize(fieldNumberAddressList, net.jarlehansen.protobuf.javame.util.SupportedDataTypes.DATA_TYPE_STRING, addressList);
 		totalSize += ComputeSizeUtil.computeByteStringSize(fieldNumberBytesObject, bytesObject);
 		totalSize += ComputeSizeUtil.computeFloatSize(fieldNumberFloatObject, floatObject);
 		if(hasBoolObj) totalSize += ComputeSizeUtil.computeBooleanSize(fieldNumberBoolObj, boolObj);
@@ -247,7 +249,7 @@ public final class JunitTestObject {
 		writer.writeInt(fieldNumberId, id);
 		writer.writeLong(fieldNumberLongNumber, longNumber);
 		if(hasName) writer.writeString(fieldNumberName, name);
-		writer.writeList(fieldNumberAddressList, com.google.protobuf.javame.SupportedDataTypes.DATA_TYPE_STRING, addressList);
+		writer.writeList(fieldNumberAddressList, net.jarlehansen.protobuf.javame.util.SupportedDataTypes.DATA_TYPE_STRING, addressList);
 		writer.writeByteString(fieldNumberBytesObject, bytesObject);
 		writer.writeFloat(fieldNumberFloatObject, floatObject);
 		if(hasBoolObj) writer.writeBoolean(fieldNumberBoolObj, boolObj);

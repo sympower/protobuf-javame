@@ -3,9 +3,10 @@ package com.google.protobuf.javame.generatedobjtest;
 import java.io.IOException;
 import java.util.Vector;
 
+import net.jarlehansen.protobuf.javame.ByteString;
+
 import jmunit.framework.cldc11.TestCase;
 
-import com.google.protobuf.ByteString;
 import com.google.protobuf.javame.generated.JunitTestObject;
 import com.google.protobuf.javame.generated.JunitTestObject.Builder;
 

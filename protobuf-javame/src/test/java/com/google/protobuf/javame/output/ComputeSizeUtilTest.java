@@ -3,6 +3,8 @@ package com.google.protobuf.javame.output;
 import java.io.IOException;
 import java.util.Vector;
 
+import net.jarlehansen.protobuf.javame.util.ComputeSizeUtil;
+
 import jmunit.framework.cldc11.TestCase;
 
 /**

@@ -3,13 +3,15 @@ package com.google.protobuf.javame;
 import java.io.IOException;
 import java.util.Vector;
 
-import com.google.protobuf.ByteString;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.javame.input.InputReader;
-import com.google.protobuf.javame.input.InputReaderImpl;
-import com.google.protobuf.javame.output.ComputeSizeUtil;
-import com.google.protobuf.javame.output.OutputWriter;
-import com.google.protobuf.javame.output.OutputWriterImpl;
+import net.jarlehansen.protobuf.javame.ByteString;
+import net.jarlehansen.protobuf.javame.InvalidProtocolBufferException;
+import net.jarlehansen.protobuf.javame.input.InputReader;
+import net.jarlehansen.protobuf.javame.input.InputReaderImpl;
+import net.jarlehansen.protobuf.javame.output.OutputWriter;
+import net.jarlehansen.protobuf.javame.output.OutputWriterImpl;
+import net.jarlehansen.protobuf.javame.util.ComputeSizeUtil;
+import net.jarlehansen.protobuf.javame.util.SupportedDataTypes;
+
 
 import jmunit.framework.cldc11.TestCase;
 
