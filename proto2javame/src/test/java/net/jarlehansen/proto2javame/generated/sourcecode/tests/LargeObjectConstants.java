@@ -1,7 +1,7 @@
 package net.jarlehansen.proto2javame.generated.sourcecode.tests;
 
-import com.google.protobuf.ByteString;
 import net.jarlehansen.proto2javame.generated.sourcecode.tests.tempfiles.JunitTestLargeObject;
+import net.jarlehansen.protobuf.javame.ByteString;
 
 /**
  * @author Jarle Hansen hansjar@gmail.com
