@@ -12,7 +12,7 @@ public enum ValidTypes {
 	INT64("int64", "long", "DATA_TYPE_LONG"), 
 	BOOL("bool", "boolean", "DATA_TYPE_BOOLEAN"),
 	STRING("string", "String", "DATA_TYPE_STRING"),
-	BYTES("bytes", "com.google.protobuf.ByteString", "DATA_TYPE_BYTESTRING");
+	BYTES("bytes", "net.jarlehansen.protobuf.javame.ByteString", "DATA_TYPE_BYTESTRING");
 	
 	private final String javaType;
 	private final String protoType;
