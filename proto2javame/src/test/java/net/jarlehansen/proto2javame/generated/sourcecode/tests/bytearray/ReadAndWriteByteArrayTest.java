@@ -1,13 +1,13 @@
 package net.jarlehansen.proto2javame.generated.sourcecode.tests.bytearray;
 
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.UninitializedMessageException;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import java.io.IOException;
 
 import net.jarlehansen.proto2javame.generated.sourcecode.tests.tempfiles.JunitTestMainObject;
+import net.jarlehansen.protobuf.javame.UninitializedMessageException;
+import net.jarlehansen.protobuf.javame.InvalidProtocolBufferException;
 
 /**
  * @author hansjar@gmail.com Jarle Hansen

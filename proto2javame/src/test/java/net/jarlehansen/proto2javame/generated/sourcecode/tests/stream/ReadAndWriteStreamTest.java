@@ -1,8 +1,8 @@
 package net.jarlehansen.proto2javame.generated.sourcecode.tests.stream;
 
-import com.google.protobuf.UninitializedMessageException;
 import net.jarlehansen.proto2javame.testutils.TestConstants;
 import net.jarlehansen.proto2javame.generated.sourcecode.tests.tempfiles.JunitTestMainObject;
+import net.jarlehansen.protobuf.javame.UninitializedMessageException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
