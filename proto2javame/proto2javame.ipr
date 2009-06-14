@@ -272,7 +272,9 @@
     <library name="test">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/test/junit-4.6.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/test/protobuf-javame-0.5.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/test/protobuf-javame-0.6.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/test/proto2javame-0.6.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/test/protobuf-java-2.1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
