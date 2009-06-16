@@ -1,5 +1,8 @@
 package net.jarlehansen.proto2javame.business.sourcebuilder.resource;
 
+import net.jarlehansen.proto2javame.domain.proto.ValidTypes;
+import net.jarlehansen.proto2javame.domain.proto.ListImplementation;
+
 /**
  * 
  * @author hansjar@gmail.com Jarle Hansen
@@ -25,12 +28,13 @@ public enum JavaSourceCodeUtil {
 		
 		return startChar.toUpperCase() + end;
 	}
-	
+
+    // TODO The ByteString and Vector method names logic should be updated
 	public static String createCapitalLetterMethod(final String name) {
 		String methodName = name;
-		if(methodName.contains("ByteString")) {
+		if(methodName.compareToIgnoreCase(ValidTypes.BYTES.getJavaType()) == 0) {
 			methodName = "ByteString";
-		} else if(methodName.contains("Vector")) {
+		} else if(methodName.compareToIgnoreCase(ListImplementation.VECTOR.getImplementation()) == 0) {
 			methodName = "List";
 		}
 		else {
