@@ -3,6 +3,9 @@ package net.jarlehansen.proto2javame.generated.sourcecode.tests.stream;
 import net.jarlehansen.proto2javame.generated.sourcecode.tests.LargeObjectConstants;
 import net.jarlehansen.proto2javame.generated.sourcecode.tests.tempfiles.JunitTestLargeObject;
 import net.jarlehansen.proto2javame.testutils.TestConstants;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +36,7 @@ public class ReadAndWriteLargeStreamTest {
 
         try {
             output = new FileOutputStream(generatedTxtFile);
-            final JunitTestLargeObject testObj = LargeObjectConstants.createTestObjOnlyRequiredFields();
+            final JunitTestLargeObject testObj = LargeObjectConstants.onlyRequiredFields;
             testObj.writeTo(output);
 
             output.close();
@@ -57,7 +60,7 @@ public class ReadAndWriteLargeStreamTest {
         try {
             output = new FileOutputStream(generatedTxtFile);
 
-            final JunitTestLargeObject testObj = LargeObjectConstants.createTestObjRequiredAndOptionalFields();
+            final JunitTestLargeObject testObj = LargeObjectConstants.requiredAndOptionalFields;
             testObj.writeTo(output);
 
             output.close();
@@ -80,7 +83,7 @@ public class ReadAndWriteLargeStreamTest {
         try {
             output = new FileOutputStream(generatedTxtFile);
 
-            final JunitTestLargeObject testObj = LargeObjectConstants.createTestObjAllFields();
+            final JunitTestLargeObject testObj = LargeObjectConstants.allFields;
             testObj.writeTo(output);
 
             output.close();
@@ -98,13 +101,12 @@ public class ReadAndWriteLargeStreamTest {
     @Test
     public void testParseFromInputStreamValidRequiredInput() throws IOException {
         final InputStream input = new FileInputStream(new File(TestConstants.LARGE_CONSTANT_TXT_FILE_REQUIRED));
-
         final JunitTestLargeObject testObj = JunitTestLargeObject.parseFrom(input);
         input.close();
 
         System.out.println("ParseFrom TestObj required fields: " + testObj.toString());
 
-        assertTrue(LargeObjectConstants.equalsTestObjRequired(testObj));
+        assertThat(LargeObjectConstants.onlyRequiredFields.toByteArray(), is(equalTo(testObj.toByteArray())));
     }
 
     @Test
@@ -116,7 +118,7 @@ public class ReadAndWriteLargeStreamTest {
 
         System.out.println("ParseFrom TestObj required and optional fields: " + testObj.toString());
 
-        assertTrue(LargeObjectConstants.equalsTestObjRequiredAndOptional(testObj));
+        assertThat(LargeObjectConstants.requiredAndOptionalFields.toByteArray(), is(equalTo(testObj.toByteArray())));
     }
 
     @Test
@@ -128,6 +130,6 @@ public class ReadAndWriteLargeStreamTest {
 
         System.out.println("ParseFrom TestObj all fields: " + testObj.toString());
 
-        assertTrue(LargeObjectConstants.equalsTestObjAllFields(testObj));
+        assertThat(LargeObjectConstants.allFields.toByteArray(), is(equalTo(testObj.toByteArray())));
     }
 }
