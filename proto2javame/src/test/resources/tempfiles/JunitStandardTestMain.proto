@@ -1,8 +1,0 @@
-package this.is.not.used;
-
-option java_package = "net.jarlehansen.proto2javame.protobuf.integration.tempfiles";
-option java_outer_classname = "JunitTestMainObjectProto";
-
-message JunitTestMainObject {
-	required int32 id = 1;
-}
