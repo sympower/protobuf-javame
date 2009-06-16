@@ -29,7 +29,6 @@ public enum JavaSourceCodeUtil {
 		return startChar.toUpperCase() + end;
 	}
 
-    // TODO The ByteString and Vector method names logic should be updated
 	public static String createCapitalLetterMethod(final String name) {
 		String methodName = name;
 		if(methodName.compareToIgnoreCase(ValidTypes.BYTES.getJavaType()) == 0) {
