@@ -1,0 +1,7 @@
+proto2javame 0.7.0 release notes
+--------------------------------
+
+Updated JavaSourceCodeUtil.createCapitalLetterMethod to use values from ValidTypes and ListImplementation instead
+of hardcoded values when comparing the method name. This is used since the method names for ByteString and Vector
+should not contain the package structure.
+
