@@ -15,7 +15,7 @@ public class ReadAndWriteLargeByteArrayTest {
 
     @Test
     public void testWriteToNewByteArrayValidRequiredInput() throws IOException {
-        final JunitTestLargeObject testObj = LargeObjectConstants.createTestObjOnlyRequiredFields();
+        final JunitTestLargeObject testObj = LargeObjectConstants.onlyRequiredFields;
         final byte[] data = testObj.toByteArray();
 
         System.out.println("TestObj required fields: " + testObj.toString());
@@ -25,7 +25,7 @@ public class ReadAndWriteLargeByteArrayTest {
 
     @Test
     public void testWriteToNewByteArrayValidRequiredAndOptionalInput() throws IOException {
-        final JunitTestLargeObject testObj = LargeObjectConstants.createTestObjRequiredAndOptionalFields();
+        final JunitTestLargeObject testObj = LargeObjectConstants.requiredAndOptionalFields;
         final byte[] data = testObj.toByteArray();
 
         System.out.println("TestObj required and optional fields: " + testObj.toString());
@@ -35,7 +35,7 @@ public class ReadAndWriteLargeByteArrayTest {
 
     @Test
     public void testWriteToNewByteArrayValidInputAllFields() throws IOException {
-        final JunitTestLargeObject testObj = LargeObjectConstants.createTestObjAllFields();
+        final JunitTestLargeObject testObj = LargeObjectConstants.allFields;
         final byte[] data = testObj.toByteArray();
 
         System.out.println("TestObj required and optional fields: " + testObj.toString());
@@ -45,7 +45,7 @@ public class ReadAndWriteLargeByteArrayTest {
 
     @Test
     public void testWriteToByteArrayValidInputAllFields() throws IOException {
-        final JunitTestLargeObject testObj = LargeObjectConstants.createTestObjAllFields();
+        final JunitTestLargeObject testObj = LargeObjectConstants.allFields;
         final byte[] data = new byte[257];
         testObj.writeTo(data);
 
