@@ -11,7 +11,7 @@ public enum Proto2JavaFactory {
 	;
 	
 	public static ProtoObjectBuilder createProtoObjectBuilder() {
-		return ProtoObjectBuilderImpl.newInstance();
+        return ProtoObjectBuilderImpl.newInstance();
 	}
 	
 	public static JavaSourceCodeBuilder createJavaSourceCodeBuilder() {
