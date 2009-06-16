@@ -75,10 +75,15 @@ createTask('generate-test-files') {
   // Creates the Google Protocol Buffer java source file, for integration tests
   ant.exec(executable: libDir + '/protobuf-compiler/protoc.exe') {
     arg(value: '--java_out=src/test/java')
-    arg(value: 'src/test/resources/tempfiles/JunitStandardTestMain.proto')
+    arg(value: 'src/test/resources/integration-test/IntegrationTestJavaSe.proto')
   }
 
   // Creates the Java ME source code files for unit tests
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/integration-test/IntegrationTestJavaMe.proto')
+  }
+
   ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
       arg(value: '--java_out=src/test/java')
       arg(value: 'src/test/resources/tempfiles/JunitTestMain.proto')
