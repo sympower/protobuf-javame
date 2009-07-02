@@ -271,13 +271,11 @@
   <component name="libraryTable">
     <library name="test">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/test/junit-4.6.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/test/protobuf-javame-0.6.0.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/test/proto2javame-0.6.0.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/test/protobuf-java-2.1.0.jar!/" />
+        <root url="file://$PROJECT_DIR$/lib/test" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/test" recursive="false" />
     </library>
   </component>
 </project>
