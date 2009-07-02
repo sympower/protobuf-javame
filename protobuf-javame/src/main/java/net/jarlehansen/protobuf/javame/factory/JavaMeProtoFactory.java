@@ -5,6 +5,7 @@ import java.io.OutputStream;
 
 import net.jarlehansen.protobuf.javame.input.InputReader;
 import net.jarlehansen.protobuf.javame.input.InputReaderImpl;
+import net.jarlehansen.protobuf.javame.input.taghandler.UnknownTagHandler;
 import net.jarlehansen.protobuf.javame.output.OutputWriter;
 import net.jarlehansen.protobuf.javame.output.OutputWriterImpl;
 
@@ -19,12 +20,12 @@ public final class JavaMeProtoFactory {
 	private JavaMeProtoFactory() {
 	}
 	
-	public static InputReader createInputUtil(final byte[] buffer) {
-		return new InputReaderImpl(buffer);
+	public static InputReader createInputUtil(final byte[] buffer, final UnknownTagHandler unknownTagHandler) {
+		return new InputReaderImpl(buffer, unknownTagHandler);
 	}
 	
-	public static InputReader createInputUtil(final InputStream input) {
-		return new InputReaderImpl(input);
+	public static InputReader createInputUtil(final InputStream input, final UnknownTagHandler unknownTagHandler) {
+		return new InputReaderImpl(input, unknownTagHandler);
 	}
 	
 	public static OutputWriter createOutputUtil(final byte[] dataHolder) {
