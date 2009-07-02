@@ -4,6 +4,7 @@ import net.jarlehansen.proto2javame.io.exception.InvalidInputException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * @author hansjar@gmail.com Jarle Hansen
@@ -50,7 +51,8 @@ public enum InputDataUtil {
         if (inputValues.length == InputParams.VALID_NUMBER_OF_PARAMS) {
             return true;
         } else {
-            throw new InvalidInputException("The number of input parameters must be 2, it was: " + inputValues.length);
+            throw new InvalidInputException("The number of input parameters must be 2, it was: " + inputValues.length +
+                    ". Values: " + Arrays.toString(inputValues));
         }
     }
 
