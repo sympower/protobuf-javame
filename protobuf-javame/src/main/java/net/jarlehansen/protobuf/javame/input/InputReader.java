@@ -19,4 +19,5 @@ public interface InputReader {
 	public long readLong(final int fieldNumber) throws IOException;
 	public ByteString readByteString(final int fieldNumber) throws IOException;
 	public int getNextFieldNumber() throws IOException;
+	public void getPreviousTagDataTypeAndReadContent() throws IOException;
 }
