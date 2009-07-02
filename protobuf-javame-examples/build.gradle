@@ -1,0 +1,14 @@
+// Generates the Java source code from the proto-file used in the examples
+createTask('generate-example-file') {
+	println('generating Java source code used in the examples')
+	
+	ant.java(jar: 'lib/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/main/generated')
+		arg(value: 'src/main/resources/ExampleProtoFile.proto')
+	}
+	
+  	ant.exec(executable: 'lib/generate/protoc.exe') {
+    	arg(value: '--java_out=src/main/generated')
+   		arg(value: 'src/main/resources/ExampleProtoFile.proto')
+  	}
+}
