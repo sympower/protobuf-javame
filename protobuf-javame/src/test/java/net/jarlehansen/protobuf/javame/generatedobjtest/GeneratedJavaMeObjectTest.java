@@ -3,11 +3,9 @@ package net.jarlehansen.protobuf.javame.generatedobjtest;
 import java.io.IOException;
 import java.util.Vector;
 
+import jmunit.framework.cldc11.TestCase;
 import net.jarlehansen.protobuf.javame.ByteString;
 import net.jarlehansen.protobuf.javame.generated.JunitTestObject;
-import net.jarlehansen.protobuf.javame.generated.JunitTestObject.Builder;
-
-import jmunit.framework.cldc11.TestCase;
 
 
 /**
