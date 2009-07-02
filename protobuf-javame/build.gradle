@@ -120,6 +120,9 @@ createTask('build-zip-file', dependsOn: 'main-package') {
 		
 		// doc folder
 		zipfileset(dir: 'doc', prefix: 'doc')
+		
+		// examples folder
+		zipfileset(dir: 'examples', prefix:'examples', includes: '*.zip')
 	}
 }
 
