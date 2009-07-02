@@ -14,7 +14,7 @@ import java.io.*;
  * @author hansjar@gmail.com Jarle Hansen
  */
 public class ReadAndWriteStreamTest {
-    
+
     private File generatedTxtFile;
 
     @Before
