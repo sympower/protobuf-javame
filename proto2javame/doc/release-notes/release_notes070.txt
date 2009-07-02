@@ -4,4 +4,8 @@ proto2javame 0.7.0 release notes
 Updated JavaSourceCodeUtil.createCapitalLetterMethod to use values from ValidTypes and ListImplementation instead
 of hardcoded values when comparing the method name. This is used since the method names for ByteString and Vector
 should not contain the package structure.
+Updated the error message in InputDataUtil when the wrong number of arguments are sent in.
+The arguments are now printed in addition to showing that the number of arguments.
+Supports backward compatibility of proto-files. This means you can update the .proto files, add new fields,
+and the old implementations will still be supported. Although the new fields will of course not be available on the old implementation.
 
