@@ -1,3 +1,22 @@
+defaultTasks 'package-zip'
+
+targetDir = new File('target')
+
+createTask('init') {
+	if(targetDir.isDirectory()) {
+		ant.delete(dir: targetDir)
+	}
+	
+	targetDir.mkdirs()
+}
+
+createTask('package-zip', dependsOn: 'init') {
+	ant.zip(destfile: 'target/protobuf-javame-examples.zip') {
+		zipfileset(dir: 'src', prefix: 'src', includes: '**/*.java, **/*.proto')
+		zipfileset(dir: 'lib', prefix: 'lib', includes: '**/*.jar, **/*.exe')
+	}
+}
+
 // Generates the Java source code from the proto-file used in the examples
 createTask('generate-example-file') {
 	println('generating Java source code used in the examples')
