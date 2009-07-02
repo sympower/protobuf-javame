@@ -1,9 +1,9 @@
 package net.jarlehansen.protobuf.javame.factory;
 
-import net.jarlehansen.protobuf.javame.factory.JavaMeProtoFactory;
-import net.jarlehansen.protobuf.javame.input.InputReader;
-import net.jarlehansen.protobuf.javame.output.OutputWriter;
 import jmunit.framework.cldc11.TestCase;
+import net.jarlehansen.protobuf.javame.input.InputReader;
+import net.jarlehansen.protobuf.javame.input.taghandler.DefaultUnknownTagHandlerImpl;
+import net.jarlehansen.protobuf.javame.output.OutputWriter;
 
 
 /**
@@ -36,7 +36,7 @@ public class JavaMeProtoFactoryTest extends TestCase {
 	}
 	
 	private void testCreateInputUtilByteArray() {
-		assertTrue(JavaMeProtoFactory.createInputUtil(new byte[100]) instanceof InputReader);
+		assertTrue(JavaMeProtoFactory.createInputUtil(new byte[100], DefaultUnknownTagHandlerImpl.newInstance()) instanceof InputReader);
 	}
 	
 	private void testCreateOutputUtilByteArray() {
