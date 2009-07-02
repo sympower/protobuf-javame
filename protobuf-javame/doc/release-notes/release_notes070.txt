@@ -1,0 +1,8 @@
+protobuf-javame 0.7.0 release notes
+--------------------------------
+
+Removed unused code in CodedInputStream, CodedOutputStream, InvalidProtocolBufferException and WireFormat.
+Added UnknownTagHandler and DefaultUnknownTagHandlerImpl. The implementation is meant to be extended and used in for example
+logging when you need to know if a certain tag is unsupported.
+Refactored package structure.
+Added new tests for CodedOutputStream.
