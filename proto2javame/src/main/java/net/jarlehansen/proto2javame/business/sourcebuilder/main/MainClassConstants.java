@@ -13,7 +13,8 @@ enum MainClassConstants {
 	
 	public static final String KEY_INIT = "main.init";
 	public static final String KEY_METHOD_END = "main.method.end";
-	
+
+    public static final String KEY_FIELDS_STATIC_UNKNOWNTAGHANDLER = "main.fields.static.unknowntaghandler";
 	public static final String KEY_FIELDS = "main.fields";
 	public static final String KEY_FIELDS_NUMBER = "main.fields.number";
 	public static final String KEY_FIELDS_BOOL = "main.fields.bool";
@@ -31,5 +32,5 @@ enum MainClassConstants {
 	public static final String KEY_CONSTRUCTOR_ELSE = "main.constructor.else";
 	public static final String KEY_CONSTRUCTOR_ELSE_FIELDS = "main.constructor.else.fields";
 	public static final String KEY_CONSTRUCTOR_ELSE_END = "main.constructor.else.end";
-	
+
 }
