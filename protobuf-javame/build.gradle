@@ -18,7 +18,7 @@ wtkbuildTestDir = new File(target + '/wtk-test-classes')
 jadFilename = target + '/' + jadFile
 jarFilename = target + '/' + jarFile + '-' + protobufVersion + '.jar'
 jarFilenameTests = target + '/' + jarFileTests
-packageFilename = target + '/' + jarFile + '-' + protobufVersion + '.zip'
+packageFilename = target + '/' + jarFile + '-' + protobufVersion + '-all.zip'
 
 // wtk properties
 ant.property(name: 'wtk.home', value: wtkHome)
@@ -95,14 +95,14 @@ createTask('main-compile', dependsOn: 'run-tests') {
 }
 
 createTask('main-package', dependsOn: 'main-compile') {
-	println('\n-> creating main-jar-file')
+	println('\n-> creating main-jar-file, ' + jarFilename)
 	ant.wtkpackage(jadfile: jadFilename, jarfile: jarFilename, preverify: 'true') {
 		fileset(dir: wtkbuildDir, includes: '**/*.class')
 	}
 }
 
 createTask('build-zip-file', dependsOn: 'main-package') {
-	println('\n-> building zip-file')
+	println('\n-> building zip-file, ' + packageFilename)
 	ant.zip(destfile: packageFilename) {
 		// source folder
 		zipfileset(dir: sourceDir, prefix: 'source/' + sourceDir)
@@ -115,13 +115,16 @@ createTask('build-zip-file', dependsOn: 'main-package') {
 		// lib folder
 		zipfileset(dir: lib + '/test', prefix: lib, includes: '**/*.jar')
 		
+		// proto2javame folder
+		zipfileset(dir: lib + '/generate', prefix: 'proto2javame', includes: '*.jar')
+		
 		// doc folder
 		zipfileset(dir: 'doc', prefix: 'doc')
 	}
 }
 
 createTask('generate-test-files') {
-	ant.java(jar: lib + '/generate/proto2javame-0.6.0.jar', fork: 'true', failonerror: 'true') {
+	ant.java(jar: lib + '/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/test/java')
 		arg(value: 'src/test/resources/proto-file/JUnitTest.proto')
 	}
