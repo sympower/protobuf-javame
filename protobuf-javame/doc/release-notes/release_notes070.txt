@@ -1,0 +1,8 @@
+protobuf-javame 0.7.0 release notes
+--------------------------------
+
+- Updated error message to list out the input when too many input arguments are sent in.
+- Supports backward compatibility of proto-files. 
+  This means you can update the proto-file, add new fields for example, 
+  and the old implementations will still be supported. 
+  Although the new fields will of course not be available on the old implementation. 
