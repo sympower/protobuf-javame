@@ -1,9 +1,10 @@
 package net.jarlehansen.protobuf.javame.midlet;
 
-import net.jarlehansen.protobuf.javame.InputAndOutputImplListTest;
-import net.jarlehansen.protobuf.javame.InputAndOutputImplTest;
 import net.jarlehansen.protobuf.javame.factory.JavaMeProtoFactoryTest;
 import net.jarlehansen.protobuf.javame.generatedobjtest.GeneratedJavaMeObjectTest;
+import net.jarlehansen.protobuf.javame.inputandoutput.InputAndOutputImplListTest;
+import net.jarlehansen.protobuf.javame.inputandoutput.InputAndOutputImplTest;
+import net.jarlehansen.protobuf.javame.output.CodedOutputStreamTest;
 import net.jarlehansen.protobuf.javame.util.ComputeSizeUtilTest;
 import jmunit.framework.cldc11.TestSuite;
 
@@ -22,5 +23,6 @@ public class ProtobufJavaMeTestMidlet extends TestSuite {
 		add(new InputAndOutputImplListTest());
 		add(new GeneratedJavaMeObjectTest());
 		add(new ComputeSizeUtilTest());
+		add(new CodedOutputStreamTest());
 	}
 }
