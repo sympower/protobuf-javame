@@ -1,8 +1,8 @@
 protobuf-javame 0.7.0 release notes
 --------------------------------
 
-Removed unused code in CodedInputStream, CodedOutputStream, InvalidProtocolBufferException and WireFormat.
-Added UnknownTagHandler and DefaultUnknownTagHandlerImpl. The implementation is meant to be extended and used in for example
-logging when you need to know if a certain tag is unsupported.
-Refactored package structure.
-Added new tests for CodedOutputStream.
+- Updated error message to list out the input when too many input arguments are sent in.
+- Supports backward compatibility of proto-files. 
+  This means you can update the proto-file, add new fields for example, 
+  and the old implementations will still be supported. 
+  Although the new fields will of course not be available on the old implementation. 
