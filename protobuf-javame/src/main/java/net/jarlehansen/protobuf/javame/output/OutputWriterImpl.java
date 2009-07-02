@@ -5,7 +5,6 @@ import java.io.OutputStream;
 import java.util.Vector;
 
 import net.jarlehansen.protobuf.javame.ByteString;
-import net.jarlehansen.protobuf.javame.CodedOutputStream;
 import net.jarlehansen.protobuf.javame.util.SupportedDataTypes;
 
 
@@ -113,8 +112,6 @@ public class OutputWriterImpl implements OutputWriter {
 	}
 
 	public void writeData() throws IOException {
-		codedOutput.flush();
-		
 		if (output != null) {
 			output.write(dataHolder);
 			output.flush();
