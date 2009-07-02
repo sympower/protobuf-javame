@@ -27,6 +27,7 @@ public final class MainClassBuilderImpl implements MainClassBuilder {
         builder.append(createPackage(protoInput));
         builder.append(createImports());
         builder.append(createClassInitialization(className));
+        builder.append(createStaticUnknownTagHandlerInitialization());
         builder.append(createFields(protoInput));
         builder.append(createNewBuilderMethod());
         builder.append(createConstructor(className, protoInput));
@@ -53,12 +54,17 @@ public final class MainClassBuilderImpl implements MainClassBuilder {
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_FACTORY), mainPackage +
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_INPUT), mainPackage +
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_UTIL), mainPackage +
-                ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_OUTPUT));
+                ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_OUTPUT), mainPackage +
+                ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_TAGHANDLER));
     }
 
 
     private String createClassInitialization(final String className) {
         return resourceFormat.getString(MainClassConstants.KEY_INIT, className);
+    }
+
+    private String createStaticUnknownTagHandlerInitialization() {
+        return resourceFormat.getString(MainClassConstants.KEY_FIELDS_STATIC_UNKNOWNTAGHANDLER);
     }
 
     private String createFields(final ProtoFileInput protoInput) {
