@@ -46,12 +46,10 @@ public final class WireFormat {
   // Do not allow instantiation.
   private WireFormat() {}
 
-  static final int WIRETYPE_VARINT           = 0;
-  static final int WIRETYPE_FIXED64          = 1;
-  static final int WIRETYPE_LENGTH_DELIMITED = 2;
-  static final int WIRETYPE_START_GROUP      = 3;
-  static final int WIRETYPE_END_GROUP        = 4;
-  static final int WIRETYPE_FIXED32          = 5;
+  public static final int WIRETYPE_VARINT           = 0;
+  public static final int WIRETYPE_FIXED64          = 1;
+  public static final int WIRETYPE_LENGTH_DELIMITED = 2;
+  public static final int WIRETYPE_FIXED32          = 5;
 
   static final int TAG_TYPE_BITS = 3;
   static final int TAG_TYPE_MASK = (1 << TAG_TYPE_BITS) - 1;
@@ -67,7 +65,7 @@ public final class WireFormat {
   }
 
   /** Makes a tag value given a field number and wire type. */
-  static int makeTag(int fieldNumber, int wireType) {
+  public static int makeTag(int fieldNumber, int wireType) {
     return (fieldNumber << TAG_TYPE_BITS) | wireType;
   }
 
@@ -77,10 +75,6 @@ public final class WireFormat {
   static final int MESSAGE_SET_MESSAGE = 3;
 
   // Tag numbers.
-  static final int MESSAGE_SET_ITEM_TAG =
-    makeTag(MESSAGE_SET_ITEM, WIRETYPE_START_GROUP);
-  static final int MESSAGE_SET_ITEM_END_TAG =
-    makeTag(MESSAGE_SET_ITEM, WIRETYPE_END_GROUP);
   static final int MESSAGE_SET_TYPE_ID_TAG =
     makeTag(MESSAGE_SET_TYPE_ID, WIRETYPE_VARINT);
   static final int MESSAGE_SET_MESSAGE_TAG =
