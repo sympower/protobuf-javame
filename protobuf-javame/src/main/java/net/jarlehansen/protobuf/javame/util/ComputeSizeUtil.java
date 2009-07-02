@@ -3,7 +3,7 @@ package net.jarlehansen.protobuf.javame.util;
 import java.util.Vector;
 
 import net.jarlehansen.protobuf.javame.ByteString;
-import net.jarlehansen.protobuf.javame.CodedOutputStream;
+import net.jarlehansen.protobuf.javame.output.CodedOutputStream;
 
 
 /**
