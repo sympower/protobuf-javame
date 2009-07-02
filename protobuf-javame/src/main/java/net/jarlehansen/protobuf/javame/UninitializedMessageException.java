@@ -30,6 +30,8 @@
 
 package net.jarlehansen.protobuf.javame;
 
+import net.jarlehansen.protobuf.javame.input.InvalidProtocolBufferException;
+
 /**
  * Thrown when attempting to build a protocol message that is missing required
  * fields.  This is a {@code RuntimeException} because it normally represents
