@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import net.jarlehansen.protobuf.javame.ByteString;
-import net.jarlehansen.protobuf.javame.CodedInputStream;
 import net.jarlehansen.protobuf.javame.WireFormat;
+import net.jarlehansen.protobuf.javame.input.taghandler.UnknownTagHandler;
 
 
 /**
@@ -14,14 +14,19 @@ import net.jarlehansen.protobuf.javame.WireFormat;
  *
  */
 public class InputReaderImpl implements InputReader {
-	private final CodedInputStream codedInput;
+	private final UnknownTagHandler unknownTagHandler;
 	
-	public InputReaderImpl(final byte[] buffer) {
+	private final CodedInputStream codedInput;
+	private int previousTag = 0;
+	
+	public InputReaderImpl(final byte[] buffer, final UnknownTagHandler unknownTagHandler) {
 		codedInput = CodedInputStream.newInstance(buffer);
+		this.unknownTagHandler = unknownTagHandler;
 	}
 	
-	public InputReaderImpl(final InputStream input) {
+	public InputReaderImpl(final InputStream input, final UnknownTagHandler unknownTagHandler) {
 		codedInput = CodedInputStream.newInstance(input);
+		this.unknownTagHandler = unknownTagHandler;
 	}
 	
 	public int readInt(final int fieldNumber) throws IOException {
@@ -53,6 +58,32 @@ public class InputReaderImpl implements InputReader {
 	}
 	
 	public int getNextFieldNumber() throws IOException {
-		return WireFormat.getTagFieldNumber(codedInput.readTag());
+		previousTag = codedInput.readTag();
+		return WireFormat.getTagFieldNumber(previousTag);
+	}
+	
+	public void getPreviousTagDataTypeAndReadContent() throws IOException {
+		final int dataType = WireFormat.getTagWireType(previousTag);
+		final StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append("FieldNumber: ").append(WireFormat.getTagFieldNumber(previousTag)).append(" - ");
+		
+		switch (dataType) {
+		case WireFormat.WIRETYPE_FIXED32:
+			stringBuffer.append("float value: ").append(codedInput.readFloat());
+			break;
+		case WireFormat.WIRETYPE_FIXED64:
+			stringBuffer.append("double value: ").append(codedInput.readDouble());
+			break;
+		case WireFormat.WIRETYPE_LENGTH_DELIMITED:
+			stringBuffer.append("Length delimited (String or ByteString) value: ").append(codedInput.readString());
+			break;
+		case WireFormat.WIRETYPE_VARINT:
+			stringBuffer.append("varint (long, int or boolean) value: ").append(codedInput.readRawVarint64());
+			break;
+		default:
+			break;
+		}
+		
+		unknownTagHandler.unknownTag(stringBuffer.toString());
 	}
 }
