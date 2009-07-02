@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import net.jarlehansen.proto2javame.generated.sourcecode.tests.tempfiles.JunitTestMainObject;
 import net.jarlehansen.protobuf.javame.UninitializedMessageException;
-import net.jarlehansen.protobuf.javame.InvalidProtocolBufferException;
+import net.jarlehansen.protobuf.javame.input.InvalidProtocolBufferException;
+import net.jarlehansen.proto2javame.generated.sourcecode.tests.tempfiles.JunitTestMainObject;
 
 /**
  * @author hansjar@gmail.com Jarle Hansen
