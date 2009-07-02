@@ -1,0 +1,14 @@
+package net.jarlehansen.proto2javame;
+
+option java_package = "net.jarlehansen.proto2javame.protobuf.integration.tempfiles.javame";
+option java_outer_classname = "IntegrationTestObjectProto";
+
+message IntegrationTestObject {
+	required int32 id = 1;
+	required int64 longNumber = 2;
+	repeated string name = 3;
+	required bytes bytesObject = 4;
+	required float floatObject = 5;
+	optional bool boolObj = 6;
+	required double amount = 7;
+}
