@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/generated"/>
+	<classpathentry kind="con" path="org.elipse.mtj.JavaMEContainer/Sun Java(TM) Wireless Toolkit 2.5.2_01 for CLDC/MediaControlSkin"/>
+	<classpathentry exported="true" kind="lib" path="lib/protobuf-javame-0.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/microlog-logger-2.0.0-SNAPSHOT-me.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
