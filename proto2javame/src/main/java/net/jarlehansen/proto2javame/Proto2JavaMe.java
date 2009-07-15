@@ -25,6 +25,8 @@ public final class Proto2JavaMe {
             System.err.println("Error: " + protoException.getMessage());
         }
 
+
+
         System.out.println("\nFINISHED");
 	}
 }
