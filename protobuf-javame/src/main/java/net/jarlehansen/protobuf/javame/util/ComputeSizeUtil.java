@@ -15,7 +15,11 @@ public final class ComputeSizeUtil {
 
 	private ComputeSizeUtil() {
 	}
-
+	
+	public static int computeDelimitedIntSize(final int value) {
+		return CodedOutputStream.computeRawVarint32Size(value);
+	}
+	
 	public static int computeIntSize(final int id, final int value) {
 		return CodedOutputStream.computeInt32Size(id, value);
 	}
