@@ -20,6 +20,7 @@ public final class StaticMethodsBuilderImpl implements StaticMethodsBuilder {
         builder.append(createSetUnknownTagHandler(className));
         builder.append(createParseFromByteArray(className));
         builder.append(createParseFromInputStream(className));
+        builder.append(createParseDelimitedFromInputStream(className));
         builder.append(createClassEnd());
 
         return builder;
@@ -35,6 +36,10 @@ public final class StaticMethodsBuilderImpl implements StaticMethodsBuilder {
 
     private String createParseFromInputStream(final String className) {
         return resourceFormat.getString(StaticMethodsConstants.KEY_STATIC_PARSEFROM_INPUTSTREAM, className);
+    }
+
+    private String createParseDelimitedFromInputStream(final String className) {
+        return resourceFormat.getString(StaticMethodsConstants.KEY_STATIC_PARSEDELIMITEDFROM_INPUTSTREAM, className);
     }
 
     private String createClassEnd() {
