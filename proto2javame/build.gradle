@@ -107,6 +107,30 @@ createTask('generate-test-files') {
   }
 }
 
+createTask('generate-test-files-javame-only') {
+  // Creates the Java ME source code files for unit tests
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/integration-test/IntegrationTestJavaMe.proto')
+  }
+
+  // Creates the updated Java ME source code files for unit tests
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto')
+  }
+
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/tempfiles/JunitTestMain.proto')
+  }
+
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/tempfiles/JUnitTestLarge.proto')
+  }
+}
+
 private String createJarFileName() {
   return '/' + jarFileName + '-' + version + '.jar'
 }
