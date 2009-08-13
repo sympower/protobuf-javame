@@ -12,7 +12,7 @@ import org.junit.internal.matchers.TypeSafeMatcher;
  *         Date: Jun 15, 2009
  *         Time: 8:47:34 PM
  */
-public class JavaMeIntegrationTestMatcher extends TypeSafeMatcher<IntegrationTestObjectProto.IntegrationTestObject> {
+class JavaMeIntegrationTestMatcher extends TypeSafeMatcher<IntegrationTestObjectProto.IntegrationTestObject> {
     private final IntegrationTestObject expected = IntegrationTestConstants.createIntegrationTestObjectJavaMe();
 
     public boolean matchesSafely(IntegrationTestObjectProto.IntegrationTestObject actual) {
