@@ -66,7 +66,13 @@ public final class InternalClassBuilderImpl implements InternalClassBuilder {
 			if (field.isList()) {
 				builder.append(resourceFormat.getString(InternalClassConstants.KEY_BUILDER_METHODS_LIST,
 						JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()), field.getListImpl()
-								.getImplementation(), field.getName(), field.getType().getJavaType(), field.getName()));
+								.getImplementation(), field.getName(), field.getType().getJavaType()));
+
+                if(field.getType().isPrimitiveType()) {
+                    builder.append(resourceFormat.getString(InternalClassConstants.KEY_BUILDER_METHODS_LIST_ADDELEMENT_PRIMITIVE, field.getName(), field.getType().getJavaObjectType()));
+                } else {
+                    builder.append(resourceFormat.getString(InternalClassConstants.KEY_BUILDER_METHODS_LIST_ADDELEMENT_OBJECT, field.getName()));
+                }
 			} else {
 				builder.append(resourceFormat.getString(InternalClassConstants.KEY_BUILDER_METHODS, JavaSourceCodeUtil
 						.createCapitalLetterMethod(field.getName()), field.getType().getJavaType(), field.getName()));
