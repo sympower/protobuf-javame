@@ -12,10 +12,10 @@ public class JavaFileOutput {
 	private StringBuilder mainClass = new StringBuilder();
 	private StringBuilder internalClass = new StringBuilder();
 	private StringBuilder publicMethods = new StringBuilder();
-	private StringBuilder privateMethods = new StringBuilder();
+	private StringBuilder privateAndProtectedMethods = new StringBuilder();
 	private StringBuilder staticMethods = new StringBuilder();
 
-	public JavaFileOutput(final String className, final String packageName) {
+    public JavaFileOutput(final String className, final String packageName) {
 		this.className = className;
 		this.packageName = packageName;
 	}
@@ -35,8 +35,8 @@ public class JavaFileOutput {
 	}
 
 
-	public void setPrivateMethods(final StringBuilder privateMethods) {
-		this.privateMethods = privateMethods;
+	public void setPrivateAndProtectedMethods(final StringBuilder privateAndProtectedMethods) {
+		this.privateAndProtectedMethods = privateAndProtectedMethods;
 	}
 
 
@@ -53,7 +53,7 @@ public class JavaFileOutput {
 	}
 
 	public String getCompleteSource() {
-		return mainClass.toString() + internalClass.toString() + publicMethods.toString() + privateMethods.toString()
+		return mainClass.toString() + internalClass.toString() + publicMethods.toString() + privateAndProtectedMethods.toString()
 				+ staticMethods.toString();
 	}
 
@@ -66,7 +66,7 @@ public class JavaFileOutput {
         sb.append(", mainClass=").append(mainClass);
         sb.append(", internalClass=").append(internalClass);
         sb.append(", publicMethods=").append(publicMethods);
-        sb.append(", privateMethods=").append(privateMethods);
+        sb.append(", privateAndProtectedMethods=").append(privateAndProtectedMethods);
         sb.append(", staticMethods=").append(staticMethods);
         sb.append('}');
         return sb.toString();
