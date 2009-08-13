@@ -49,6 +49,7 @@ import net.jarlehansen.protobuf.javame.ByteString;
  * @author kenton@google.com Kenton Varda
  */
 final class CodedInputStream {
+
 	/**
 	 * Create a new CodedInputStream wrapping the given InputStream.
 	 */
@@ -82,7 +83,7 @@ final class CodedInputStream {
 			// If we actually read zero, that's not a valid tag.
 			throw InvalidProtocolBufferException.invalidTag();
 		}
-		
+
 		return lastTag;
 	}
 
@@ -143,13 +144,51 @@ final class CodedInputStream {
 		}
 	}
 
+	static int readDelimitedSize(final InputStream input) throws IOException {
+		return CodedInputStream.readRawVarint32(input);
+	}
+
+	/**
+	 * Reads a varint from the input one byte at a time, so that it does not
+	 * read any bytes after the end of the varint. If you simply wrapped the
+	 * stream in a CodedInputStream and used
+	 * {@link #readRawVarint32(InputStream)} then you would probably end up
+	 * reading past the end of the varint since CodedInputStream buffers its
+	 * input.
+	 */
+	private static int readRawVarint32(InputStream input) throws IOException {
+		int result = 0;
+		int offset = 0;
+		for (; offset < 32; offset += 7) {
+			int b = input.read();
+			if (b == -1) {
+				throw InvalidProtocolBufferException.truncatedMessage();
+			}
+			result |= (b & 0x7f) << offset;
+			if ((b & 0x80) == 0) {
+				return result;
+			}
+		}
+		// Keep reading up to 64 bits.
+		for (; offset < 64; offset += 7) {
+			int b = input.read();
+			if (b == -1) {
+				throw InvalidProtocolBufferException.truncatedMessage();
+			}
+			if ((b & 0x80) == 0) {
+				return result;
+			}
+		}
+		throw InvalidProtocolBufferException.malformedVarint();
+	}
+
 	// =================================================================
 
 	/**
 	 * Read a raw Varint from the stream. If larger than 32 bits, discard the
 	 * upper bits.
 	 */
-	int readRawVarint32() throws IOException {
+	private int readRawVarint32() throws IOException {
 		byte tmp = readRawByte();
 		if (tmp >= 0) {
 			return tmp;
