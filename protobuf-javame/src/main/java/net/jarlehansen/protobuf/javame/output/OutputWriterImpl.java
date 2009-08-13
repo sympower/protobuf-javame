@@ -7,11 +7,10 @@ import java.util.Vector;
 import net.jarlehansen.protobuf.javame.ByteString;
 import net.jarlehansen.protobuf.javame.util.SupportedDataTypes;
 
-
 /**
  * 
  * @author hansjar@gmail.com Jarle Hansen
- *
+ * 
  */
 public class OutputWriterImpl implements OutputWriter {
 	private final byte[] dataHolder;
@@ -28,7 +27,7 @@ public class OutputWriterImpl implements OutputWriter {
 	public OutputWriterImpl(final byte[] dataHolder, final OutputStream output) {
 		this.output = output;
 		this.dataHolder = dataHolder;
-		
+
 		codedOutput = CodedOutputStream.newInstance(this.dataHolder);
 	}
 
@@ -60,8 +59,12 @@ public class OutputWriterImpl implements OutputWriter {
 		codedOutput.writeString(id, value);
 	}
 
+	public void writeDelimitedSize(final int value) throws IOException {
+		codedOutput.writeDelimitedSize(value);
+	}
+
 	/**
-	 * Try to avoid this since it invloves lots of casts, may impact
+	 * Try to avoid this since it involves lots of casts, may impact
 	 * performance.
 	 * 
 	 * @param id

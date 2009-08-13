@@ -21,4 +21,5 @@ public interface OutputWriter {
 	public void writeByteString(final int id, final ByteString value) throws IOException;
 	public void writeList(final int id, final int dataType, final Vector list) throws IOException;
 	public void writeData() throws IOException;
+	public void writeDelimitedSize(final int value) throws IOException;
 }
