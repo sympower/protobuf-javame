@@ -24,9 +24,6 @@ public final class PublicMethodsBuilderImpl implements PublicMethodsBuilder {
         final StringBuilder builder = new StringBuilder();
         builder.append(createGetMethods(protoInput));
         builder.append(createToString(protoInput));
-        builder.append(createWriteToNewByteArray());
-        builder.append(createWriteToByteArray());
-        builder.append(createWriteToOutputStream());
 
         return builder;
     }
