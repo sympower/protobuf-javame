@@ -1,13 +1,12 @@
 package net.jarlehansen.proto2javame.business.sourcebuilder.factory;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import net.jarlehansen.proto2javame.business.sourcebuilder.builder.InternalClassBuilder;
 import net.jarlehansen.proto2javame.business.sourcebuilder.main.MainClassBuilder;
-import net.jarlehansen.proto2javame.business.sourcebuilder.privatemethods.PrivateMethodsBuilder;
+import net.jarlehansen.proto2javame.business.sourcebuilder.privateandprotectedmethods.PrivateAndProtectedMethodsBuilder;
 import net.jarlehansen.proto2javame.business.sourcebuilder.publicmethods.PublicMethodsBuilder;
 import net.jarlehansen.proto2javame.business.sourcebuilder.staticmethods.StaticMethodsBuilder;
-
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 /**
@@ -29,7 +28,7 @@ public class JavaSourceCodeBuilderFactoryTest {
 
 	@Test
 	public void testCreatePrivateMethodsBuilder() {
-		assertThat(JavaSourceCodeBuilderFactory.createPrivateMethodsBuilder(), is(PrivateMethodsBuilder.class));
+		assertThat(JavaSourceCodeBuilderFactory.createPrivateMethodsBuilder(), is(PrivateAndProtectedMethodsBuilder.class));
 	}
 
 	@Test
