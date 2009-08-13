@@ -7,7 +7,7 @@ import net.jarlehansen.protobuf.javame.input.taghandler.UnknownTagHandler;
  *         Date: Jul 2, 2009
  *         Time: 8:32:39 PM
  */
-public class ConsoleUnknownTagHandlerImpl implements UnknownTagHandler{
+class ConsoleUnknownTagHandlerImpl implements UnknownTagHandler{
     private String unknownFields = "";
 
     public void unknownTag(final String unknownFields) {
