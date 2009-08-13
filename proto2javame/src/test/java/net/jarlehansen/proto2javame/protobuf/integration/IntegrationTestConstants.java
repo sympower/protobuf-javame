@@ -11,7 +11,7 @@ import net.jarlehansen.proto2javame.protobuf.integration.tempfiles.javase.Update
  *         Date: Jun 15, 2009
  *         Time: 8:06:45 PM
  */
-public enum IntegrationTestConstants {
+enum IntegrationTestConstants {
     ;
 
     private static final int ID = 1273;
