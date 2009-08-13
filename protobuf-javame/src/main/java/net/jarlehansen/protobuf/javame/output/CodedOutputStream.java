@@ -114,7 +114,11 @@ public final class CodedOutputStream {
 			writeRawVarint64(value);
 		}
 	}
-
+	
+	void writeDelimitedSize(int value) throws IOException {
+		writeRawVarint32(value);
+	}
+	
 	/** Write a {@code bool} field, including tag, to the stream. */
 	void writeBool(int fieldNumber, boolean value) throws IOException {
 		writeTag(fieldNumber, WireFormat.WIRETYPE_VARINT);
@@ -231,7 +235,7 @@ public final class CodedOutputStream {
 			throw new IllegalStateException("Did not write as much data as expected. Space left: " + spaceLeft());
 		}
 	}
-
+	
 	/** Write a single byte. */
 	private void writeRawByte(byte value) throws IOException {
 		buffer[position++] = value;
@@ -273,7 +277,7 @@ public final class CodedOutputStream {
 			}
 		}
 	}
-
+	
 	/** Encode and write a tag. */
 	private void writeTag(int fieldNumber, int wireType) throws IOException {
 		writeRawVarint32(WireFormat.makeTag(fieldNumber, wireType));
@@ -305,7 +309,7 @@ public final class CodedOutputStream {
 	 * {@code value} is treated as unsigned, so it won't be sign-extended if
 	 * negative.
 	 */
-	private static int computeRawVarint32Size(int value) {
+	public static int computeRawVarint32Size(int value) {
 		if ((value & (0xffffffff << 7)) == 0)
 			return 1;
 		if ((value & (0xffffffff << 14)) == 0)
