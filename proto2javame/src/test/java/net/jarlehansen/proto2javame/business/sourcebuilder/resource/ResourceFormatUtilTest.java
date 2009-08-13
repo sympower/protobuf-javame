@@ -40,8 +40,8 @@ public class ResourceFormatUtilTest {
         final char[] chars = resourceString.toCharArray();
 
         final StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < chars.length; i++) {
-            sb.append(Integer.toHexString(chars[i]));
+        for(char ch : chars) {
+            sb.append(Integer.toHexString(ch));
         }
 
         final String lastLineSeparator = sb.toString().toLowerCase().substring(sb.toString().length() - 2);
@@ -59,8 +59,8 @@ public class ResourceFormatUtilTest {
         final char[] chars = resourceString.toCharArray();
 
         final StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < chars.length; i++) {
-            sb.append(Integer.toHexString(chars[i]));
+        for(char ch : chars) {
+            sb.append(Integer.toHexString(ch));
         }
 
         final String lastLineSeparator = sb.toString().toLowerCase().substring(sb.toString().length() - 2);
@@ -79,8 +79,8 @@ public class ResourceFormatUtilTest {
         final char[] chars = resourceString.toCharArray();
 
         final StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < chars.length; i++) {
-            sb.append(Integer.toHexString(chars[i]));
+        for(char ch : chars) {
+            sb.append(Integer.toHexString(ch));
         }
 
         final String lastLineSeparator = sb.toString().toLowerCase().substring(sb.toString().length() - 1);
