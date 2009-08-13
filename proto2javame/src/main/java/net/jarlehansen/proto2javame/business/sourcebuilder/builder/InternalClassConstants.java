@@ -19,6 +19,8 @@ enum InternalClassConstants {
 	public static final String KEY_BUILDER_METHODS = "internal.builder.methods";
 	public static final String KEY_BUILDER_METHODS_LIST = "internal.builder.methods.list";
 	public static final String KEY_BUILDER_BUILD_METHOD = "internal.builder.build.method";
-	
+    public static final String KEY_BUILDER_METHODS_LIST_ADDELEMENT_OBJECT = "internal.builder.methods.list.addelement.object";
+	public static final String KEY_BUILDER_METHODS_LIST_ADDELEMENT_PRIMITIVE = "internal.builder.methods.list.addelement.primitive";
+
 	public static final String KEY_BUILDER_END = "internal.builder.end";
 }
