@@ -13,10 +13,13 @@ import static org.hamcrest.core.IsNot.not;
 import org.junit.After;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
+import java.io.*;
+
+import com.google.protobuf.InvalidProtocolBufferException;
 
 /**
  * @author Jarle Hansen hansjar@gmail.com
@@ -94,5 +97,88 @@ public class GoogleProtobufIntegrationTest {
         final IntegrationTestObjectProto.IntegrationTestObject javaSeObj = IntegrationTestObjectProto.IntegrationTestObject.parseFrom(updatedJavaMeData);
 
         assertTrue(javaSeObj.toString().length() > 0);
+    }
+
+    @Test
+    public void testWriteDelimitedWithAdditionalContentFromJavaMeObj() throws IOException {
+        final String tempFileName = "src/test/generated/txt2/file.txt";
+        File file = new File(tempFileName);
+        FileOutputStream out = new FileOutputStream(file);
+
+        final UpdatedIntegrationTestObject updatedJavaMeObj = IntegrationTestConstants.createUpdatedIntegrationTestObjectJavaMe();
+        updatedJavaMeObj.writeDelimitedTo(out);
+        
+        out.write("additional content".getBytes("UTF-8"));
+        out.write("this should not be included when parsing the proto message".getBytes("UTF-8"));
+        out.close();
+
+        FileInputStream input = new FileInputStream(file);
+        UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject javaSeObj2 = UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject.parseDelimitedFrom(input);
+        input.close();
+
+        assertTrue(javaSeObj2.toString().length() > 0);
+    }
+
+    @Test(expected = InvalidProtocolBufferException.class)
+    public void testWriteWithAdditionalContentFromJavaMeObj() throws IOException {
+        final String tempFileName = "src/test/generated/txt2/file.txt";
+        File file = new File(tempFileName);
+        FileOutputStream out = new FileOutputStream(file);
+
+        final UpdatedIntegrationTestObject updatedJavaMeObj = IntegrationTestConstants.createUpdatedIntegrationTestObjectJavaMe();
+        // This should fail since it does not use writeDelimitedTo and adds additional content to the OutputStream
+        updatedJavaMeObj.writeTo(out);
+
+        out.write("additional content".getBytes("UTF-8"));
+        out.write("this should not be included when parsing the proto message".getBytes("UTF-8"));
+        out.close();
+
+        FileInputStream input = new FileInputStream(file);
+        UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject javaSeObj2 = UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject.parseDelimitedFrom(input);
+        input.close();
+
+        fail("Expected InvalidProtocolBufferException");
+    }
+
+    @Test
+    public void testReadDelimitedFromWithAdditionalContentFromJavaSeObj() throws IOException {
+        final String tempFileName = "src/test/generated/txt2/file.txt";
+        File file = new File(tempFileName);
+        FileOutputStream out = new FileOutputStream(file);
+
+        UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject javaSeObj = IntegrationTestConstants.createUpdatedIntegrationTestObjectJavaSe();
+        javaSeObj.writeDelimitedTo(out);
+
+        out.write("additional content".getBytes("UTF-8"));
+        out.write("this should not be included when parsing the proto message".getBytes("UTF-8"));
+        out.close();
+
+        FileInputStream input = new FileInputStream(file);
+
+        UpdatedIntegrationTestObject javaMeObj = UpdatedIntegrationTestObject.parseDelimitedFrom(input);
+        input.close();
+
+        assertTrue(javaMeObj.toString().length() > 0);
+    }
+
+    @Test(expected = net.jarlehansen.protobuf.javame.input.InvalidProtocolBufferException.class)
+    public void testReadFromWithAdditionalContentFromJavaSeObj() throws IOException {
+        final String tempFileName = "src/test/generated/txt2/file.txt";
+        File file = new File(tempFileName);
+        FileOutputStream out = new FileOutputStream(file);
+
+        UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject javaSeObj = IntegrationTestConstants.createUpdatedIntegrationTestObjectJavaSe();
+        javaSeObj.writeTo(out);
+
+        out.write("additional content".getBytes("UTF-8"));
+        out.write("this should not be included when parsing the proto message".getBytes("UTF-8"));
+        out.close();
+
+        FileInputStream input = new FileInputStream(file);
+
+        UpdatedIntegrationTestObject javaMeObj = UpdatedIntegrationTestObject.parseDelimitedFrom(input);
+        input.close();
+
+        fail("Expected InvalidProtocolBufferException");
     }
 }
