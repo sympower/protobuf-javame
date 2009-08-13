@@ -11,7 +11,7 @@ public enum ResourceFormatUtil {
     COMMON("common/common"),
     BUILDER("builder"),
     MAIN("main"),
-    PRIVATE_METHODS("privatemethods"),
+    PRIVATE_METHODS("private_and_protected_methods"),
     PUBLIC_METHODS("publicmethods"),
     STATIC_METHODS("staticmethods");
 
