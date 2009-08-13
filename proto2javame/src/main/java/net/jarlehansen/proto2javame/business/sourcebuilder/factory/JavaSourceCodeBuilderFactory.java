@@ -4,8 +4,8 @@ import net.jarlehansen.proto2javame.business.sourcebuilder.builder.InternalClass
 import net.jarlehansen.proto2javame.business.sourcebuilder.builder.InternalClassBuilderImpl;
 import net.jarlehansen.proto2javame.business.sourcebuilder.main.MainClassBuilder;
 import net.jarlehansen.proto2javame.business.sourcebuilder.main.MainClassBuilderImpl;
-import net.jarlehansen.proto2javame.business.sourcebuilder.privatemethods.PrivateMethodsBuilder;
-import net.jarlehansen.proto2javame.business.sourcebuilder.privatemethods.PrivateMethodsBuilderImpl;
+import net.jarlehansen.proto2javame.business.sourcebuilder.privateandprotectedmethods.PrivateAndProtectedMethodsBuilder;
+import net.jarlehansen.proto2javame.business.sourcebuilder.privateandprotectedmethods.PrivateAndProtectedMethodsBuilderImpl;
 import net.jarlehansen.proto2javame.business.sourcebuilder.publicmethods.PublicMethodsBuilder;
 import net.jarlehansen.proto2javame.business.sourcebuilder.publicmethods.PublicMethodsBuilderImpl;
 import net.jarlehansen.proto2javame.business.sourcebuilder.staticmethods.StaticMethodsBuilder;
@@ -27,8 +27,8 @@ public enum JavaSourceCodeBuilderFactory {
 		return MainClassBuilderImpl.newInstance();
 	}
 	
-	public static PrivateMethodsBuilder createPrivateMethodsBuilder() {
-		return PrivateMethodsBuilderImpl.newInstance();
+	public static PrivateAndProtectedMethodsBuilder createPrivateMethodsBuilder() {
+		return PrivateAndProtectedMethodsBuilderImpl.newInstance();
 	}
 	
 	public static PublicMethodsBuilder createPublicMethodsBuilder() {
