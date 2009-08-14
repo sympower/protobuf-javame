@@ -2,6 +2,7 @@ package net.jarlehansen.protobuf.javame.midlet;
 
 import net.jarlehansen.protobuf.javame.factory.JavaMeProtoFactoryTest;
 import net.jarlehansen.protobuf.javame.generatedobjtest.GeneratedJavaMeObjectTest;
+import net.jarlehansen.protobuf.javame.input.DelimitedInputStreamTest;
 import net.jarlehansen.protobuf.javame.inputandoutput.InputAndOutputImplListTest;
 import net.jarlehansen.protobuf.javame.inputandoutput.InputAndOutputImplTest;
 import net.jarlehansen.protobuf.javame.output.CodedOutputStreamTest;
@@ -24,5 +25,6 @@ public class ProtobufJavaMeTestMidlet extends TestSuite {
 		add(new GeneratedJavaMeObjectTest());
 		add(new ComputeSizeUtilTest());
 		add(new CodedOutputStreamTest());
+		add(new DelimitedInputStreamTest());
 	}
 }
