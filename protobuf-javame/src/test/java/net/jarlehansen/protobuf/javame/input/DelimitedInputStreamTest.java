@@ -7,11 +7,10 @@ import jmunit.framework.cldc11.TestCase;
 
 public class DelimitedInputStreamTest extends TestCase {	
 	private DelimitedInputStream delimitedInputStream;
-	private int limit = 10;
+	private final int limit = 10;
 	
 	public void setUp() {
 		InputStream inputStream = new InputStream() {
-			
 			public int read() throws IOException {
 				return limit;
 			}
