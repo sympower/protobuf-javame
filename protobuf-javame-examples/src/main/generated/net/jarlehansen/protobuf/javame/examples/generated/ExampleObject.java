@@ -119,6 +119,16 @@ public final class ExampleObject {
 		writeFields(writer);
 	}
 
+	public void writeDelimitedTo(final OutputStream outputStream) throws IOException {		
+		final byte[] outputData = createByteArray();
+		final int delimitedSize = outputData.length;
+		
+		final OutputWriter writer = JavaMeProtoFactory.createOutputUtil(outputData, outputStream);
+		
+		writer.writeDelimitedSize(delimitedSize);
+		writeFields(writer);
+	}
+	
 	public void writeTo(final OutputStream outputStream) throws IOException {
 		final byte[] outputData = createByteArray();
 
