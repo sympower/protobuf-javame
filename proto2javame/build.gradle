@@ -1,0 +1,136 @@
+defaultTasks 'packageJar'
+
+sourceDir = 'src/main/java'
+sourceTestDir = 'src/test/java'
+generatedTestDir = 'src/test/generated'
+resourcesDir = 'src/main/resources'
+resourcesTestDir = 'src/test/resources'
+libDir = 'lib'
+libTestDir = libDir + '/test'
+
+targetDir = 'target'
+classesDir = new File(targetDir + '/classes')
+testClassesDir = new File('target/test-classes')
+testResultsDir = new File(testResults) // added directly from gradle.properties
+jarFile = 'proto2javame.jar'
+
+createTask('init') {
+	if(classesDir.isDirectory()) {
+		ant.delete(dir: targetDir)
+	}
+	
+	classesDir.mkdirs()
+	testClassesDir.mkdirs()
+	testResultsDir.mkdirs()
+}
+
+
+ant.path(id : 'test.classpath') {
+	pathelement(location: classesDir)
+	pathelement(location: testClassesDir)
+	pathelement(location: libTestDir + '/junit*.jar')
+	pathelement(location: resourcesDir)
+	pathelement(location: resourcesTestDir)
+	fileset(dir: libTestDir, includes: '**/*.jar')
+}
+
+createTask('compile', dependsOn: 'init') {
+	ant.javac(srcDir: sourceDir, destDir: classesDir)
+	
+	println('-> Compiling the generated JavaMe class for the tests. This will show unchecked warnings because the Vector class is not type safe') 
+	ant.javac(srcDir: sourceTestDir + ':' + generatedTestDir, destDir: testClassesDir, classpathref: 'test.classpath') {
+		compilerarg(value: '-Xlint:unchecked')
+	}
+}
+
+
+createTask('runUnitTests', dependsOn: 'compile') {
+	ant.junit(printsummary: 'yes', fork: 'yes', haltonfailure: 'yes') {
+		classpath(refid: 'test.classpath')
+		
+		batchtest(fork: 'yes', todir: testResults) {
+			formatter(type: 'xml')
+		
+			fileset(dir: sourceTestDir) {
+				include(name: '**/*Test.java')
+			}
+		}
+	}
+}
+
+
+createTask('packageJar', dependsOn: 'runUnitTests') {
+	ant.jar(destFile: targetDir + createJarFileName(), baseDir: classesDir) {
+		manifest {
+			attribute(name: 'Main-Class', value: mainClass)
+		}
+		fileset(dir: resourcesDir, includes: '**/*.properties')
+	}
+
+  ant.copy(file: targetDir + createJarFileName(), toDir: libTestDir)
+}
+
+
+createTask('generate-test-files') {
+  // Creates the Google Protocol Buffer java source file, for integration tests
+  ant.exec(executable: libDir + '/protobuf-compiler/protoc.exe') {
+    arg(value: '--java_out=src/test/java')
+    arg(value: 'src/test/resources/integration-test/IntegrationTestJavaSe.proto')
+  }
+
+  // Creates the updated Google Protocol Buffer java source file, for integration tests
+  ant.exec(executable: libDir + '/protobuf-compiler/protoc.exe') {
+    arg(value: '--java_out=src/test/java')
+    arg(value: 'src/test/resources/integration-test/UpdatedIntegrationTestJavaSe.proto')
+  }
+
+  // Creates the Java ME source code files for unit tests
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/integration-test/IntegrationTestJavaMe.proto')
+  }
+
+  // Creates the updated Java ME source code files for unit tests
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto')
+  }
+
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/tempfiles/JunitTestMain.proto')
+  }
+
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/tempfiles/JUnitTestLarge.proto')
+  }
+}
+
+createTask('generate-test-files-javame-only') {
+  // Creates the Java ME source code files for unit tests
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/integration-test/IntegrationTestJavaMe.proto')
+  }
+
+  // Creates the updated Java ME source code files for unit tests
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto')
+  }
+
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/tempfiles/JunitTestMain.proto')
+  }
+
+  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: 'src/test/resources/tempfiles/JUnitTestLarge.proto')
+  }
+}
+
+private String createJarFileName() {
+  return '/' + jarFileName + '-' + version + '.jar'
+}

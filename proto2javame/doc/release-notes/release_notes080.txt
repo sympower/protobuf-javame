@@ -1,0 +1,7 @@
+proto2javame 0.7.0 release notes
+--------------------------------
+
+- Fixed a bug where primitives were added directly to the Vector list. This would create a compilation error.
+  They are now first created as object and then added to the Vector.
+- The generated code will now use an abstract class for the writeTo-methods and createByteArray. This means less code
+  that needs to be generated.
