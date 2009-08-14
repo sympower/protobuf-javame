@@ -1,7 +1,7 @@
 protobuf-javame 0.8.0 release notes
 --------------------------------
 
-- Added support for read and write delimited. This means messages will write the size of the protobuf message before sending it.
-- Added AbstractOutputWriter, this will contain a few common methods and therefore reduce the amount of code needed to be generated.
+- Added support for read and write delimited. This means messages will write the size of the proto message before sending it.
+- Added AbstractOutputWriter, this contains a few common writeTo methods and the createByteArray method. This will reduce the code that needs to be generated.
 - New tests for the DelimitedInputStream object.
-- New example (FileExample in the protobuf-javame-examples project) that shows the use of writeTo, writeDelimitedTo, readFrom and readDelimitedFrom.
+- New example (FileExample in the protobuf-javame-examples project included in the protobuf-javame-0.8.0-all.zip file). This shows how to use writeTo, writeDelimitedTo, readFrom and readDelimitedFrom.
