@@ -55,6 +55,7 @@ public final class MainClassBuilderImpl implements MainClassBuilder {
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_INPUT), mainPackage +
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_UTIL), mainPackage +
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_OUTPUT), mainPackage +
+                ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_EXTENDED_OUTPUT), mainPackage +
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_TAGHANDLER));
     }
 
