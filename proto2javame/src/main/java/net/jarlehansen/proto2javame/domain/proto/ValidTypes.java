@@ -19,7 +19,7 @@ public enum ValidTypes {
 	private final String dataTypeConstant; // Used to identify list data types
     private final boolean primitiveType;
     private final String javaObjectType; // If this is not set, the object type will be the same as the javaType with a capital letter
-	
+
 	private ValidTypes(final String protoType, final String javaType, final String dataTypeConstant, final boolean primitiveType) {
 		this.protoType = protoType;
 		this.javaType = javaType;
