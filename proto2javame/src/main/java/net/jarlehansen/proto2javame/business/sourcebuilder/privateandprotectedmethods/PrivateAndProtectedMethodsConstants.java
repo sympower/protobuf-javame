@@ -22,7 +22,6 @@ enum PrivateAndProtectedMethodsConstants {
 	
 	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_START = "private.static.parsefields.start";
 	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS = "private.static.parsefields.fields";
-	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS_LIST_OBJECT = "private.static.parsefields.fields.list.object";
-	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS_LIST_PRIMITIVE = "private.static.parsefields.fields.list.primitive";
+	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS_LIST = "private.static.parsefields.fields.list";
 	public static final String KEY_PRIVATE_STATIC_PARSEFIELDS_END = "private.static.parsefields.end";
 }
