@@ -6,6 +6,7 @@ import java.util.Vector;
 import jmunit.framework.cldc11.TestCase;
 import net.jarlehansen.protobuf.javame.ByteString;
 import net.jarlehansen.protobuf.javame.generated.JunitTestObject;
+import net.jarlehansen.protobuf.javame.generated.ListTestObject;
 
 
 /**
@@ -32,7 +33,7 @@ public class GeneratedJavaMeObjectTest extends TestCase {
 	 * run and the name of the test.
 	 */
 	public GeneratedJavaMeObjectTest() {
-		super(3, GeneratedJavaMeObjectTest.class.getName());
+		super(4, GeneratedJavaMeObjectTest.class.getName());
 	}
 
 	public void test(int testNumber) throws IOException {
@@ -45,6 +46,9 @@ public class GeneratedJavaMeObjectTest extends TestCase {
 			break;
 		case 2:
 			testParseFromByteArray();
+			break;
+		case 3:
+			testListObject();
 			break;
 		default:
 			break;
@@ -95,5 +99,19 @@ public class GeneratedJavaMeObjectTest extends TestCase {
 		assertEquals(listElement2, newTestObj.getAddressList().elementAt(1));
 		assertEquals(bytes.toStringUtf8(), newTestObj.getBytesObject().toStringUtf8());
 		assertEquals(name, newTestObj.getName());
+	}
+	
+	private void testListObject() throws IOException {
+		ListTestObject.Builder listTestObject = ListTestObject.newBuilder();
+		
+		listTestObject.addElementOne(123);
+		listTestObject.addElementTwo(1242151251515L);
+		listTestObject.addElementThree(114.124);
+		listTestObject.addElementFour("test");
+		listTestObject.addElementFive(ByteString.copyFromUtf8("test"));
+		listTestObject.addElementSix(124124124124F);
+		listTestObject.addElementSeven(true);
+		
+		assertEquals(37, listTestObject.build().toByteArray().length);
 	}
 }
