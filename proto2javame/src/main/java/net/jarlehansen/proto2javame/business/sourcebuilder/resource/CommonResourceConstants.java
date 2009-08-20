@@ -11,6 +11,7 @@ public enum CommonResourceConstants {
     public static final String KEY_IMPORTS_PACKAGE_MAIN = "imports.package.structure.main";
     public static final String KEY_IMPORTS_PACKAGE_INPUT = "imports.package.structure.input";
     public static final String KEY_IMPORTS_PACKAGE_OUTPUT = "imports.package.structure.output";
+    public static final String KEY_IMPORTS_PACKAGE_EXTENDED_OUTPUT = "imports.package.structure.extended.output";
     public static final String KEY_IMPORTS_PACKAGE_UTIL = "imports.package.structure.util";
     public static final String KEY_IMPORTS_PACKAGE_FACTORY = "imports.package.structure.factory";
     public static final String KEY_IMPORTS_PACKAGE_TAGHANDLER = "imports.package.structure.taghandler";
