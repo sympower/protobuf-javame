@@ -95,17 +95,8 @@ public final class PrivateAndProtectedMethodsBuilderImpl implements PrivateAndPr
 
         for (FieldData field : protoInput.getFields()) {
             if (field.isList()) {
-                if (field.getType().isPrimitiveType()) {
-                    builder.append(resourceFormat.getString(PrivateAndProtectedMethodsConstants.KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS_LIST_PRIMITIVE, JavaSourceCodeUtil
-                            .createCapitalLetterMethod(field.getName()), field.getType().getJavaObjectType(), JavaSourceCodeUtil
-                            .createCapitalLetterMethod(field.getType().getJavaType())));
-                } else {
-                    builder.append(resourceFormat.getString(PrivateAndProtectedMethodsConstants.KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS_LIST_OBJECT, JavaSourceCodeUtil
-                            .createCapitalLetterMethod(field.getName()),
-                            JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getJavaType())));
-                }
-
-
+                builder.append(resourceFormat.getString(PrivateAndProtectedMethodsConstants.KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS_LIST, JavaSourceCodeUtil
+                       .createCapitalLetterMethod(field.getName()), JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getJavaType())));
             } else {
                 builder.append(resourceFormat.getString(PrivateAndProtectedMethodsConstants.KEY_PRIVATE_STATIC_PARSEFIELDS_FIELDS,
                         JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()), JavaSourceCodeUtil
