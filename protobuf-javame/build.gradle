@@ -52,7 +52,7 @@ createTask('init') {
 	wtkpreprocessDir.mkdirs()
 	wtkpreprocessTestDir.mkdirs()
 	wtkbuildDir.mkdirs()
-	wtkbuildTestDir.mkdir()
+	wtkbuildTestDir.mkdirs()
 }
 
 createTask('test-compile', dependsOn: 'init') {
@@ -129,6 +129,11 @@ createTask('build-zip-file', dependsOn: 'main-package') {
 createTask('generate-test-files') {
 	ant.java(jar: lib + '/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/test/java')
-		arg(value: 'src/test/resources/proto-file/JUnitTest.proto')
+		arg(value: 'src/test/resources/proto-files/JUnitTest.proto')
+	}
+	
+	ant.java(jar: lib + '/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/test/java')
+		arg(value: 'src/test/resources/proto-files/ListTest.proto')
 	}
 }
