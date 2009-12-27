@@ -1,5 +1,23 @@
 defaultTasks 'packageJar'
 
+usePlugin 'java'
+usePlugin  'eclipse'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.7'
+  testCompile fileTree(dir: 'lib/test', includes: ['*.jar'])
+}
+
+sourceCompatibility = 1.5
+version = jarVersion
+manifest.mainAttributes(
+        'Main-Class': mainClass
+)
+
 sourceDir = 'src/main/java'
 sourceTestDir = 'src/test/java'
 generatedTestDir = 'src/test/generated'
@@ -11,10 +29,9 @@ libTestDir = libDir + '/test'
 targetDir = 'target'
 classesDir = new File(targetDir + '/classes')
 testClassesDir = new File('target/test-classes')
-testResultsDir = new File(testResults) // added directly from gradle.properties
 jarFile = 'proto2javame.jar'
 
-createTask('init') {
+task init << {
 	if(classesDir.isDirectory()) {
 		ant.delete(dir: targetDir)
 	}
@@ -34,7 +51,7 @@ ant.path(id : 'test.classpath') {
 	fileset(dir: libTestDir, includes: '**/*.jar')
 }
 
-createTask('compile', dependsOn: 'init') {
+task compile(dependsOn: init) << {
 	ant.javac(srcDir: sourceDir, destDir: classesDir)
 	
 	println('-> Compiling the generated JavaMe class for the tests. This will show unchecked warnings because the Vector class is not type safe') 
@@ -44,7 +61,7 @@ createTask('compile', dependsOn: 'init') {
 }
 
 
-createTask('runUnitTests', dependsOn: 'compile') {
+task runUnitTests(dependsOn: compile) << {
 	ant.junit(printsummary: 'yes', fork: 'yes', haltonfailure: 'yes') {
 		classpath(refid: 'test.classpath')
 		
@@ -59,7 +76,7 @@ createTask('runUnitTests', dependsOn: 'compile') {
 }
 
 
-createTask('packageJar', dependsOn: 'runUnitTests') {
+task packageJar(dependsOn: runUnitTests) << {
 	ant.jar(destFile: targetDir + createJarFileName(), baseDir: classesDir) {
 		manifest {
 			attribute(name: 'Main-Class', value: mainClass)
@@ -132,5 +149,5 @@ createTask('generate-test-files-javame-only') {
 }
 
 private String createJarFileName() {
-  return '/' + jarFileName + '-' + version + '.jar'
+  return '/' + jarFileName + '-' + jarVersion + '.jar'
 }
