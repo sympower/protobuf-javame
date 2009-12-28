@@ -1,4 +1,4 @@
-defaultTasks 'clean', 'build'
+defaultTasks 'clean', 'build', 'runFindbugs'
 
 usePlugin 'java'
 usePlugin 'eclipse'
@@ -25,6 +25,24 @@ manifest.mainAttributes(
 
 compileTestJava.doFirst {
   print 'Compiling Java ME generated source code, this will cause warning messages.'  
+}
+
+
+
+task runFindbugs << {
+  findbugsHome = libDir + '/build/findbugs-1.3.9/'
+  findbugsReport = 'doc/findbugs-reports/findbugs-report.txt'
+
+  ant.taskdef(name: 'findbugs', classname: 'edu.umd.cs.findbugs.anttask.FindBugsTask') {
+    classpath {
+      fileset(dir: findbugsHome + 'lib', includes: '*.jar')
+    }
+  }
+
+  ant.findbugs(home: findbugsHome, output: 'emacs', outputFile: findbugsReport) {
+    sourcepath(path: 'src/main/java')
+    'class'(location: 'build/libs/proto2javame-' + jarVersion + '.jar')
+  }
 }
 
 
