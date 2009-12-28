@@ -189,10 +189,9 @@ public final class Inputobject extends AbstractOutputWriter {
 	}
 
 	public String toString() {
-		final String TAB = "   ";
 		String retValue = "";
 		retValue += this.getClass().getName() + "(";
-		retValue += "number1 = " + this.number1 + TAB;
+        final String TAB = "   ";retValue += "number1 = " + this.number1 + TAB;
 		if(hasNumber2) retValue += "number2 = " + this.number2 + TAB;
 		retValue += "bytestringValue = " + this.bytestringValue + TAB;
 		retValue += "stringList = " + this.stringList + TAB;

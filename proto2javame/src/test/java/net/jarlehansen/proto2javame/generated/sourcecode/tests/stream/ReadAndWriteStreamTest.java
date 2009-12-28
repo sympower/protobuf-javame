@@ -1,14 +1,15 @@
 package net.jarlehansen.proto2javame.generated.sourcecode.tests.stream;
 
-import net.jarlehansen.proto2javame.testutils.TestConstants;
 import net.jarlehansen.proto2javame.generated.sourcecode.tests.tempfiles.JunitTestMainObject;
+import net.jarlehansen.proto2javame.testutils.TestConstants;
 import net.jarlehansen.protobuf.javame.UninitializedMessageException;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author hansjar@gmail.com Jarle Hansen

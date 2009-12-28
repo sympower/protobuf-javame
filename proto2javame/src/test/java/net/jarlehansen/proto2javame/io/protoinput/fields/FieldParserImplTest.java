@@ -1,15 +1,14 @@
 package net.jarlehansen.proto2javame.io.protoinput.fields;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.StringTokenizer;
-
 import net.jarlehansen.proto2javame.domain.proto.FieldData;
 import net.jarlehansen.proto2javame.io.exception.ProtoFileValidationException;
 import net.jarlehansen.proto2javame.testutils.TestConstants;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.StringTokenizer;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * 
@@ -79,8 +78,8 @@ public class FieldParserImplTest {
 	public void testGetIdTagDuplicateIdNumber() {
 		StringTokenizer stringTokens = new StringTokenizer(TestConstants.INVALID_PROTO_ID_TAG, "[ ]+");
 		fieldParser.getIdTag(stringTokens);
-		
-		stringTokens = new StringTokenizer(TestConstants.INVALID_PROTO_ID_TAG, "[ ]+");
+
+        stringTokens = new StringTokenizer(TestConstants.INVALID_PROTO_ID_TAG, "[ ]+");
 		fieldParser.getIdTag(stringTokens);
 	}
 }
