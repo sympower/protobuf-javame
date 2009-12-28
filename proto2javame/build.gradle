@@ -1,13 +1,15 @@
 usePlugin 'java'
 usePlugin 'eclipse'
 
+libTestFolder = 'lib/test'
+
 repositories {
   mavenCentral()
 }
 
 dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.7'
-  testCompile fileTree(dir: 'lib/test', includes: ['*.jar'])
+  testCompile fileTree(dir: libTestFolder, includes: ['*.jar'])
 }
 
 sourceCompatibility = javaVersion
@@ -16,82 +18,67 @@ manifest.mainAttributes(
         'Main-Class': mainClass
 )
 
-task generatedCompile << {
-  sourceSets.test.classesDir.mkdirs()
-  ant.javac(srcDir: 'src/test/generated', destDir: sourceSets.test.classesDir, classpath: 'lib/test/protobuf-javame-' + jarVersion + '.jar', source: javaVersion, target: javaVersion)
-}
-
-
-compileTestJava.dependsOn generatedCompile, compileJava
-
 
 
 libDir = 'lib'
+libTestDir = libDir + '/test'
 jarFile = 'proto2javame.jar'
 
 
-createTask('generate-test-files') {
-  // Creates the Google Protocol Buffer java source file, for integration tests
-  ant.exec(executable: libDir + '/protobuf-compiler/protoc.exe') {
-    arg(value: '--java_out=src/test/java')
-    arg(value: 'src/test/resources/integration-test/IntegrationTestJavaSe.proto')
-  }
+task generateTestFiles << {
+  def protocList = [
+          // Creates the Google Protocol Buffer java source file, for integration tests
+          'src/test/resources/integration-test/IntegrationTestJavaSe.proto',
+          // Creates the updated Google Protocol Buffer java source file, for integration tests
+          'src/test/resources/integration-test/UpdatedIntegrationTestJavaSe.proto',
+  ]
 
-  // Creates the updated Google Protocol Buffer java source file, for integration tests
-  ant.exec(executable: libDir + '/protobuf-compiler/protoc.exe') {
-    arg(value: '--java_out=src/test/java')
-    arg(value: 'src/test/resources/integration-test/UpdatedIntegrationTestJavaSe.proto')
-  }
+  def protobufJavaMeList = [
+          // Creates the Java ME source code files for unit tests
+          'src/test/resources/integration-test/IntegrationTestJavaMe.proto',
+          // Creates the updated Java ME source code files for unit tests
+          'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto',
+          'src/test/resources/tempfiles/JunitTestMain.proto',
+          'src/test/resources/tempfiles/JUnitTestLarge.proto'
+  ]
 
-  // Creates the Java ME source code files for unit tests
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/integration-test/IntegrationTestJavaMe.proto')
-  }
-
-  // Creates the updated Java ME source code files for unit tests
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto')
-  }
-
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/tempfiles/JunitTestMain.proto')
-  }
-
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/tempfiles/JUnitTestLarge.proto')
-  }
+  generateProtocFile(protocList)
+  generateProtobufJavaMeFile(protobufJavaMeList)
 }
 
-createTask('generate-test-files-javame-only') {
-  // Creates the Java ME source code files for unit tests
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/integration-test/IntegrationTestJavaMe.proto')
-  }
+task generateTestFilesJavaMeOnly << {
+  def list = [
+          'src/test/resources/tempfiles/JUnitTestLarge.proto',
+          // Creates the Java ME source code files for unit tests
+          'src/test/resources/integration-test/IntegrationTestJavaMe.proto',
+          // Creates the updated Java ME source code files for unit tests
+          'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto',
+          'src/test/resources/tempfiles/JunitTestMain.proto',
+          'src/test/resources/tempfiles/JUnitTestLarge.proto'
+  ]
 
-  // Creates the updated Java ME source code files for unit tests
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto')
-  }
-
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/tempfiles/JunitTestMain.proto')
-  }
-
-  ant.java(jar: libTestDir + createJarFileName(), fork: 'true', failonerror: 'true') {
-      arg(value: '--java_out=src/test/java')
-      arg(value: 'src/test/resources/tempfiles/JUnitTestLarge.proto')
-  }
+  generateProtobufJavaMeFile(list)
 }
 
 
+private void generateProtocFile(List protocList) {
+  protocList.each {protoFile ->
+    print 'protoc: ' + protoFile
 
-private String createJarFileName() {
-  return '/' + jarFileName + '-' + jarVersion + '.jar'
+    ant.exec(executable: libDir + '/protobuf-compiler/protoc.exe') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: protoFile)
+    }
+  }
+}
+
+private void generateProtobufJavaMeFile(List protobufJavaMeList) {
+  protobufJavaMeList.each {protoFile ->
+    print 'protobuf-javame: ' + protoFile
+
+    ant.java(jar: libTestDir + '/' + jarFileName + '-' + jarVersion + '.jar', fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: protoFile)
+    }
+  }
 }

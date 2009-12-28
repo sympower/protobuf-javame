@@ -10,4 +10,5 @@
   <classpathentry kind="lib" path="/Users/jarle/.gradle/cache/junit/junit/jars/junit-4.7.jar"/>
   <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/proto2javame-0.8.1.jar"/>
   <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/protobuf-java-2.1.0.jar"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/protobuf-javame-0.9.0.jar"/>
 </classpath>

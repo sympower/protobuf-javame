@@ -1,0 +1,5 @@
+compileTestJava.doFirst {
+  print 'Compiling generated test classes'
+  sourceSets.test.classesDir.mkdirs()
+  ant.javac(srcDir: 'src/test/generated', destDir: sourceSets.test.classesDir, classpath: 'lib/test/protobuf-javame-' + jarVersion + '.jar', source: javaVersion, target: javaVersion)
+}

@@ -9,7 +9,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/generated" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/generated" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
@@ -35,6 +34,15 @@
       <library name="protobuf-java-2.1.0.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/test/protobuf-java-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="protobuf-javame-0.9.0.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/test/protobuf-javame-0.9.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
