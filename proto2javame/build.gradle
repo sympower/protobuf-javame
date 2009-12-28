@@ -1,7 +1,11 @@
+defaultTasks 'clean', 'build'
+
 usePlugin 'java'
 usePlugin 'eclipse'
 
-libTestFolder = 'lib/test'
+libDir = 'lib'
+libTestDir = libDir + '/test'
+jarFile = 'proto2javame.jar'
 
 repositories {
   mavenCentral()
@@ -9,7 +13,8 @@ repositories {
 
 dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.7'
-  testCompile fileTree(dir: libTestFolder, includes: ['*.jar'])
+  testCompile group: 'org.unitils', name: 'unitils', version: '2.4'
+  testCompile fileTree(dir: libTestDir, includes: ['*.jar'])
 }
 
 sourceCompatibility = javaVersion
@@ -17,12 +22,6 @@ version = jarVersion
 manifest.mainAttributes(
         'Main-Class': mainClass
 )
-
-
-
-libDir = 'lib'
-libTestDir = libDir + '/test'
-jarFile = 'proto2javame.jar'
 
 
 task generateTestFiles << {
