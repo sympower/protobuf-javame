@@ -52,7 +52,7 @@ public enum InputDataUtil {
             return true;
         } else {
             throw new InvalidInputException("The number of input parameters must be 2, it was: " + inputValues.length +
-                    ". Values: " + Arrays.toString(inputValues));
+                    ". Values: " + Arrays.toString(inputValues) + ". Valid syntax: --java_out=/path/to/dir path/to/protoFile.proto");
         }
     }
 
@@ -67,7 +67,7 @@ public enum InputDataUtil {
     private static void isValidFile(final String path) {
         final File dir = new File(path);
         if (!dir.isFile()) {
-            throw new InvalidInputException("The .proto file specified is not a valid file, value: " + path);
+            throw new InvalidInputException("The .proto file specified could not be located or is not a valid file, value: " + path);
         }
     }
 
