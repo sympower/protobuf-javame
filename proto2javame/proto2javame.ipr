@@ -685,7 +685,7 @@
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="_basePreferences">
       <map>
-        <entry key="property.analysisEffortLevel" value="default" />
+        <entry key="property.analysisEffortLevel" value="max" />
         <entry key="property.analyzeAfterCompile" value="false" />
         <entry key="property.minPriorityToReport" value="Medium" />
         <entry key="property.runAnalysisInBackground" value="false" />
