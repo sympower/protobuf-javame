@@ -6,8 +6,9 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/generated" isTestSource="true" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
@@ -78,6 +79,33 @@
       <library name="ognl-2.6.9.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../../.gradle/cache/ognl/ognl/jars/ognl-2.6.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="hamcrest-core-1.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../.gradle/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="mockito-core-1.8.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../.gradle/cache/org.mockito/mockito-core/jars/mockito-core-1.8.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="objenesis-1.0.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../.gradle/cache/org.objenesis/objenesis/jars/objenesis-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
