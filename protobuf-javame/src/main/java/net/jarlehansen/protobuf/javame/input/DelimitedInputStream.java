@@ -5,8 +5,9 @@ import java.io.InputStream;
 
 /**
  * 
+ * @author Google (http://code.google.com/p/protobuf/)
  * @author hansjar@gmail.com Jarle Hansen
- *
+ * 
  */
 public class DelimitedInputStream extends InputStream {
 	private final InputStream input;
