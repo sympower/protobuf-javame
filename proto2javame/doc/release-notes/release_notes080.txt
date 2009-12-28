@@ -1,4 +1,4 @@
-proto2javame 0.7.0 release notes
+proto2javame 0.8.0 release notes
 --------------------------------
 
 - Fixed a bug where primitives were added directly to the Vector list. This would create a compilation error.

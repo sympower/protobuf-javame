@@ -1,0 +1,6 @@
+proto2javame 0.9.0 release notes
+--------------------------------
+
+- Added a few tests using mockito.
+- Added unitils for comparing objects in a few JUnit tests.
+- Build script updated to gradle version 0.8
