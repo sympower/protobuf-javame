@@ -1,6 +1,0 @@
-MIDlet-Name: protobuf-javame
-MIDlet-Vendor: protovolbuf-javame
-MIDlet-Version: 0.9.0
-MIDlet-1: ProtobufJavaMeTestMidlet, , net.jarlehansen.protobuf.javame.midlet.ProtobufJavaMeTestMidlet
-MicroEdition-Configuration: CLDC-1.1
-MicroEdition-Profile: MIDP-2.0

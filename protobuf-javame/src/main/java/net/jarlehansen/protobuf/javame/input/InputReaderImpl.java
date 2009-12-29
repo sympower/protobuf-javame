@@ -73,10 +73,10 @@ public class InputReaderImpl implements InputReader {
 
 		switch (dataType) {
 		case WireFormat.WIRETYPE_FIXED32:
-			stringBuffer.append("float value: ").append(codedInput.readFloat());
+			stringBuffer.append("float value: ").append(Float.toString(codedInput.readFloat()));
 			break;
 		case WireFormat.WIRETYPE_FIXED64:
-			stringBuffer.append("double value: ").append(codedInput.readDouble());
+			stringBuffer.append("double value: ").append(Double.toString(codedInput.readDouble()));
 			break;
 		case WireFormat.WIRETYPE_LENGTH_DELIMITED:
 			stringBuffer.append("Length delimited (String or ByteString) value: ").append(codedInput.readString());

@@ -1,139 +1,45 @@
-defaultTasks 'build-zip-file'
+defaultTasks 'clean', 'build', 'packageZipFile'
 
-// Project structure
-sourceDir = 'src/main/java'
-testDir = 'src/test/java'
-resDir = 'src/test/resources'
-target = 'target'
-targetDir = new File(target)
-lib = 'lib'
+usePlugin 'java'
+usePlugin 'eclipse'
 
-// wtk source files and classes
-wtkpreprocessDir = new File(target + '/wtkpreprocess-source')
-wtkpreprocessTestDir = new File(target + '/wtkpreprocess-test-source')
-wtkbuildDir = new File(target + '/wtk-classes')
-wtkbuildTestDir = new File(target + '/wtk-test-classes')
-
-// file names
-jadFilename = target + '/' + jadFile
-jarFilename = target + '/' + jarFile + '-' + protobufVersion + '.jar'
-jarFilenameTests = target + '/' + jarFileTests
-packageFilename = target + '/' + jarFile + '-' + protobufVersion + '-all.zip'
-
-// wtk properties
-ant.property(name: 'wtk.home', value: wtkHome)
-ant.property(name: 'wtk.cldc.version', value: cldcVersion)
-ant.property(name: 'wtk.midp.version', value: midpVersion)
-
-// antenna ant tasks
-ant.taskdef(resource: 'antenna.properties') {
-	classpath(location: antennaDir)
+repositories {
+	mavenCentral()
 }
 
-ant.path(id: 'wtk.lib') {
-	fileset(dir: wtkHome, includes: '**/*.jar')
-	fileset(dir: lib, includes: '**/*.jar')
+dependencies {
+	compile group: 'org.microemu', name: 'cldcapi11', version: '2.0.3'
+	compile group: 'org.microemu', name: 'midpapi20', version: '2.0.3'
 }
 
-createTask('init') {
-	if(wtkHome == null || ''.equals(wtkHome)) {
-		println('wtkHome was not set, edit the wtkHome property in gradle.properties')
-		System.exit(1)
-	} else if(antennaDir == null || ''.equals(antennaDir)) {
-		println('antennaDir was not set, edit the antennaDir property in gradle.properties')
-		System.exit(1)
-	}
+version = protobufVersion
+sourceCompatibility = javaVersion
 
-	if(targetDir.isDirectory()) {
-		ant.delete(dir: targetDir)
+task packageZipFile(type: Zip) {
+	classifier = 'all'
+
+	// source folder
+	zipFileSet(dir: 'src/main/java') {
+		prefix='source'
 	}
 	
-	targetDir.mkdirs()
-	wtkpreprocessDir.mkdirs()
-	wtkpreprocessTestDir.mkdirs()
-	wtkbuildDir.mkdirs()
-	wtkbuildTestDir.mkdirs()
-}
-
-createTask('test-compile', dependsOn: 'init') {
-	println('-> Preprocessing')
-	ant.wtkpreprocess(debuglevel: 'info', destdir: wtkpreprocessTestDir, srcdir: testDir, verbose: 'true')
-	ant.wtkpreprocess(debuglevel: 'info', destdir: wtkpreprocessDir, srcdir: sourceDir, verbose: 'true')
-	
-	println('\n-> creating test-jad-file')
-	ant.wtkjad(jadfile: jadFilename, manifest: resDir + '/MANIFEST.MF', vendor: 'protovolbuf-javame', version: protobufVersion, name: 'protobuf-javame') {
-		midlet(name: midletName, class: midletClass)
+	// lib folder
+	zipFileSet(dir: 'build/libs') {
+		prefix='dist'
 	}
 	
-	println('\n-> creating test-class-files')
-	ant.wtkbuild(destdir: wtkbuildTestDir, encoding: 'UTF-8', source: javaVersion, srcdir: wtkpreprocessDir.getPath() + ':' + wtkpreprocessTestDir.getPath()) {
-		classpath(refid: 'wtk.lib')
-	}
-}
-
-createTask('test-package', dependsOn: 'test-compile') {
-	println('\n-> creating test-jar-file')
-	ant.wtkpackage(jadfile: jadFilename, jarfile: jarFilenameTests, preverify: 'true') {
-		fileset(dir: wtkbuildDir, includes: '**/*.class')
-		fileset(dir: wtkbuildTestDir, includes: '**/*.class')
-		libclasspath {
-			path(path: lib + '/test/jmunit4cldc11-1.2.1.jar')
-		}
-	}
-}
-
-createTask('run-tests', dependsOn: 'test-package') {
-	println('\n-> running jmunit-tests')
-	ant.wtkrun(device: 'DefaultColorPhone', jadfile: jadFilename, wait: 'true')
-}
-
-createTask('main-compile', dependsOn: 'run-tests') {
-	println('\n-> creating main-class-files')
-	ant.wtkbuild(destdir: wtkbuildDir, encoding: 'UTF-8', source: javaVersion, srcdir: wtkpreprocessDir) {
-		classpath(refid: 'wtk.lib')
-	}
-}
-
-createTask('main-package', dependsOn: 'main-compile') {
-	println('\n-> creating main-jar-file, ' + jarFilename)
-	ant.wtkpackage(jadfile: jadFilename, jarfile: jarFilename, preverify: 'true') {
-		fileset(dir: wtkbuildDir, includes: '**/*.class')
-	}
-}
-
-createTask('build-zip-file', dependsOn: 'main-package') {
-	println('\n-> building zip-file, ' + packageFilename)
-	ant.zip(destfile: packageFilename) {
-		// source folder
-		zipfileset(dir: sourceDir, prefix: 'source/' + sourceDir)
-		zipfileset(dir: testDir, prefix: 'source/' + testDir)
-		zipfileset(dir: resDir, prefix: 'source/' + resDir)
-		
-		// dist folder
-		zipfileset(dir: target, prefix: 'dist', includes: '*.jar, *.jad')
-		
-		// lib folder
-		zipfileset(dir: lib + '/test', prefix: lib, includes: '**/*.jar')
-		
-		// proto2javame folder
-		zipfileset(dir: lib + '/generate', prefix: 'proto2javame', includes: '*.jar')
-		
-		// doc folder
-		zipfileset(dir: 'doc', prefix: 'doc')
-		
-		// examples folder
-		zipfileset(dir: 'examples', prefix:'examples', includes: '*.zip')
-	}
-}
-
-createTask('generate-test-files') {
-	ant.java(jar: lib + '/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
-		arg(value: '--java_out=src/test/java')
-		arg(value: 'src/test/resources/proto-files/JUnitTest.proto')
+	// proto2javame folder
+	zipFileSet(dir: 'lib/generate') {
+		prefix='lib'
 	}
 	
-	ant.java(jar: lib + '/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
-		arg(value: '--java_out=src/test/java')
-		arg(value: 'src/test/resources/proto-files/ListTest.proto')
+	// doc folder
+	zipFileSet(dir: 'doc') {
+		prefix='doc'
+	}
+	
+	// examples folder
+	zipFileSet(dir: 'examples') {
+		prefix='examples'
 	}
 }
