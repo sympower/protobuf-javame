@@ -1,18 +1,25 @@
-defaultTasks 'package-zip'
+defaultTasks 'clean', 'packageZipFile'
 
-createTask('package-zip') {
-	println('creating the target/protobuf-javame-midlet-example.zip')
+usePlugin 'java'
 
-	ant.zip(destfile: 'target/protobuf-javame-midlet-example.zip') {
-		zipfileset(dir: 'src', prefix: 'src', includes: '**/*.java, **/*.proto')
-		zipfileset(dir: 'lib', prefix: 'lib', includes: '**/*.jar')
+version=proto2javameVersion
+
+task packageZipFile(type: Zip) {
+	zipFileSet(dir: 'src') {
+		prefix='src'
+		include('**/*.java')
+		include('**/*.proto')
+	}
+	
+	zipFileSet(dir: 'lib') {
+		prefix='lib'
+		include('**/*.jar')
 	}
 }
 
-
-// Generates the Java source code from the proto-file used in the example
-createTask('generate-example-file') {
-	println('generating Java source code used in the examples')
+// Generates the Java source code from the proto-file used in the examples
+task generateExamplesFile << {
+	print 'generating Java source code used in the examples'
 	
 	ant.java(jar: 'lib/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/main/generated')
