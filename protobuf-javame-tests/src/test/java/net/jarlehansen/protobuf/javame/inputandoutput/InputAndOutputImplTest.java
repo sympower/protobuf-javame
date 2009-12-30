@@ -27,14 +27,12 @@ public class InputAndOutputImplTest {
 		final int intValue = 10050;
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeIntSize(intId,
-				intValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeIntSize(intId, intValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeInt(intId, intValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
 		assertEquals(intValue, inputReader.readInt(intId));
@@ -45,14 +43,12 @@ public class InputAndOutputImplTest {
 		final String stringValue = "test string";
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeStringSize(intId,
-				stringValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeStringSize(intId, stringValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeString(intId, stringValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
 		assertEquals(stringValue, inputReader.readString(intId));
@@ -63,14 +59,12 @@ public class InputAndOutputImplTest {
 		final int intValue = 123;
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeIntSize(intId,
-				intValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeIntSize(intId, intValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeInt(intId, intValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
 		inputReader.readString(intId);
@@ -82,14 +76,12 @@ public class InputAndOutputImplTest {
 		final boolean boolValue = true;
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeBooleanSize(intId,
-				boolValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeBooleanSize(intId, boolValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeBoolean(intId, boolValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
 		assertEquals(boolValue, inputReader.readBoolean(intId));
@@ -100,14 +92,12 @@ public class InputAndOutputImplTest {
 		final double doubleValue = 12.5;
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeDoubleSize(intId,
-				doubleValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeDoubleSize(intId, doubleValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeDouble(intId, doubleValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
 		assertEquals(doubleValue, inputReader.readDouble(intId), 0);
@@ -118,14 +108,12 @@ public class InputAndOutputImplTest {
 		final float floatValue = 12.5F;
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeFloatSize(intId,
-				floatValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeFloatSize(intId, floatValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeFloat(intId, floatValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
 		assertEquals(floatValue, inputReader.readFloat(intId), 0);
@@ -136,14 +124,12 @@ public class InputAndOutputImplTest {
 		final long longValue = 124124124124124124L;
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeLongSize(intId,
-				longValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeLongSize(intId, longValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeLong(intId, longValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
 		assertEquals(longValue, inputReader.readLong(intId));
@@ -154,17 +140,14 @@ public class InputAndOutputImplTest {
 		final ByteString byteValue = ByteString.copyFromUtf8("testing");
 		final int intId = 1;
 
-		final byte[] data = new byte[ComputeSizeUtil.computeByteStringSize(
-				intId, byteValue)];
+		final byte[] data = new byte[ComputeSizeUtil.computeByteStringSize(intId, byteValue)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
 		outputWriter.writeByteString(intId, byteValue);
 		outputWriter.writeData();
 
-		final InputReader inputReader = new InputReaderImpl(data,
-				DefaultUnknownTagHandlerImpl.newInstance());
+		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
 
-		assertEquals(byteValue.toStringUtf8(), inputReader
-				.readByteString(intId).toStringUtf8());
+		assertEquals(byteValue.toStringUtf8(), inputReader.readByteString(intId).toStringUtf8());
 	}
 }

@@ -9,10 +9,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class DelimitedInputStreamTest {	
+public class DelimitedInputStreamTest {
 	private DelimitedInputStream delimitedInputStream;
 	private static final int limit = 10;
-	
+
 	@Before
 	public void setUp() {
 		InputStream inputStream = new InputStream() {
@@ -20,15 +20,15 @@ public class DelimitedInputStreamTest {
 				return limit;
 			}
 		};
-		
+
 		delimitedInputStream = new DelimitedInputStream(inputStream, limit);
 	}
-	
+
 	@After
 	public void tearDown() {
 		try {
 			delimitedInputStream.close();
-		} catch(IOException io) {
+		} catch (IOException io) {
 			io.printStackTrace();
 		}
 	}
@@ -37,12 +37,12 @@ public class DelimitedInputStreamTest {
 	public void testReadFromDelimitedInputStream() throws IOException {
 		assertEquals(limit, delimitedInputStream.read());
 	}
-	
+
 	@Test
 	public void testReadMoreThanLimitFromDelimitedInputStream() throws IOException {
 		assertEquals(limit, delimitedInputStream.read(new byte[15], 0, 15));
 	}
-	
+
 	@Test
 	public void testReadFromEmptyDelimitedInputStream() throws IOException {
 		assertEquals(limit, delimitedInputStream.read(new byte[limit], 0, limit));

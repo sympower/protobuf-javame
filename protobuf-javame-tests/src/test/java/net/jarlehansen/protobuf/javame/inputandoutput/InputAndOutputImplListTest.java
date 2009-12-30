@@ -18,15 +18,14 @@ import net.jarlehansen.protobuf.javame.util.SupportedDataTypes;
 
 import static org.junit.Assert.assertEquals;
 
-
 /**
  * 
  * @author hansjar@gmail.com Jarle Hansen
- *
+ * 
  */
 public class InputAndOutputImplListTest {
 	private final static int FIELD_ID = 1;
-	
+
 	@SuppressWarnings("unchecked")
 	private Vector list;
 
@@ -79,24 +78,24 @@ public class InputAndOutputImplListTest {
 		assertEquals(stringValue2, inputReader.readString(inputReader.getNextFieldNumber()));
 	}
 
-	@Test(expected=InvalidProtocolBufferException.class)
+	@Test(expected = InvalidProtocolBufferException.class)
 	@SuppressWarnings("unchecked")
 	public void testWriteAndReadStringListInvalidValue() throws IOException {
 		final int intValue1 = 123;
 		final int intValue2 = 1812841924;
-		
+
 		list.addElement(Integer.valueOf(intValue1));
 		list.addElement(Integer.valueOf(intValue2));
-		
+
 		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_INT, list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
-		
+
 		outputWriter.writeList(FIELD_ID, SupportedDataTypes.DATA_TYPE_INT, list);
 		outputWriter.writeData();
 
 		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 		inputReader.getNextFieldNumber();
-		
+
 		inputReader.readString(FIELD_ID);
 	}
 
@@ -105,13 +104,14 @@ public class InputAndOutputImplListTest {
 	public void testWriteAndReadBooleanList() throws IOException {
 		final boolean boolValue1 = true;
 		final boolean boolValue2 = false;
-		
+
 		list.addElement(Boolean.valueOf(boolValue1));
 		list.addElement(Boolean.valueOf(boolValue2));
-		
-		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_BOOLEAN, list)];
+
+		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_BOOLEAN,
+				list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
-		
+
 		outputWriter.writeList(FIELD_ID, SupportedDataTypes.DATA_TYPE_BOOLEAN, list);
 		outputWriter.writeData();
 
@@ -126,18 +126,19 @@ public class InputAndOutputImplListTest {
 	public void testWriteAndReadDoubleList() throws IOException {
 		final double doubleValue1 = 12.5;
 		final double doubleValue2 = 1241.135;
-		
+
 		list.addElement(new Double(doubleValue1));
 		list.addElement(new Double(doubleValue2));
-		
-		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_DOUBLE, list)];
+
+		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_DOUBLE,
+				list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
-		
+
 		outputWriter.writeList(FIELD_ID, SupportedDataTypes.DATA_TYPE_DOUBLE, list);
 		outputWriter.writeData();
 
 		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
-		
+
 		assertEquals(doubleValue1, inputReader.readDouble(inputReader.getNextFieldNumber()), 0);
 		assertEquals(doubleValue2, inputReader.readDouble(inputReader.getNextFieldNumber()), 0);
 	}
@@ -147,13 +148,14 @@ public class InputAndOutputImplListTest {
 	public void testWriteAndReadFloatList() throws IOException {
 		final float floatValue1 = 12.5F;
 		final float floatValue2 = 125.1241245F;
-		
+
 		list.addElement(new Float(floatValue1));
 		list.addElement(new Float(floatValue2));
-		
-		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_FLOAT, list)];
+
+		final byte[] data = new byte[ComputeSizeUtil
+				.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_FLOAT, list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
-		
+
 		outputWriter.writeList(FIELD_ID, SupportedDataTypes.DATA_TYPE_FLOAT, list);
 		outputWriter.writeData();
 
@@ -171,10 +173,10 @@ public class InputAndOutputImplListTest {
 
 		list.addElement(new Long(longValue1));
 		list.addElement(new Long(longValue2));
-		
+
 		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_LONG, list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
-		
+
 		outputWriter.writeList(FIELD_ID, SupportedDataTypes.DATA_TYPE_LONG, list);
 		outputWriter.writeData();
 
@@ -192,16 +194,19 @@ public class InputAndOutputImplListTest {
 
 		list.addElement(byteValue1);
 		list.addElement(byteValue2);
-		
-		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_BYTESTRING, list)];
+
+		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_BYTESTRING,
+				list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
-		
+
 		outputWriter.writeList(FIELD_ID, SupportedDataTypes.DATA_TYPE_BYTESTRING, list);
 		outputWriter.writeData();
 
 		final InputReader inputReader = new InputReaderImpl(data, DefaultUnknownTagHandlerImpl.newInstance());
 
-		assertEquals(byteValue1.toStringUtf8(), inputReader.readByteString(inputReader.getNextFieldNumber()).toStringUtf8());
-		assertEquals(byteValue2.toStringUtf8(), inputReader.readByteString(inputReader.getNextFieldNumber()).toStringUtf8());
+		assertEquals(byteValue1.toStringUtf8(), inputReader.readByteString(inputReader.getNextFieldNumber())
+				.toStringUtf8());
+		assertEquals(byteValue2.toStringUtf8(), inputReader.readByteString(inputReader.getNextFieldNumber())
+				.toStringUtf8());
 	}
 }

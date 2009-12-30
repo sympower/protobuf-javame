@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-
 public class CodedOutputStreamTest {
 
 	@Test
@@ -18,7 +17,7 @@ public class CodedOutputStreamTest {
 		codedOutput.checkNoSpaceLeft();
 	}
 
-	@Test(expected=IllegalStateException.class)
+	@Test(expected = IllegalStateException.class)
 	public void testInvalidByteArraySize() throws IOException {
 		final String testString = "test";
 
