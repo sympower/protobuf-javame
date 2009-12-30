@@ -1,13 +1,13 @@
 package net.jarlehansen.protobuf.javame.factory;
 
-import static junit.framework.Assert.assertTrue;
-
-import org.junit.Test;
-
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 import net.jarlehansen.protobuf.javame.input.InputReader;
 import net.jarlehansen.protobuf.javame.input.taghandler.DefaultUnknownTagHandlerImpl;
 import net.jarlehansen.protobuf.javame.output.OutputWriter;
+
+import org.junit.Test;
 
 
 /**
@@ -19,11 +19,11 @@ public class JavaMeProtoFactoryTest {
 
 	@Test
 	public void testCreateInputUtilByteArray() {
-		assertTrue(JavaMeProtoFactory.createInputUtil(new byte[100], DefaultUnknownTagHandlerImpl.newInstance()) instanceof InputReader);
+		assertThat(JavaMeProtoFactory.createInputUtil(new byte[100], DefaultUnknownTagHandlerImpl.newInstance()), is(InputReader.class));
 	}
 	
 	@Test
 	public void testCreateOutputUtilByteArray() {
-		assertTrue(JavaMeProtoFactory.createOutputUtil(new byte[100]) instanceof OutputWriter);
+		assertThat(JavaMeProtoFactory.createOutputUtil(new byte[100]), is(OutputWriter.class));
 	}
 }

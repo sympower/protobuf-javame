@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DelimitedInputStreamTest {	
 	private DelimitedInputStream delimitedInputStream;
-	private final int limit = 10;
+	private static final int limit = 10;
 	
 	@Before
 	public void setUp() {

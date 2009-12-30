@@ -85,8 +85,8 @@ public class InputAndOutputImplListTest {
 		final int intValue1 = 123;
 		final int intValue2 = 1812841924;
 		
-		list.addElement(new Integer(intValue1));
-		list.addElement(new Integer(intValue2));
+		list.addElement(Integer.valueOf(intValue1));
+		list.addElement(Integer.valueOf(intValue2));
 		
 		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_INT, list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
@@ -106,8 +106,8 @@ public class InputAndOutputImplListTest {
 		final boolean boolValue1 = true;
 		final boolean boolValue2 = false;
 		
-		list.addElement(new Boolean(boolValue1));
-		list.addElement(new Boolean(boolValue2));
+		list.addElement(Boolean.valueOf(boolValue1));
+		list.addElement(Boolean.valueOf(boolValue2));
 		
 		final byte[] data = new byte[ComputeSizeUtil.computeListSize(FIELD_ID, SupportedDataTypes.DATA_TYPE_BOOLEAN, list)];
 		final OutputWriter outputWriter = new OutputWriterImpl(data);
