@@ -42,4 +42,9 @@ task packageZipFile(type: Zip) {
 	zipFileSet(dir: 'examples') {
 		prefix='examples'
 	}
+	
+	// tests folder
+	zipFileSet(dir: 'tests') {
+		prefix='tests'
+	}
 }
