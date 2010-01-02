@@ -24,7 +24,7 @@ manifest.mainAttributes(
 )
 
 compileTestJava.doFirst {
-  print 'Compiling Java ME generated source code, this will cause warning messages.'  
+  print 'Compiling Java ME generated source code, this will cause warning messages.'
 }
 
 
@@ -46,39 +46,31 @@ task runFindbugs << {
 }
 
 
+
+def protocList = [
+        // Creates the Google Protocol Buffer java source file, for integration tests
+        'src/test/resources/integration-test/IntegrationTestJavaSe.proto',
+        // Creates the updated Google Protocol Buffer java source file, for integration tests
+        'src/test/resources/integration-test/UpdatedIntegrationTestJavaSe.proto',
+]
+
+def protobufJavaMeList = [
+        // Creates the Java ME source code files for unit tests
+        'src/test/resources/integration-test/IntegrationTestJavaMe.proto',
+        // Creates the updated Java ME source code files for unit tests
+        'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto',
+        'src/test/resources/tempfiles/JunitTestMain.proto',
+        'src/test/resources/tempfiles/JUnitTestLarge.proto'
+]
+
+
 task generateTestFiles << {
-  def protocList = [
-          // Creates the Google Protocol Buffer java source file, for integration tests
-          'src/test/resources/integration-test/IntegrationTestJavaSe.proto',
-          // Creates the updated Google Protocol Buffer java source file, for integration tests
-          'src/test/resources/integration-test/UpdatedIntegrationTestJavaSe.proto',
-  ]
-
-  def protobufJavaMeList = [
-          // Creates the Java ME source code files for unit tests
-          'src/test/resources/integration-test/IntegrationTestJavaMe.proto',
-          // Creates the updated Java ME source code files for unit tests
-          'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto',
-          'src/test/resources/tempfiles/JunitTestMain.proto',
-          'src/test/resources/tempfiles/JUnitTestLarge.proto'
-  ]
-
   generateProtocFile(protocList)
   generateProtobufJavaMeFile(protobufJavaMeList)
 }
 
 task generateTestFilesJavaMeOnly << {
-  def list = [
-          'src/test/resources/tempfiles/JUnitTestLarge.proto',
-          // Creates the Java ME source code files for unit tests
-          'src/test/resources/integration-test/IntegrationTestJavaMe.proto',
-          // Creates the updated Java ME source code files for unit tests
-          'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto',
-          'src/test/resources/tempfiles/JunitTestMain.proto',
-          'src/test/resources/tempfiles/JUnitTestLarge.proto'
-  ]
-
-  generateProtobufJavaMeFile(list)
+  generateProtobufJavaMeFile(protobufJavaMeList)
 }
 
 
