@@ -35,7 +35,7 @@ task runFindbugs << {
 
   ant.taskdef(name: 'findbugs', classname: 'edu.umd.cs.findbugs.anttask.FindBugsTask') {
     classpath {
-      fileset(dir: findbugsHome + 'lib', includes: '*.jar')
+      fileset(dir: findbugsHome + libDir, includes: '*.jar')
     }
   }
 
