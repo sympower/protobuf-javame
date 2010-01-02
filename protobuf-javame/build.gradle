@@ -13,7 +13,8 @@ dependencies {
 }
 
 version = protobufVersion
-sourceCompatibility = javaVersion
+sourceCompatibility = sourceVersion
+targetCompatibility = targetVersion
 
 task packageZipFile(type: Zip) {
 	classifier = 'all'
