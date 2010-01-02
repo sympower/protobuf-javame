@@ -1,6 +1,8 @@
 To build the entire protobuf-javame package:
 protobuf-javame-multiproject gradle
 
+
+
 ########################################
 ########   Project structure:   ########
 ########################################
