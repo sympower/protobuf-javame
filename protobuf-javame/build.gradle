@@ -1,0 +1,58 @@
+defaultTasks 'clean', 'build', 'packageDist'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral()
+}
+
+version = protobufVersion
+sourceCompatibility = sourceVersion
+targetCompatibility = targetVersion
+
+tempFolder = 'build/temp-files/'
+
+task createFolderStructure << {
+	new File(tempFolder).mkdir()
+	
+	copy {
+		from 'src/main/java'
+		into tempFolder + 'source/protobuf-javame'
+	}
+	
+	copy {
+		from 'lib/generate'
+		into tempFolder + 'proto2javame'
+	}
+	
+	copy {
+		from 'doc'
+		into tempFolder + 'doc'
+	}
+	
+	copy {
+		from 'examples'
+		into tempFolder + 'examples'
+	}
+	
+	copy {
+		from 'tests'
+		into tempFolder + 'tests'
+	}
+	
+	copy {
+		from 'proto2javame-source'
+		into tempFolder + 'source/proto2javame'
+	}
+	
+	copy {
+		from 'build/libs'
+		into tempFolder + 'dist'
+	}
+}
+
+task packageDist(dependsOn: createFolderStructure, type: Zip) {
+	from tempFolder
+	classifier = 'all'
+}
