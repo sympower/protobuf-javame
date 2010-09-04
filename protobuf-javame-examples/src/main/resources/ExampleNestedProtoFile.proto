@@ -1,0 +1,12 @@
+package net.jarlehansen.protobuf.javame;
+
+option java_package = "net.jarlehansen.protobuf.javame.examples.generated";
+option java_outer_classname = "ExampleNestedObjectImpl";
+
+message ExampleNestedObject {
+	required Number number = 1;
+}
+
+message Number {
+	optional int32 id = 1;
+}
