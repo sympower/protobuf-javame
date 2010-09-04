@@ -1,0 +1,38 @@
+defaultTasks 'clean', 'packageZipFile'
+
+apply plugin: 'java'
+
+version=proto2javameVersion
+
+tempFolder = 'build/temp-files/'
+
+task createFolderStructure << {
+	new File(tempFolder).mkdirs()
+	
+	copy {
+		from 'src'
+		into tempFolder + 'src'
+		include '**/*.java'
+		include '**/*.proto'
+	}
+	
+	copy {
+		from 'lib'
+		into tempFolder + 'lib'
+		include '**/*.jar'
+	}
+}
+
+task packageZipFile(dependsOn: createFolderStructure, type: Zip) {
+	from tempFolder
+}
+
+// Generates the Java source code from the proto-file used in the examples
+task generateExamplesFile << {
+	print 'generating Java source code used in the examples'
+	
+	ant.java(jar: 'lib/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/main/generated')
+		arg(value: 'src/main/resources/ExampleProtoFile.proto')
+	}
+}
