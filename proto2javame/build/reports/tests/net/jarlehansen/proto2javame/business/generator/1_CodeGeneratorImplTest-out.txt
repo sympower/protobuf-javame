@@ -1,2 +1,0 @@
-net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest - The file src/test/generated/net/jarlehansen/protobuf/javame/generated/JunitTestObject.java was delete? false
-
