@@ -1,0 +1,28 @@
+package this.is.not.used;
+
+option java_package = "net.jarlehansen.proto2javame.generated";
+option java_outer_classname = "this.is.not.used";
+
+message JunitTestLargeObject {
+	required int32 id = 1;
+	required int64 number2 = 2;
+	required string name = 3;
+	required bool boolVal = 4;
+	required double amount = 5;
+	required float floatNum = 6;
+	required bytes byteStringObj = 7;
+	optional int32 idOptional = 8;
+	optional int64 number2Optional = 9;
+	optional string nameOptional = 10;
+	optional bool boolValOptional = 11;
+	optional double amountOptional = 12;
+	optional float floatNumOptional = 13;
+	optional bytes byteStringObjOptional = 14;
+	repeated int32 idList = 15;
+	repeated int64 number2List = 16;
+	repeated string nameList = 17;
+	repeated bool boolValList = 18;
+	repeated double amountList = 19;
+	repeated float floatNumList = 20;
+	repeated bytes byteStringObjList = 21;
+}

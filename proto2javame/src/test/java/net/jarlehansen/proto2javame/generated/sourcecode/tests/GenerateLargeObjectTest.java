@@ -14,7 +14,7 @@ import java.io.File;
 public class GenerateLargeObjectTest {
 
     private static final String JAVA_OUT = "--java_out=src/test/generated";
-    private static final String PROTO_FILE = "src/test/resources/integration-test/JUnitTestLarge.proto";
+    private static final String PROTO_FILE = "src/test/resources/JUnitTestLarge.proto";
 
     @Test
     public void testGenerateObject() {
