@@ -1,0 +1,8 @@
+MIDlet-1: ProtobufJavaMeTestMidlet,,net.jarlehansen.protobuf.javame.midlet.ProtobufJavaMeTestMidlet
+MIDlet-Jar-Size: 68666
+MIDlet-Jar-URL: protobuf-javame.jar
+MIDlet-Name: protobuf-javame MIDlet Suite
+MIDlet-Vendor: MIDlet Suite Vendor
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
