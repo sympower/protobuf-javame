@@ -32,6 +32,7 @@ public final class Proto2JavaMe {
             for(JavaFileOutput javaOutput : javaOutputList) {
                 System.out.println("\t-> " + javaOutput.getClassName());
             }
+            System.out.println("In package: " + javaOutputList.get(0).getPackageName());
         } catch (Proto2JavaMeException protoException) {
             System.err.println("Error: " + protoException.getMessage());
         }

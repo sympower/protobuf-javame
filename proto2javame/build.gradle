@@ -82,3 +82,9 @@ task generateTestFilesJavaMe << {
     }
   }
 }
+
+
+task packageSourceDist(type: Zip) {
+  from 'src'
+  appendix = 'source'
+}
