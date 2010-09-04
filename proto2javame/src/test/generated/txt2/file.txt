@@ -1,1 +1,0 @@
-ù	¾ó«Èˆ›Jarle Hansen	Ola Olsen"This is a ByteString value-â$M9¬Zd;'_@BnewFieldHñPõ°ËZ	newField4e,™ÝShq(~Œ¹ë€@additional contentthis should not be included when parsing the proto message
