@@ -1,0 +1,48 @@
+defaultTasks 'clean', 'test', 'packageZipFile'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+lib = 'lib'
+proto2javameFile = lib + '/generate/proto2javame-' + protobufVersion + '.jar'
+
+version=protobufVersion
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.7'
+	testCompile group: 'org.unitils', name: 'unitils', version: '2.4'
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '1.8.1'
+	testCompile fileTree(dir: lib, includes: ['*.jar'])
+}
+
+task packageZipFile(type: Zip) << {
+	// source and resources folder
+	from 'src'
+	prefix = 'src'
+}
+
+task generateTestFiles << {
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/test/java')
+		arg(value: 'src/test/resources/JUnitTest.proto')
+	}
+	
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/test/java')
+		arg(value: 'src/test/resources/ListTest.proto')
+	}
+	
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/test/java')
+		arg(value: 'src/test/resources/EnumTest.proto')
+	}
+	
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/test/java')
+		arg(value: 'src/test/resources/NestedTest.proto')
+	}
+}
