@@ -1,0 +1,2 @@
+Error: The number of input parameters must be 2, it was: 1. Values: []. Valid syntax: --java_out=/path/to/dir path/to/protoFile.proto
+

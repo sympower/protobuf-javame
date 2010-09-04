@@ -1,0 +1,20 @@
+<classpath>
+  <classpathentry kind="output" path="bin"/>
+  <classpathentry output="build/classes/main" kind="src" path="src/main/resources"/>
+  <classpathentry output="build/classes/main" kind="src" path="src/main/java"/>
+  <classpathentry output="build/classes/test" kind="src" path="src/test/resources"/>
+  <classpathentry output="build/classes/test" kind="src" path="src/test/java"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/ognl-3.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/commons-collections-3.2.1.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/junit-4.8.1.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/jmock-1.2.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/protobuf-java-2.3.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/objenesis-1.2.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/commons-lang-2.5.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/protobuf-javame-0.9.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/unitils-2.4.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/mockito-core-1.8.5.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/build/guice-2.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/build/aopalliance.jar" exported="true"/>
+</classpath>

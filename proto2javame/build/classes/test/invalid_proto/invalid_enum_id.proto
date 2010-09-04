@@ -1,0 +1,15 @@
+package this.is.not.used;
+
+option java_package = "net.jarlehansen.protobuf.javame.generated";
+option java_outer_classname = "this.is.not.used";
+
+message JunitTestMainObject {
+    enum Color {
+        BLUE = 1;
+        RED = 2;
+        GREEN = 3;
+        YELLOW = 3;
+    }
+    
+	required Color id = 1;
+}

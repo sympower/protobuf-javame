@@ -1,0 +1,8 @@
+proto2javame 0.7.0 release notes
+--------------------------------
+
+- Removed a lot of unused code and limited the scope of classes and methods.
+- Added UnknownTagHandler that makes it possible for users to retrieve the unknown fields.
+  This happens if the proto-files are updated with new files.
+  The UnknownTagHandler will be able to list the field number and general type of the new fields. Also the content of the field is returned.
+- The structure of the project has been refactored and updated.

@@ -1,0 +1,84 @@
+defaultTasks 'clean', 'build', 'runFindbugs'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+libDir = 'lib'
+libTestDir = libDir + '/test'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  // Main program dependencies
+  compile fileTree(dir: libDir + '/build', includes: ['*.jar'])
+
+   // Test dependencies
+  testCompile fileTree(dir: libTestDir, includes: ['*.jar'])
+}
+
+sourceCompatibility = javaVersion
+version = jarVersion
+manifest.mainAttributes(
+        'Main-Class': mainClass
+)
+
+compileTestJava.doFirst {
+  print 'Compiling Java ME generated source code, this will cause warning messages.'
+}
+
+compileJava.doFirst {
+  sourceSets.main.java.srcDirs = ['src/main/java', 'src/main/config']
+}
+
+jar {
+  from configurations.compile.collect {
+    it.isDirectory() ? it : zipTree(it).matching { exclude 'META-INF/MANIFEST.MF' };
+  }
+}
+
+
+
+task runFindbugs << {
+  findbugsHome = libDir + '/code-analysis/findbugs-1.3.9/'
+  findbugsReport = 'doc/findbugs-reports/findbugs-report.txt'
+
+  ant.taskdef(name: 'findbugs', classname: 'edu.umd.cs.findbugs.anttask.FindBugsTask') {
+    classpath {
+      fileset(dir: findbugsHome + libDir, includes: '*.jar')
+    }
+  }
+
+  ant.findbugs(home: findbugsHome, output: 'emacs', outputFile: findbugsReport) {
+    sourcepath(path: 'src/main/java')
+    'class'(location: 'build/classes/main')
+  }
+}
+
+
+def protobufJavaMeIntegrationList = [
+        // Creates the Java ME source code files for unit tests
+        'src/test/resources/integration-test/IntegrationTestJavaMe.proto',
+        // Creates the updated Java ME source code files for unit tests
+        'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto',
+        'src/test/resources/integration-test-enums/EnumTestJavaMe.proto',
+        'src/test/resources/integration-test-nested-types/NestedTestJavaMe.proto',
+        'src/test/resources/integration-test-nested-types/NestedListTestJavaMe.proto',
+        'src/test/resources/integration-test/JunitTestMain.proto',
+        'src/test/resources/integration-test/JUnitTestLarge.proto'
+
+];
+
+
+// To generate the Java SE source please use the script (file is inside the script folder)
+task generateTestFilesJavaMe << {
+  protobufJavaMeIntegrationList.each {protoFile ->
+    print 'proto file: ' + protoFile
+
+    ant.java(jar: libDir + '/generate/' + jarFileName + '-' + jarVersion + '.jar', fork: 'true', failonerror: 'true') {
+      arg(value: '--java_out=src/test/java')
+      arg(value: protoFile)
+    }
+  }
+}

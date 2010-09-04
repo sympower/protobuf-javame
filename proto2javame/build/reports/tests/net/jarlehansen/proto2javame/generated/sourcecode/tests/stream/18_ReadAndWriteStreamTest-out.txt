@@ -1,0 +1,3 @@
+net.jarlehansen.proto2javame.generated.sourcecode.tests.stream.ReadAndWriteStreamTest - The file src/test/generated/txt/GeneratedTextFile.txt was delete? true
+net.jarlehansen.proto2javame.generated.sourcecode.tests.stream.ReadAndWriteStreamTest - The file src/test/generated/txt/GeneratedTextFile.txt was delete? true
+

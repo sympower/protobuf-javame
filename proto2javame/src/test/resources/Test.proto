@@ -1,0 +1,14 @@
+package test.testing;
+
+option java_package = "net.jarlehansen.protobuf.javame.generated";
+option java_outer_classname = "AddressBookProtos";
+
+message Inputobject {
+	required int64 number1 = 1;
+	optional int32 number2 = 2;
+	required bytes bytestringValue = 3;
+	repeated string stringList = 4;
+	required int32 number3 = 5;
+	required string value = 6;
+	repeated bool test = 7;
+}
