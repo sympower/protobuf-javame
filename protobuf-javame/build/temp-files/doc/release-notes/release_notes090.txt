@@ -1,0 +1,4 @@
+protobuf-javame 0.9.0 release notes
+--------------------------------
+
+- Fixed a cyclic dependency between packages.
