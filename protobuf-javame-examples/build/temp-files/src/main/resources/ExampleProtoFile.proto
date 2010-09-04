@@ -1,0 +1,10 @@
+package net.jarlehansen.protobuf.javame;
+
+option java_package = "net.jarlehansen.protobuf.javame.examples.generated";
+option java_outer_classname = "ExampleObjectImpl";
+
+message ExampleObject {
+	required int32 id = 1;
+	required string name = 2;
+	optional string address = 3;
+}
