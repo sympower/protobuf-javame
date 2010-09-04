@@ -1,8 +1,0 @@
-FieldNumber: 8 - Length delimited (String or ByteString) value: newField
-FieldNumber: 9 - varint (long, int or boolean) value: 241
-FieldNumber: 10 - varint (long, int or boolean) value: 15915125
-FieldNumber: 11 - Length delimited (String or ByteString) value: newField4
-FieldNumber: 12 - float value: 1.90351514E12
-FieldNumber: 13 - varint (long, int or boolean) value: 1
-FieldNumber: 14 - double value: 513.1151
-

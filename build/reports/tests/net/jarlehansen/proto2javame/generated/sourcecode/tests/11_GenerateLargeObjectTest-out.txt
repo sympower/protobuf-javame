@@ -1,6 +1,0 @@
-Starting protobuf-javame code generation, Sat Sep 04 21:37:40 CEST 2010
-SUCCESS! Created the java-object(s): 
-	-> JunitTestLargeObject
-
-FINISHED, time used: 14ms
-

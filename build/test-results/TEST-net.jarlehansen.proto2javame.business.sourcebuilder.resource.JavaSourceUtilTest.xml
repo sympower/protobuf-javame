@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.business.sourcebuilder.resource.JavaSourceUtilTest" tests="1" time="0.0080" timestamp="2010-09-04T19:37:40">
-  <properties />
-  <testcase classname="net.jarlehansen.proto2javame.business.sourcebuilder.resource.JavaSourceUtilTest" name="testGetClassName" time="0.0" />
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
