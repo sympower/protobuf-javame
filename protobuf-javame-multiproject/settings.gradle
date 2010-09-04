@@ -1,2 +1,0 @@
-/* specifies which projects to include in the build */
-include ':../protobuf-javame', ':../protobuf-javame-tests', ':../protobuf-javame-midlet-example', ':../protobuf-javame-examples'
