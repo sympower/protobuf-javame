@@ -1,0 +1,20 @@
+defaultTasks 'copyMidletExampleZip', 'copyTestsZip', 'copyExamplesZip'
+
+
+task copyMidletExampleZip(type: Copy) {
+	from '../protobuf-javame-midlet-example/build/distributions'
+	into '../protobuf-javame/examples'
+	include '*.zip'
+}				
+
+task copyTestsZip(type: Copy) {
+	from '../protobuf-javame-tests/build/distributions'
+	into '../protobuf-javame/tests'
+	include '*.zip'
+}
+				
+task copyExamplesZip(type: Copy) {
+	from '../protobuf-javame-examples/build/distributions'
+	into '../protobuf-javame/examples'
+	include '*.zip'
+}
