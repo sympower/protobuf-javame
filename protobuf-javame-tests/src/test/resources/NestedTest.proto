@@ -1,0 +1,11 @@
+package net.jarlehansen.protobuf.javame;
+
+option java_package = "net.jarlehansen.protobuf.javame.generated";
+
+message NestedTestObject {
+	required NumberTestObject number = 1;
+}
+
+message NumberTestObject {
+	optional int32 id = 1;
+}

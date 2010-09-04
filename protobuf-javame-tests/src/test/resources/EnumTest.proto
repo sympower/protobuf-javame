@@ -1,0 +1,12 @@
+package net.jarlehansen.protobuf.javame;
+
+option java_package = "net.jarlehansen.protobuf.javame.generated";
+
+message EnumTestObject {
+	enum Color {
+		RED = 1;
+		BLUE = 2;
+	}
+	
+	required Color color = 1;
+}
