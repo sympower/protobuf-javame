@@ -1,8 +1,0 @@
-package this.is.not.used;
-
-option java_package = "net.jarlehansen.protobuf.javame.generated";
-option java_outer_classname = "this.is.not.used";
-
-msage JunitTestMainObject {
-	required int32 id = 1;
-}
