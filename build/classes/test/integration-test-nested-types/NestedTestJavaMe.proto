@@ -1,0 +1,19 @@
+package net.jarlehansen.protobuf.javame;
+
+option java_package = "net.jarlehansen.proto2javame.protobuf.integration.tempfiles.javame";
+
+message ExampleObjectNestedJavaMe {
+	required int32 id = 1;
+	required string name = 2;
+	optional string address = 3;
+	optional Number number = 4;
+	required Identifier identifier = 5;
+}
+
+message Number {
+    optional int32 id = 1;
+}
+
+message Identifier {
+    required int64 id = 1;
+}

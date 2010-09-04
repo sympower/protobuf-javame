@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" tests="13" time="0.092" timestamp="2010-09-04T19:37:41">
+  <properties />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserInvalidPattern" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserPackagePattern" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserJavaPackagePattern" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserJavaOuterClassnamePattern" time="0.0010" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserMessageStartPattern" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserMessageFieldPattern" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserMessageFieldPatternInvalidOrder" time="0.051" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserEnumStartPattern" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserEnumValuePatternInvalidOrder" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserEnumValuePattern" time="0.0010" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserEndPatternInvalidOrder" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserEnumEndPattern" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactoryImplTest" name="testGetProtoParserMessageEndPattern" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

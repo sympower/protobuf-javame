@@ -1,0 +1,11 @@
+net.jarlehansen.proto2javame.Proto2JavaMeTest - The file src/test/generated/net/jarlehansen/protobuf/javame/generated/JunitTestObject.java was delete? true
+Starting protobuf-javame code generation, Sat Sep 04 21:37:40 CEST 2010
+SUCCESS! Created the java-object(s): 
+	-> JunitTestObject
+
+FINISHED, time used: 362ms
+net.jarlehansen.proto2javame.Proto2JavaMeTest - The file src/test/generated/net/jarlehansen/protobuf/javame/generated/JunitTestObject.java was delete? true
+Starting protobuf-javame code generation, Sat Sep 04 21:37:40 CEST 2010
+
+FINISHED, time used: 0ms
+

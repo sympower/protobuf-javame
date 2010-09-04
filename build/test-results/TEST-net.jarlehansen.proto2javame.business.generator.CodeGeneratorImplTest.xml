@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest" tests="5" time="0.072" timestamp="2010-09-04T19:37:40">
+  <properties />
+  <testcase classname="net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest" name="testGenerateJavaSourceCodeValidInput" time="0.011" />
+  <testcase classname="net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest" name="testGenerateJavaSourceCodeTooFewInputValues" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest" name="testGenerateJavaSourceCodeTooManyInputValues" time="0.0010" />
+  <testcase classname="net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest" name="testGenerateJavaSourceCodeInvalidJavaOutInput" time="0.0010" />
+  <testcase classname="net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest" name="testGenerateJavaSourceCodeInvalidProtoLocationInput" time="0.0" />
+  <system-out><![CDATA[net.jarlehansen.proto2javame.business.generator.CodeGeneratorImplTest - The file src/test/generated/net/jarlehansen/protobuf/javame/generated/JunitTestObject.java was delete? false
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

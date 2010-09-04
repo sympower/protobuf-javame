@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" tests="9" time="0.243" timestamp="2010-09-04T19:37:41">
+  <properties />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testGoogleProtobufGeneratedByteArrayToJavaMe" time="0.186" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testUpdatedGoogleProtobufGeneratedByteArrayToJavaMe" time="0.0070" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testGoogleProtobufGeneratedByteArrayToJavaMeInvalidInput" time="0.0020" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testJavaMeGeneratedByteArrayToGoogleProtobuf" time="0.0080" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testUpdatedJavaMeGeneratedByteArrayToGoogleProtocolbuf" time="0.0090" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testWriteDelimitedWithAdditionalContentFromJavaMeObj" time="0.0020" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testWriteWithAdditionalContentFromJavaMeObj" time="0.0020" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testReadDelimitedFromWithAdditionalContentFromJavaSeObj" time="0.0020" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.GoogleProtobufIntegrationTest" name="testReadFromWithAdditionalContentFromJavaSeObj" time="0.0" />
+  <system-out><![CDATA[FieldNumber: 8 - Length delimited (String or ByteString) value: newField
+FieldNumber: 9 - varint (long, int or boolean) value: 241
+FieldNumber: 10 - varint (long, int or boolean) value: 15915125
+FieldNumber: 11 - Length delimited (String or ByteString) value: newField4
+FieldNumber: 12 - float value: 1.90351514E12
+FieldNumber: 13 - varint (long, int or boolean) value: 1
+FieldNumber: 14 - double value: 513.1151
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

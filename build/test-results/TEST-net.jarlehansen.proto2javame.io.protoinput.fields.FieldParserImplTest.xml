@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" tests="8" time="0.029" timestamp="2010-09-04T19:37:41">
+  <properties />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetScopeTagValidInput" time="0.0010" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetScopeTagInvalidInput" time="0.0030" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetTypeTagValidInput" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetTypeTagEnumInput" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetTypeTagCustomInput" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetIdTagValidInput" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetIdTagInvalidInputTag" time="0.0080" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.fields.FieldParserImplTest" name="testGetIdTagDuplicateIdNumber" time="0.0010" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

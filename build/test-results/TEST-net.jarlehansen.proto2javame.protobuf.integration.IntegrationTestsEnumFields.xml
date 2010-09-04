@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.protobuf.integration.IntegrationTestsEnumFields" tests="2" time="0.022" timestamp="2010-09-04T19:37:41">
+  <properties />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.IntegrationTestsEnumFields" name="testEnumIntegrationJavaMe" time="0.018" />
+  <testcase classname="net.jarlehansen.proto2javame.protobuf.integration.IntegrationTestsEnumFields" name="testEnumIntegrationJavaSe" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

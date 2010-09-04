@@ -1,0 +1,22 @@
+package net.jarlehansen.proto2javame;
+
+option java_package = "net.jarlehansen.proto2javame.protobuf.integration.tempfiles.javase";
+option java_outer_classname = "UpdatedIntegrationTestObjectProto";
+
+message UpdatedIntegrationTestObject {
+	required int32 id = 1;
+	required int64 longNumber = 2;
+	repeated string name = 3;
+	required bytes bytesObject = 4;
+	required float floatObject = 5;
+	optional bool boolObj = 6;
+	required double amount = 7;
+
+	required bytes newField = 8;
+	required int32 newField2 = 9;
+	required int64 newField3 = 10;
+	required string newField4 = 11;
+	required float newField5 = 12;
+	required bool newField6 = 13;
+	required double newField7 = 14;
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.generated.sourcecode.tests.bytearray.ReadAndWriteByteArrayTest" tests="4" time="0.011" timestamp="2010-09-04T19:37:40">
+  <properties />
+  <testcase classname="net.jarlehansen.proto2javame.generated.sourcecode.tests.bytearray.ReadAndWriteByteArrayTest" name="testWriteToNewByteArrayValidInput" time="0.0020" />
+  <testcase classname="net.jarlehansen.proto2javame.generated.sourcecode.tests.bytearray.ReadAndWriteByteArrayTest" name="testWriteToNewByteArrayInvalidInput" time="0.0010" />
+  <testcase classname="net.jarlehansen.proto2javame.generated.sourcecode.tests.bytearray.ReadAndWriteByteArrayTest" name="testWriteToByteArray" time="0.0" />
+  <testcase classname="net.jarlehansen.proto2javame.generated.sourcecode.tests.bytearray.ReadAndWriteByteArrayTest" name="testParseFromByteArray" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

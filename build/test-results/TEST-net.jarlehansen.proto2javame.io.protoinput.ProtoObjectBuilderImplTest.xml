@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="jarle-hansens-macbook-pro.local" name="net.jarlehansen.proto2javame.io.protoinput.ProtoObjectBuilderImplTest" tests="2" time="0.0050" timestamp="2010-09-04T19:37:41">
+  <properties />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.ProtoObjectBuilderImplTest" name="testValidateAndSaveProtoData" time="0.0010" />
+  <testcase classname="net.jarlehansen.proto2javame.io.protoinput.ProtoObjectBuilderImplTest" name="testValidateAndSaveProtoDataInvalidProtoLocation" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
