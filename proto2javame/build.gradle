@@ -58,10 +58,9 @@ task runFindbugs << {
 
 
 def protobufJavaMeIntegrationList = [
-        // Creates the Java ME source code files for unit tests
         'src/test/resources/integration-test/IntegrationTestJavaMe.proto',
-        // Creates the updated Java ME source code files for unit tests
         'src/test/resources/integration-test/UpdatedIntegrationTestJavaMe.proto',
+        'src/test/resources/integration-test/NoSpaceTest.proto',
         'src/test/resources/integration-test-enums/EnumTestJavaMe.proto',
         'src/test/resources/integration-test-nested-types/NestedTestJavaMe.proto',
         'src/test/resources/integration-test-nested-types/NestedListTestJavaMe.proto',
