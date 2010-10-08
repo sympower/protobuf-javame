@@ -18,3 +18,7 @@ task copyExamplesZip(type: Copy) {
 	into '../protobuf-javame/examples'
 	include '*.zip'
 }
+
+task copyAll(dependsOn: [copyMidletExampleZip, copyTestsZip, copyExamplesZip]) {
+	println 'All copy tasks executed'
+}
