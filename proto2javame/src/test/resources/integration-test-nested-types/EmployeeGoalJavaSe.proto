@@ -1,0 +1,25 @@
+package net.jarlehansen.protobuf.javame;
+
+option java_package = "net.jarlehansen.proto2javame.protobuf.integration.tempfiles.javase";
+option java_outer_classname = "EmployeeGoal";
+
+message EmployeeGoalJavaSe {
+    optional float actualValue = 1;
+    repeated  EmployeeGoalCommentJavaSe employeeGoalComments = 2;
+    optional int32 criticality = 3;
+    optional int64 dueDate = 4;
+    optional string key = 5;
+    optional string name = 6;
+    optional float percentCompleted = 7;
+    optional float percentProgress = 8;
+    optional int64 startDate = 9;
+    optional string status = 10;
+    optional float targetValue = 11;
+    optional string type = 12;
+}
+
+message EmployeeGoalCommentJavaSe {
+    optional string author = 1;
+    optional string comment = 2;
+    optional int64 createDate = 3;
+}
