@@ -5,3 +5,4 @@ protoc --java_out=src/test/java src/test/resources/integration-test/UpdatedInteg
 protoc --java_out=src/test/java src/test/resources/integration-test-enums/EnumTestJavaSe.proto
 protoc --java_out=src/test/java src/test/resources/integration-test-nested-types/NestedTestJavaSe.proto
 protoc --java_out=src/test/java src/test/resources/integration-test-nested-types/NestedListTestJavaSe.proto
+protoc --java_out=src/test/java src/test/resources/integration-test-nested-types/EmployeeGoalJavaSe.proto

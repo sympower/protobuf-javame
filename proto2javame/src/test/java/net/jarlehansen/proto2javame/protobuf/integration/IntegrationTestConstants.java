@@ -91,4 +91,25 @@ enum IntegrationTestConstants {
 
         return NestedListTestJavaSe.ExampleObjectNestedListJavaSe.newBuilder().setId(1325).addPersons(person1).addPersons(person2).build();
     }
+
+
+    static EmployeeGoalJavaMe createEmployeeExampleObjectJavaMe() {
+        EmployeeGoalCommentJavaMe comment = EmployeeGoalCommentJavaMe.newBuilder().setAuthor(NAME_1)
+                .setComment("comment").setCreateDate(1351L).build();
+
+        return EmployeeGoalJavaMe.newBuilder().addElementEmployeeGoalComments(comment)
+                .setActualValue(24124F).setCriticality(123).setDueDate(235235).setKey("key").setName(NAME_2)
+                .setPercentCompleted(32532F).setPercentProgress(235325F).setStartDate(12412421).setStatus("status")
+                .setTargetValue(12412124F).setType("type").build();
+    }
+
+    static EmployeeGoal.EmployeeGoalJavaSe createEmployeeExampleObjectJavaSe() {
+        EmployeeGoal.EmployeeGoalCommentJavaSe comment = EmployeeGoal.EmployeeGoalCommentJavaSe.newBuilder()
+                .setComment("comment").setAuthor(NAME_1).build();
+
+        return EmployeeGoal.EmployeeGoalJavaSe.newBuilder().addEmployeeGoalComments(comment).setActualValue(24124F)
+                .setCriticality(123).setDueDate(235235).setKey("key").setName(NAME_2).setPercentCompleted(32532F)
+                .setPercentProgress(235325F).setStartDate(12412421).setStatus("status").setTargetValue(12412124F)
+                .setType("type").build();
+    }
 }

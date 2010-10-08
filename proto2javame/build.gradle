@@ -65,8 +65,8 @@ def protobufJavaMeIntegrationList = [
         'src/test/resources/integration-test-nested-types/NestedTestJavaMe.proto',
         'src/test/resources/integration-test-nested-types/NestedListTestJavaMe.proto',
         'src/test/resources/integration-test/JunitTestMain.proto',
-        'src/test/resources/integration-test/JUnitTestLarge.proto'
-
+        'src/test/resources/integration-test/JUnitTestLarge.proto',
+        'src/test/resources/integration-test-nested-types/EmployeeGoalJavaMe.proto'
 ];
 
 
