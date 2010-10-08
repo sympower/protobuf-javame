@@ -19,10 +19,27 @@ dependencies {
 	testCompile fileTree(dir: lib, includes: ['*.jar'])
 }
 
-task packageZipFile(type: Zip) << {
-	// source and resources folder
-	from 'src'
-	prefix = 'src'
+tempFolder = 'build/temp-files/'
+
+task createFolderStructure << {
+	new File(tempFolder).mkdirs()
+	
+	copy {
+		from 'src'
+		include '**/*.proto'
+		include '**/*.java'
+		into tempFolder + 'src'
+	}
+	
+	copy {
+		from 'lib'
+		include('**/*.jar')
+		into tempFolder + 'lib'
+	}
+}
+
+task packageZipFile(dependsOn: createFolderStructure, type: Zip) {
+	from tempFolder
 }
 
 task generateTestFiles << {
