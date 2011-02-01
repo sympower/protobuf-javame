@@ -52,6 +52,9 @@ public class ComputeSizeUtil {
 	}
 	
 	public static int computeListSize(final int id, final int dataType, final Vector list) {
+	    if (list == null)
+	        return 0;
+	    
 		int listSize = 0;
 
 		switch (dataType) {

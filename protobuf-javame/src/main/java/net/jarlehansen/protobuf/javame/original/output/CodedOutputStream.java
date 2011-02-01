@@ -127,6 +127,9 @@ public final class CodedOutputStream {
 
 	/** Write a {@code string} field, including tag, to the stream. */
 	public void writeString(int fieldNumber, String value) throws IOException {
+	    if (value == null)
+            return;
+	    
 		writeTag(fieldNumber, WireFormat.WIRETYPE_LENGTH_DELIMITED);
 		// Unfortunately there does not appear to be any way to tell Java to
 		// encode
@@ -140,6 +143,9 @@ public final class CodedOutputStream {
 
 	/** Write a {@code bytes} field, including tag, to the stream. */
 	public void writeBytes(int fieldNumber, ByteString value) throws IOException {
+	    if (value == null)
+            return;
+	    
 		writeTag(fieldNumber, WireFormat.WIRETYPE_LENGTH_DELIMITED);
 		byte[] bytes = value.toByteArray();
 		writeRawVarint32(bytes.length);
@@ -206,6 +212,9 @@ public final class CodedOutputStream {
 	 * string} field, including tag.
 	 */
 	public static int computeStringSize(int fieldNumber, String value) {
+	    if (value == null)
+	        return 0;
+	    
 		try {
 			byte[] bytes = value.getBytes("UTF-8");
 			return computeTagSize(fieldNumber) + computeRawVarint32Size(bytes.length) + bytes.length;
@@ -219,6 +228,9 @@ public final class CodedOutputStream {
 	 * bytes} field, including tag.
 	 */
 	public static int computeBytesSize(int fieldNumber, ByteString value) {
+	    if (value == null)
+            return 0;
+	    
 		return computeTagSize(fieldNumber) + computeRawVarint32Size(value.size()) + value.size();
 	}
 
@@ -256,11 +268,17 @@ public final class CodedOutputStream {
 
 	/** Write an array of bytes. */
 	private void writeRawBytes(byte[] value) throws IOException {
+	    if (value == null)
+            return;
+	    
 		writeRawBytes(value, 0, value.length);
 	}
 
 	/** Write part of an array of bytes. */
 	private void writeRawBytes(byte[] value, int offset, int length) throws IOException {
+	    if (value == null)
+            return;
+	    
 		if (limit - position >= length) {
 			// We have room in the current buffer.
 			System.arraycopy(value, offset, buffer, position, length);

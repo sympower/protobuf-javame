@@ -2,6 +2,7 @@ package net.jarlehansen.protobuf.javame.input;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Vector;
 
 import net.jarlehansen.protobuf.javame.ByteString;
 import net.jarlehansen.protobuf.javame.input.taghandler.UnknownTagHandler;
@@ -33,7 +34,7 @@ public class InputReader {
 		codedInput = CodedInputStream.newInstance(input);
 		this.unknownTagHandler = unknownTagHandler;
 	}
-
+	
 	public int readInt(final int fieldNumber) throws IOException {
 		return codedInput.readInt32();
 	}
@@ -94,5 +95,10 @@ public class InputReader {
 		}
 
 		unknownTagHandler.unknownTag(stringBuffer.toString());
+	}
+	
+	public Vector readMessages(int fieldNumber) throws IOException
+	{
+		return codedInput.readMessages(fieldNumber);
 	}
 }

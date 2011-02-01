@@ -79,6 +79,9 @@ public class OutputWriter {
 	 * @throws IOException
 	 */
 	public void writeList(final int id, final int dataType, final Vector list) throws IOException {
+	    if (list == null)
+	        return;
+	    
 		switch (dataType) {
 		case SupportedDataTypes.DATA_TYPE_BYTESTRING:
 			for (int i = 0; i < list.size(); i++) {

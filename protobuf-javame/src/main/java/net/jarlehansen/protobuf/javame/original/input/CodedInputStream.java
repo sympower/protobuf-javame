@@ -35,6 +35,7 @@ import java.io.InputStream;
 import java.util.Vector;
 
 import net.jarlehansen.protobuf.javame.ByteString;
+import net.jarlehansen.protobuf.javame.original.WireFormat;
 
 /**
  * Reads and decodes protocol message fields.
@@ -113,9 +114,52 @@ public final class CodedInputStream {
 	public boolean readBool() throws IOException {
 		return readRawVarint32() != 0;
 	}
-	
+	 
 	public int readMessageStart() throws IOException {
-		return readRawVarint32();
+		int rawVarint32 = readRawVarint32();
+		return rawVarint32;
+	}
+	
+	/**
+	 * Use Breadth First Search (BFS) Algorithm to get all nested messages
+	 * @param fieldNumber
+	 * @return
+	 * @throws IOException
+	 */
+	public Vector readMessages(int currentFieldNumber) throws IOException
+	{
+		Vector chunks = new Vector();
+		int eachChunkSize = readRawVarint32(); 
+		byte[] bChunk = new byte[eachChunkSize];
+		System.arraycopy(buffer, bufferPos, bChunk, 0, eachChunkSize);
+		//chunks.add(bChunk);//RIM do not support add()
+		chunks.addElement(bChunk);
+		bufferPos = bufferPos + eachChunkSize;
+		int lastPos = bufferPos;
+		if(bufferPos == bufferSize)
+		{
+			return chunks;
+		}
+		int[] tmp = readInnerRawVarint32(lastPos);
+		int nextFieldNumber = tmp[0];
+		while(WireFormat.getTagFieldNumber(nextFieldNumber) == currentFieldNumber)
+		{
+			bufferPos = tmp[1];
+			eachChunkSize = readRawVarint32();
+			byte[] eachChunk = new byte[eachChunkSize]; //TODO check : bChunk = new byte[eachChunkSize];
+			System.arraycopy(buffer, bufferPos, eachChunk, 0, eachChunkSize);
+			//chunks.add(eachChunk);//RIM do not support add()
+			chunks.addElement(eachChunk);
+			bufferPos = bufferPos + eachChunkSize;
+			if(bufferPos == bufferSize)
+			{
+			    break;
+			}
+			lastPos = bufferPos;
+			tmp = readInnerRawVarint32(lastPos);
+			nextFieldNumber = tmp[0];
+		}
+		return chunks;
 	}
 	
 	/** Read a {@code string} field value from the stream. */
@@ -186,8 +230,58 @@ public final class CodedInputStream {
 		throw InvalidProtocolBufferException.malformedVarint();
 	}
 
+    /**
+     * Read Int value without moving buffer position
+     * @param lastPos : the last position in buffer array
+     * @return
+     * @throws IOException
+     */
+	private int[] readInnerRawVarint32(int lastPos) throws IOException 
+	{
+		byte tmp = readRawByte(lastPos);
+		lastPos++;
+		if (tmp >= 0) {
+			return new int[]{tmp, lastPos};
+		}
+		int result = tmp & 0x7f;
+		if ((tmp = readRawByte(lastPos)) >= 0) {
+			lastPos++;
+			result |= tmp << 7;
+		} else {
+			result |= (tmp & 0x7f) << 7;
+			if ((tmp = readRawByte(lastPos)) >= 0) {
+				lastPos++;
+				result |= tmp << 14;
+			} else {
+				result |= (tmp & 0x7f) << 14;
+				if ((tmp = readRawByte(lastPos)) >= 0) {
+					lastPos++;
+					result |= tmp << 21;
+				} else {
+					result |= (tmp & 0x7f) << 21;
+					result |= (tmp = readRawByte(lastPos)) << 28;
+					lastPos++;
+					if (tmp < 0) {
+						// Discard upper 32 bits.
+						for (int i = 0; i < 5; i++) {
+							if (readRawByte(lastPos) >= 0){
+								lastPos++;
+								return new int[]{tmp, lastPos};
+							}
+						}
+						throw InvalidProtocolBufferException.malformedVarint();
+					}
+				}
+			}
+		}
+		return new int[]{result, lastPos};
+	}
+	
+	private byte readRawByte(int startPos) throws IOException {
+		return buffer[startPos];
+	}
 	// =================================================================
-
+	
 	/**
 	 * Read a raw Varint from the stream. If larger than 32 bits, discard the
 	 * upper bits.
@@ -271,7 +365,7 @@ public final class CodedInputStream {
 	private int bufferPos;
 	private InputStream input;
 	private int lastTag = 0;
-
+	
 	/**
 	 * The total number of bytes read before the current buffer. The total bytes
 	 * read up to the current position can be computed as
