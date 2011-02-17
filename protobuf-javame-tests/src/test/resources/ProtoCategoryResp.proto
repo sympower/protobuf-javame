@@ -1,0 +1,43 @@
+package test.proto;
+
+option java_package = "net.jarlehansen.protobuf.javame.recursive.generated";
+
+message ProtoCategoryResp {
+
+    required int32 type = 1;
+    optional ProtoCategory cat = 2;
+    repeated ProtoInventory inv = 3;
+    optional ProtoMisc misc = 4;
+}
+
+message ProtoCategory {
+
+    required int32 id = 1;
+    required string name = 2;
+    repeated ProtoCategory category = 3;
+}
+
+message ProtoInventory {
+
+    required int32 id = 1;
+    optional ProtoProduct product = 2;
+    optional ProtoData data = 3;
+}
+
+message ProtoProduct {
+
+    required int32 id = 1;
+    required string name = 2;
+}
+
+message ProtoData {
+
+    required int32 data = 1;
+}
+
+message ProtoMisc {
+
+    required string memo = 1;
+}
+
+
