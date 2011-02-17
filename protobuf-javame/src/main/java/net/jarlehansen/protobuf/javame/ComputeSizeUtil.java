@@ -52,54 +52,53 @@ public class ComputeSizeUtil {
 	}
 	
 	public static int computeListSize(final int id, final int dataType, final Vector list) {
-	    if (list == null)
-	        return 0;
-	    
 		int listSize = 0;
-
-		switch (dataType) {
-		case SupportedDataTypes.DATA_TYPE_BYTESTRING:
-			for (int i = 0; i < list.size(); i++) {
-				listSize += computeByteStringSize(id, (ByteString) list.elementAt(i));
+		
+		if(list != null) {
+			switch (dataType) {
+				case SupportedDataTypes.DATA_TYPE_BYTESTRING:
+					for (int i = 0; i < list.size(); i++) {
+						listSize += computeByteStringSize(id, (ByteString) list.elementAt(i));
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_DOUBLE:
+					for (int i = 0; i < list.size(); i++) {
+						listSize += computeDoubleSize(id, ((Double) list.elementAt(i)).doubleValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_FLOAT:
+					for (int i = 0; i < list.size(); i++) {
+						listSize += computeFloatSize(id, ((Float) list.elementAt(i)).floatValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_INT:
+					for (int i = 0; i < list.size(); i++) {
+						listSize += computeIntSize(id, ((Integer) list.elementAt(i)).intValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_LONG:
+					for (int i = 0; i < list.size(); i++) {
+						listSize += computeLongSize(id, ((Long) list.elementAt(i)).longValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_STRING:
+					for (int i = 0; i < list.size(); i++) {
+						listSize += computeStringSize(id, (String) list.elementAt(i));
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_BOOLEAN:
+					for (int i = 0; i < list.size(); i++) {
+						listSize += computeBooleanSize(id, ((Boolean) list.elementAt(i)).booleanValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_CUSTOM:
+					for(int i = 0; i < list.size(); i++) {
+						listSize += computeMessageSize(id, ((CustomListWriter)list.elementAt(i)).computeSize());
+					}
+					break;
+				default:
+					throw new IllegalArgumentException("The data type was not found, the id used was " + dataType);
 			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_DOUBLE:
-			for (int i = 0; i < list.size(); i++) {
-				listSize += computeDoubleSize(id, ((Double) list.elementAt(i)).doubleValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_FLOAT:
-			for (int i = 0; i < list.size(); i++) {
-				listSize += computeFloatSize(id, ((Float) list.elementAt(i)).floatValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_INT:
-			for (int i = 0; i < list.size(); i++) {
-				listSize += computeIntSize(id, ((Integer) list.elementAt(i)).intValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_LONG:
-			for (int i = 0; i < list.size(); i++) {
-				listSize += computeLongSize(id, ((Long) list.elementAt(i)).longValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_STRING:
-			for (int i = 0; i < list.size(); i++) {
-				listSize += computeStringSize(id, (String) list.elementAt(i));
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_BOOLEAN:
-			for (int i = 0; i < list.size(); i++) {
-				listSize += computeBooleanSize(id, ((Boolean) list.elementAt(i)).booleanValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_CUSTOM:
-			for(int i = 0; i < list.size(); i++) {
-				listSize += computeMessageSize(id, ((CustomListWriter)list.elementAt(i)).computeSize());
-			}
-			break;
-		default:
-			throw new IllegalArgumentException("The data type was not found, the id used was " + dataType);
 		}
 
 		return listSize;

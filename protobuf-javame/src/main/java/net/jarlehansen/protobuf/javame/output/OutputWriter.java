@@ -79,55 +79,54 @@ public class OutputWriter {
 	 * @throws IOException
 	 */
 	public void writeList(final int id, final int dataType, final Vector list) throws IOException {
-	    if (list == null)
-	        return;
-	    
-		switch (dataType) {
-		case SupportedDataTypes.DATA_TYPE_BYTESTRING:
-			for (int i = 0; i < list.size(); i++) {
-				writeByteString(id, (ByteString) list.elementAt(i));
+	    if(list != null) {
+			switch (dataType) {
+				case SupportedDataTypes.DATA_TYPE_BYTESTRING:
+					for (int i = 0; i < list.size(); i++) {
+						writeByteString(id, (ByteString) list.elementAt(i));
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_DOUBLE:
+					for (int i = 0; i < list.size(); i++) {
+						writeDouble(id, ((Double) list.elementAt(i)).doubleValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_FLOAT:
+					for (int i = 0; i < list.size(); i++) {
+						writeFloat(id, ((Float) list.elementAt(i)).floatValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_INT:
+					for (int i = 0; i < list.size(); i++) {
+						writeInt(id, ((Integer) list.elementAt(i)).intValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_LONG:
+					for (int i = 0; i < list.size(); i++) {
+						writeLong(id, ((Long) list.elementAt(i)).longValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_STRING:
+					for (int i = 0; i < list.size(); i++) {
+						writeString(id, (String) list.elementAt(i));
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_BOOLEAN:
+					for (int i = 0; i < list.size(); i++) {
+						writeBoolean(id, ((Boolean) list.elementAt(i)).booleanValue());
+					}
+					break;
+				case SupportedDataTypes.DATA_TYPE_CUSTOM:
+					for(int i = 0; i < list.size(); i++) {
+						CustomListWriter customList = (CustomListWriter)list.elementAt(i);
+						writeMessage(id, customList.computeSize());
+						customList.writeFields(this);
+					}
+					break;
+				default:
+					throw new IllegalArgumentException("The data type was not found, the id used was " + dataType);
 			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_DOUBLE:
-			for (int i = 0; i < list.size(); i++) {
-				writeDouble(id, ((Double) list.elementAt(i)).doubleValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_FLOAT:
-			for (int i = 0; i < list.size(); i++) {
-				writeFloat(id, ((Float) list.elementAt(i)).floatValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_INT:
-			for (int i = 0; i < list.size(); i++) {
-				writeInt(id, ((Integer) list.elementAt(i)).intValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_LONG:
-			for (int i = 0; i < list.size(); i++) {
-				writeLong(id, ((Long) list.elementAt(i)).longValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_STRING:
-			for (int i = 0; i < list.size(); i++) {
-				writeString(id, (String) list.elementAt(i));
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_BOOLEAN:
-			for (int i = 0; i < list.size(); i++) {
-				writeBoolean(id, ((Boolean) list.elementAt(i)).booleanValue());
-			}
-			break;
-		case SupportedDataTypes.DATA_TYPE_CUSTOM:
-			for(int i = 0; i < list.size(); i++) {
-				CustomListWriter customList = (CustomListWriter)list.elementAt(i);
-				writeMessage(id, customList.computeSize());
-				customList.writeFields(this);
-			}
-			break;
-		default:
-			throw new IllegalArgumentException("The data type was not found, the id used was " + dataType);
-		}
+	    }
 	}
 
 	public void writeData() throws IOException {

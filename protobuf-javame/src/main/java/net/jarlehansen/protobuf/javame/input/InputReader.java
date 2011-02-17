@@ -97,8 +97,7 @@ public class InputReader {
 		unknownTagHandler.unknownTag(stringBuffer.toString());
 	}
 	
-	public Vector readMessages(int fieldNumber) throws IOException
-	{
+	public Vector readMessages(int fieldNumber) throws IOException {
 		return codedInput.readMessages(fieldNumber);
 	}
 }
