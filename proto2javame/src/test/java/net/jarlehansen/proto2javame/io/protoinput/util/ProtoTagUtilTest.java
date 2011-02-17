@@ -4,6 +4,7 @@ import net.jarlehansen.proto2javame.io.exception.ProtoFileValidationException;
 import net.jarlehansen.proto2javame.testutils.TestConstants;
 import org.junit.Test;
 
+
 /**
  * @author hansjar@gmail.com Jarle Hansen
  */
