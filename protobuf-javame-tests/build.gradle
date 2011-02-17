@@ -62,4 +62,9 @@ task generateTestFiles << {
 		arg(value: '--java_out=src/test/java')
 		arg(value: 'src/test/resources/NestedTest.proto')
 	}
+	
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
+		arg(value: '--java_out=src/test/java')
+		arg(value: 'src/test/resources/ProtoCategoryResp.proto')
+	}
 }
