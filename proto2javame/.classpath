@@ -17,4 +17,16 @@
   <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/test/mockito-core-1.8.5.jar" exported="true"/>
   <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/build/guice-2.0.jar" exported="true"/>
   <classpathentry kind="lib" path="/Users/jarle/workspace/workspace-idea/proto2javame/lib/build/aopalliance.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/commons-collections-3.2.1.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/protobuf-javame-1.1.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/protobuf-java-2.3.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/unitils-2.4.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/build/guice-2.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/mockito-core-1.8.5.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/junit-4.8.1.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/commons-lang-2.5.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/build/aopalliance.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/objenesis-1.2.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/ognl-3.0.jar" exported="true"/>
+  <classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-idea/proto2javame/lib/test/jmock-1.2.0.jar" exported="true"/>
 </classpath>

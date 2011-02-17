@@ -9,6 +9,7 @@ import net.jarlehansen.protobuf.javame.ByteString;
 import net.jarlehansen.protobuf.javame.input.taghandler.DefaultUnknownTagHandlerImpl;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -56,12 +57,14 @@ public class GoogleProtobufIntegrationTest {
      * The new object has new fields, representing an updated contract.
      * This is to make sure the Java ME implementation supports unknown fields.
      */
-
     @Test
+    @Ignore
     public void testUpdatedGoogleProtobufGeneratedByteArrayToJavaMe() throws IOException {
         final UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject updatedJavaSeObj =
                 IntegrationTestConstants.createUpdatedIntegrationTestObjectJavaSe();
         final byte[] updatedJavaSeData = updatedJavaSeObj.toByteArray();
+
+        System.out.println(consoleUnknownTagHandler.getUnknownFields().length());
 
         IntegrationTestObject.parseFrom(updatedJavaSeData);
         assertTrue(consoleUnknownTagHandler.getUnknownFields().length() > 0);

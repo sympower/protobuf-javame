@@ -10,16 +10,18 @@
       <entry name=".+\.(gif|png|jpeg|jpg)" />
     </resourceExtensions>
     <wildcardResourcePatterns>
-      <entry name="?*.properties" />
-      <entry name="?*.xml" />
-      <entry name="?*.gif" />
-      <entry name="?*.png" />
-      <entry name="?*.jpeg" />
-      <entry name="?*.jpg" />
       <entry name="?*.html" />
+      <entry name="?*.properties" />
+      <entry name="?*.jpeg" />
+      <entry name="?*.gif" />
+      <entry name="!?*.groovy" />
       <entry name="?*.dtd" />
+      <entry name="?*.jpg" />
+      <entry name="?*.png" />
       <entry name="?*.tld" />
+      <entry name="!?*.java" />
       <entry name="?*.ftl" />
+      <entry name="?*.xml" />
     </wildcardResourcePatterns>
     <annotationProcessing enabled="false" useClasspath="true" />
   </component>
@@ -30,8 +32,11 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="GradleSettings">
-    <option name="SDK_HOME" value="$PROJECT_DIR$/../../../../tools/gradle/gradle-0.9-rc-1" />
+    <option name="SDK_HOME" value="$USER_HOME$/tools/gradle/gradle-0.9-rc-1" />
   </component>
   <component name="IdProvider" IDEtalkID="24B53B0E52040F255348DD7FB7D483B9" />
   <component name="InspectionProjectProfileManager">
@@ -269,6 +274,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/proto2javame.iml" filepath="$PROJECT_DIR$/proto2javame.iml" />
     </modules>
+  </component>
+  <component name="ProjectResources">
+    <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
