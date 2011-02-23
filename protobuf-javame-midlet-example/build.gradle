@@ -2,9 +2,8 @@ defaultTasks 'clean', 'packageZipFile'
 
 apply plugin: 'java'
 
-version=proto2javameVersion
-
 tempFolder = 'build/temp-files/'
+
 
 task createFolderStructure << {
 	new File(tempFolder).mkdirs()
@@ -27,11 +26,15 @@ task packageZipFile(dependsOn: createFolderStructure, type: Zip) {
 	from tempFolder
 }
 
+
 // Generates the Java source code from the proto-file used in the examples
 task generateExamplesFile << {
 	print 'generating Java source code used in the examples'
 	
-	ant.java(jar: 'lib/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
+	protobufVersion=proto2javameVersion
+	proto2javameFile = '../protobuf-javame-multiproject/shared-lib/proto2javame-' + protobufVersion + '.jar'
+	
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/main/generated')
 		arg(value: 'src/main/resources/ExampleProtoFile.proto')
 	}
