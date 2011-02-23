@@ -3,8 +3,7 @@ defaultTasks 'clean', 'test', 'packageZipFile'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-lib = 'lib'
-proto2javameFile = lib + '/generate/proto2javame-' + protobufVersion + '.jar'
+proto2javameFile = '../protobuf-javame-multiproject/shared-lib/proto2javame-' + protobufVersion + '.jar'
 
 version=protobufVersion
 
@@ -13,10 +12,10 @@ repositories {
 }
 
 dependencies {
-	testCompile group: 'junit', name: 'junit', version: '4.7'
-	testCompile group: 'org.unitils', name: 'unitils', version: '2.4'
-	testCompile group: 'org.mockito', name: 'mockito-core', version: '1.8.1'
-	testCompile fileTree(dir: lib, includes: ['*.jar'])
+	compile group: 'junit', name: 'junit', version: '4.7'
+	compile group: 'org.unitils', name: 'unitils', version: '2.4'
+	compile group: 'org.mockito', name: 'mockito-core', version: '1.8.1'
+	testCompile fileTree(dir: '../protobuf-javame-multiproject/shared-lib/', includes: ['*.jar'])
 }
 
 tempFolder = 'build/temp-files/'
