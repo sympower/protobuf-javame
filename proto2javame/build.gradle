@@ -74,7 +74,7 @@ def protobufJavaMeIntegrationList = [
 // To generate the Java SE source please use the script (file is inside the script folder)
 task generateTestFilesJavaMe << {
   protobufJavaMeIntegrationList.each {protoFile ->
-    print 'proto file: ' + protoFile
+    println 'proto file: ' + protoFile
 
     ant.java(jar: libDir + '/generate/' + jarFileName + '-' + jarVersion + '.jar', fork: 'true', failonerror: 'true') {
       arg(value: '--java_out=src/test/java')

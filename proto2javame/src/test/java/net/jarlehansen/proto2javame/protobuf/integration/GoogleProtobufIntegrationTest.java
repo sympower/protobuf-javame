@@ -58,7 +58,6 @@ public class GoogleProtobufIntegrationTest {
      * This is to make sure the Java ME implementation supports unknown fields.
      */
     @Test
-    @Ignore
     public void testUpdatedGoogleProtobufGeneratedByteArrayToJavaMe() throws IOException {
         final UpdatedIntegrationTestObjectProto.UpdatedIntegrationTestObject updatedJavaSeObj =
                 IntegrationTestConstants.createUpdatedIntegrationTestObjectJavaSe();
@@ -67,6 +66,7 @@ public class GoogleProtobufIntegrationTest {
         System.out.println(consoleUnknownTagHandler.getUnknownFields().length());
 
         IntegrationTestObject.parseFrom(updatedJavaSeData);
+
         assertTrue(consoleUnknownTagHandler.getUnknownFields().length() > 0);
     }
 
