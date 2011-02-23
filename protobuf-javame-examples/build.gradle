@@ -1,12 +1,17 @@
 defaultTasks 'clean', 'packageZipFile'
 
 apply plugin: 'java'
-
-version=proto2javameVersion
+apply plugin: 'eclipse'
 
 dependencies {
 	compile fileTree(dir: 'lib', includes: ['*.jar'])
+	compile fileTree(dir: '../protobuf-javame-multiproject/shared-lib/', includes: ['*.jar'])
 }
+
+compileJava.doFirst {
+	sourceSets.main.java.srcDirs = ['src/main/java', 'src/main/generated']
+}
+
 
 tempFolder = 'build/temp-files/'
 
@@ -31,21 +36,25 @@ task packageZipFile(dependsOn: createFolderStructure, type: Zip) {
 	from tempFolder
 }
 
+
+protobufVersion=proto2javameVersion
+proto2javameFile = '../protobuf-javame-multiproject/shared-lib/proto2javame-' + protobufVersion + '.jar'
+
 // Generates the Java source code from the proto-file used in the examples
 task generateExamplesFile << {
 	print 'generating Java source code used in the examples'
 	
-	ant.java(jar: 'lib/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/main/generated')
 		arg(value: 'src/main/resources/ExampleProtoFile.proto')
 	}
 	
-	ant.java(jar: 'lib/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/main/generated')
 		arg(value: 'src/main/resources/ExampleEnumProtoFile.proto')
 	}
 	
-	ant.java(jar: 'lib/generate/proto2javame-' + proto2javameVersion + '.jar', fork: 'true', failonerror: 'true') {
+	ant.java(jar: proto2javameFile, fork: 'true', failonerror: 'true') {
 		arg(value: '--java_out=src/main/generated')
 		arg(value: 'src/main/resources/ExampleNestedProtoFile.proto')
 	}
