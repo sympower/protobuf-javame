@@ -27,11 +27,6 @@ task createFolderStructure << {
 	}
 	
 	copy {
-		from 'doc'
-		into tempFolder + 'doc'
-	}
-	
-	copy {
 		from 'examples'
 		into tempFolder + 'examples'
 	}
