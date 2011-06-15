@@ -3,9 +3,9 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/generated"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-eclipse/javame/protobuf-javame-multiproject/shared-lib/proto2javame-1.1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-eclipse/javame/protobuf-javame-examples/lib/protobuf-java-2.3.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-eclipse/javame/protobuf-javame-multiproject/shared-lib/protobuf-javame-1.1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
 	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-eclipse/javame/protobuf-javame-multiproject/shared-lib/protobuf-javame-1.1.1.jar" exported="true"/>
+	<classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-eclipse/javame/protobuf-javame-examples/lib/protobuf-java-2.3.0.jar" exported="true"/>
+	<classpathentry kind="lib" path="/Users/jarlehansen/Documents/workspace/workspace-eclipse/javame/protobuf-javame-multiproject/shared-lib/proto2javame-1.1.1.jar" exported="true"/>
 </classpath>
