@@ -51,6 +51,7 @@ public final class ProtoObjectBuilderImpl implements ProtoObjectBuilder {
             String line = reader.readLine();
 
             while (line != null) {
+                line = removeComment(line);
                 parseLine(line);
 
                 line = reader.readLine();
@@ -98,6 +99,28 @@ public final class ProtoObjectBuilderImpl implements ProtoObjectBuilder {
                 }
             }
         }
+    }
+
+    private String removeComment(final String line) {
+
+        String uncommentedLine;
+        if(line.contains("//")) {
+            uncommentedLine = line.substring(0, (line.indexOf("//")));
+        } else {
+            uncommentedLine = line;
+        }
+
+        uncommentedLine = removeTrailingWhitespaces(uncommentedLine);
+
+        return uncommentedLine;
+    }
+
+    private String removeTrailingWhitespaces(String uncommentedLine) {
+        while(uncommentedLine.endsWith(" ")) {
+           uncommentedLine = uncommentedLine.substring(0, uncommentedLine.length() - 1);
+       }
+
+        return uncommentedLine;
     }
 
     private void parseLine(final String line) {

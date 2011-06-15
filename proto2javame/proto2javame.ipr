@@ -77,7 +77,9 @@
         <inspection_tool class="ClassWithTooManyTransitiveDependents" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="limit" value="35" />
         </inspection_tool>
-        <inspection_tool class="ConfusingElse" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="ConfusingElse" enabled="true" level="WARNING" enabled_by_default="true">
+          <option name="reportWhenNoStatementFollow" value="false" />
+        </inspection_tool>
         <inspection_tool class="ConstructorCount" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="m_limit" value="5" />
         </inspection_tool>
@@ -116,6 +118,7 @@
           <option name="m_reportObjectMethods" value="true" />
           <option name="m_reportArrayMethods" value="true" />
           <option name="m_reportCollectionMethods" value="true" />
+          <option name="m_ignorePrivateMethods" value="false" />
         </inspection_tool>
         <inspection_tool class="ReuseOfLocalVariable" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="SamePackageImport" enabled="true" level="WARNING" enabled_by_default="true" />

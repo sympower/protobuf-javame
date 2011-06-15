@@ -15,9 +15,11 @@ public enum TestConstants {
 	public static final String JAVA_OUT = "--java_out=" + GENERATED_FOLDER;
 	
 	public static final String GENERATED_FILE = GENERATED_FOLDER + "/net/jarlehansen/protobuf/javame/generated/JunitTestObject.java";
-	
+    public static final String GENERATED_FILE_COMMENTS = GENERATED_FOLDER + "/net/jarlehansen/protobuf/javame/generated/CommentsMessage.java";
+
 	private static final String RESOURCES_FOLDER = "src/test/resources";
 	public static final String PROTO_FILE = RESOURCES_FOLDER + "/JUnitTest.proto";
+    public static final String PROTO_FILE_COMMENTS = RESOURCES_FOLDER + "/CommentsTest.proto";
 	public static final String PROTO_CLASS_NAME = "JunitTestObject";
 	
 	public static final String INVALID_PROTO_FILE = RESOURCES_FOLDER + "/InvalidFile.proto";

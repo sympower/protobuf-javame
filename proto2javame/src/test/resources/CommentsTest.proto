@@ -1,0 +1,9 @@
+package test.testing;
+
+option java_package = "net.jarlehansen.protobuf.javame.generated";
+option java_outer_classname = "AddressBookProtos";
+
+message CommentsMessage {
+	required string name = 1; // test comment
+	required int32 test = 2;//test comment 2
+}
