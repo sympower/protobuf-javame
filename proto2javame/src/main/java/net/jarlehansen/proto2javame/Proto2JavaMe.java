@@ -25,6 +25,8 @@ public final class Proto2JavaMe {
 
         final CodeGenerator codeGen = DependencyInjector.MAIN.getInstance(CodeGenerator.class);
 
+        int exitCode = 0;
+
         try {
             final List<JavaFileOutput> javaOutputList = codeGen.generateJavaSourceCode(args);
             System.out.println("SUCCESS! Created the java-object(s): ");
@@ -35,11 +37,13 @@ public final class Proto2JavaMe {
             System.out.println("In package: " + javaOutputList.get(0).getPackageName());
         } catch (Proto2JavaMeException protoException) {
             System.err.println("Error: " + protoException.getMessage());
+            exitCode = 1;
         }
 
         long finished = System.currentTimeMillis();
         long timeUsed = finished - start;
 
         System.out.println("\nFINISHED, time used: " + timeUsed + "ms");
+        System.exit(exitCode);
     }
 }
