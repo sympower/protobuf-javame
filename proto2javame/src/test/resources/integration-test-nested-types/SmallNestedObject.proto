@@ -1,0 +1,16 @@
+option java_package = "net.jarlehansen.proto2javame.protobuf.integration.tempfiles.javame";
+
+message BatteryStatus {
+    required int32 batterySoC = 1;
+    optional int32 temperature = 2;
+}
+
+message CarStatus {
+    required int64 updateTime = 1; // milliseconds since 1970-01-01 00:00:00 UTC
+
+    optional BatteryStatus batteryStatus = 4;
+    optional int32 estimatedRange = 6;  // in km
+    optional int32 idealRange = 7;      // in km
+}
+
+// vim:syntax=c:expandtab:sw=4:ts=4
