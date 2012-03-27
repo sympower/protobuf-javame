@@ -23,6 +23,8 @@ public abstract class AbstractOutputWriter implements CustomListWriter {
 
 		final OutputWriter writer = new OutputWriter(outputData, outputStream);
 		writeFields(writer);
+		//http://code.google.com/p/protobuf-javame/issues/detail?id=9 [Output of writeTo(stream) is wrong]
+		writer.writeData();
 	}
 
 	public void writeDelimitedTo(final OutputStream outputStream) throws IOException {
