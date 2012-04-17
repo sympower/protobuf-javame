@@ -390,7 +390,14 @@ public final class CodedInputStream {
 	}
 
 	private CodedInputStream(InputStream input) {
-		this.buffer = new byte[BUFFER_SIZE];
+		try
+		{
+			this.buffer = new byte[input.available()];
+		}
+		catch(Exception ex)
+		{
+		    this.buffer = new byte[BUFFER_SIZE];
+		}
 		this.bufferSize = 0;
 		this.bufferPos = 0;
 		this.input = input;
