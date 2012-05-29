@@ -17,10 +17,12 @@ import net.jarlehansen.proto2javame.io.protoinput.patterns.OptionParserConstants
  */
 public class ProtoParserFactoryImpl implements ProtoParserFactory {
     final static ProtoParser NULL_PARSER = new ProtoParser() {
-        public void setParserLine(String line) {
+        @Override
+		public void setParserLine(String line) {
         }
 
-        public void parseAndAddProtoFile(ProtoFileInput protoInput) {
+        @Override
+		public void parseAndAddProtoFile(ProtoFileInput protoInput) {
         }
     };
 
@@ -53,7 +55,8 @@ public class ProtoParserFactoryImpl implements ProtoParserFactory {
         this.optionParser = optionParser;
     }
 
-    public ProtoParser getProtoParser(final String line) {
+    @Override
+	public ProtoParser getProtoParser(final String line) {
         ProtoParser protoParser = NULL_PARSER;
 
         if (matchesPackagePattern(line)) {
@@ -62,6 +65,12 @@ public class ProtoParserFactoryImpl implements ProtoParserFactory {
             protoParser = optionParser;
         } else if (matchesJavaOuterClassnamePattern(line)) {
             // DO NOTHING, NOT SUPPORTED
+        } else if(matchesJavaImportPattern(line)){
+        	// DO NOTHING, NOT SUPPORTED
+        } else if(matchesCplusLitePattern(line)){
+        	// DO NOTHING, NOT SUPPORTED
+        } else if(matchesJsonPattern(line)){
+        	protoParser = optionParser;
         } else if (matchesMessageStartPattern(line)) {
             protoParser = messageParser;
         } else if (matchesMessageFieldPattern(line)) {
@@ -96,11 +105,13 @@ public class ProtoParserFactoryImpl implements ProtoParserFactory {
         newProtoInput = true;
     }
 
-    public boolean getHasMessageEnd() {
+    @Override
+	public boolean getHasMessageEnd() {
         return hasMessageEnd;
     }
 
-    public boolean isNewProto() {
+    @Override
+	public boolean isNewProto() {
         final boolean retValue;
         if(newProtoInput) {
             retValue = true;
@@ -131,6 +142,18 @@ public class ProtoParserFactoryImpl implements ProtoParserFactory {
 
     private boolean matchesJavaOuterClassnamePattern(final String line) {
         return OptionParserConstants.PATTERN_JAVA_OUTER_CLASSNAME.matcher(line).matches();
+    }
+    
+    private boolean matchesJavaImportPattern(final String line){
+    	return OptionParserConstants.PATTERN_JAVA_IMPORT.matcher(line).matches();
+    }
+    
+    private boolean matchesCplusLitePattern(final String line){
+    	return OptionParserConstants.PATTERN_CPLUS_OPTIMIZE_FOR_LITE.matcher(line).matches();
+    }
+    
+    private boolean matchesJsonPattern(final String line) {
+    	return OptionParserConstants.PATTERN_JSON_OPTIMIZE_OPT.matcher(line).matches();
     }
 
     private boolean matchesMessageStartPattern(final String line) {

@@ -22,6 +22,8 @@ public final class MainClassBuilderImpl implements MainClassBuilder {
         final StringBuilder builder = new StringBuilder();
         builder.append(createPackage(protoInput));
         builder.append(createImports());
+        if(protoInput.isSupportJsonOpt())
+        	builder.append(createImportsJson());
         builder.append(createClassInitialization(className));
         builder.append(createStaticUnknownTagHandlerInitialization());
         builder.append(createFields(protoInput));
@@ -50,6 +52,12 @@ public final class MainClassBuilderImpl implements MainClassBuilder {
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_INPUT), mainPackage +
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_OUTPUT), mainPackage +
                 ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_TAGHANDLER));
+    }
+    
+    private String createImportsJson() {
+        final String mainPackage = ResourceFormatUtil.COMMON.getString(CommonResourceConstants.KEY_IMPORTS_PACKAGE_MAIN);
+
+        return resourceFormat.getString(MainClassConstants.KEY_IMPORTS_JSON, mainPackage);
     }
 
 

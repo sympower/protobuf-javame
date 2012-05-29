@@ -1,10 +1,8 @@
 package net.jarlehansen.proto2javame.io.protoinput;
 
 import com.google.inject.Inject;
-import net.jarlehansen.proto2javame.domain.proto.EnumData;
 import net.jarlehansen.proto2javame.domain.proto.FieldData;
 import net.jarlehansen.proto2javame.domain.proto.ProtoFileInput;
-import net.jarlehansen.proto2javame.domain.proto.ValidTypes;
 import net.jarlehansen.proto2javame.io.exception.ProtoFileValidationException;
 import net.jarlehansen.proto2javame.io.protoinput.factory.ProtoParserFactory;
 import net.jarlehansen.proto2javame.io.protoinput.util.ProtoTagUtil;
@@ -14,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -29,6 +26,7 @@ public final class ProtoObjectBuilderImpl implements ProtoObjectBuilder {
     private final List<ProtoFileInput> protoInputList = new ArrayList<ProtoFileInput>();
     private ProtoFileInput currentProtoInput = new ProtoFileInput();
     private String commonClassPackage = null;
+    private boolean commonJsonSupported = false;
 
     @Inject
     public ProtoObjectBuilderImpl(final ProtoParserFactory protoParserFactory) {
@@ -41,7 +39,8 @@ public final class ProtoObjectBuilderImpl implements ProtoObjectBuilder {
      *
      * @return ProtoFileInput
      */
-    public List<ProtoFileInput> validateAndSaveProtoData(final String protoLocation) {
+    @Override
+	public List<ProtoFileInput> validateAndSaveProtoData(final String protoLocation) {
         ProtoTagUtil.isValidProtoFile(protoLocation);
 
         BufferedReader reader = null;
@@ -51,7 +50,6 @@ public final class ProtoObjectBuilderImpl implements ProtoObjectBuilder {
             String line = reader.readLine();
 
             while (line != null) {
-                line = removeComment(line);
                 parseLine(line);
 
                 line = reader.readLine();
@@ -101,28 +99,6 @@ public final class ProtoObjectBuilderImpl implements ProtoObjectBuilder {
         }
     }
 
-    private String removeComment(final String line) {
-
-        String uncommentedLine;
-        if(line.contains("//")) {
-            uncommentedLine = line.substring(0, (line.indexOf("//")));
-        } else {
-            uncommentedLine = line;
-        }
-
-        uncommentedLine = removeTrailingWhitespaces(uncommentedLine);
-
-        return uncommentedLine;
-    }
-
-    private String removeTrailingWhitespaces(String uncommentedLine) {
-        while(uncommentedLine.endsWith(" ")) {
-           uncommentedLine = uncommentedLine.substring(0, uncommentedLine.length() - 1);
-       }
-
-        return uncommentedLine;
-    }
-
     private void parseLine(final String line) {
         try {
             ProtoParser protoParser = protoParserFactory.getProtoParser(line);
@@ -131,11 +107,14 @@ public final class ProtoObjectBuilderImpl implements ProtoObjectBuilder {
             if(protoParserFactory.isNewProto()) {
                 if(commonClassPackage == null) {
                     commonClassPackage = currentProtoInput.getPackageName();
+                    //TODO : 
+                    commonJsonSupported = currentProtoInput.isSupportJsonOpt();
                 }
 
                 protoInputList.add(currentProtoInput);
                 currentProtoInput = new ProtoFileInput();
                 currentProtoInput.setPackageName(commonClassPackage);
+                currentProtoInput.setSupportJsonOpt(commonJsonSupported);
             }
         } catch(ProtoFileValidationException pfve) {
             pfve.setLineNumber(lineNumber);
