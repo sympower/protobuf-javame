@@ -22,13 +22,9 @@ public final class InstanceMethodsBuilderImpl implements InstanceMethodsBuilder 
         builder.append(createComputeSize());
         builder.append(createComputeSizeNestedMessages());
         builder.append(createWriteFields());
-        if(protoInput.isSupportJsonOpt())
-            builder.append(createWriteJsonFields());        
         builder.append(createParseFields(className));
         builder.append(createGetNextFieldNumber());
         builder.append(createPopulateWithField());
-        if(protoInput.isSupportJsonOpt())
-            builder.append(createParseFromJson(className));
 
         return builder;
     }
@@ -151,42 +147,6 @@ public final class InstanceMethodsBuilderImpl implements InstanceMethodsBuilder 
         builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEFIELDS_END));
         return builder.toString();
     }
-    
-    private String createWriteJsonFields()
-    {
-    	 final StringBuilder builder = new StringBuilder();
-    	 builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_START));
-    	 
-    	 for (FieldData field : protoInput.getFields()) {
-             if (field.isList()) {
-                 if (isValidType(field.getType())) {
-                     builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_LIST,
-                    		 JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getImplementationType()), field.getName()));
-                 } else { // Must be a custom type
-                     builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_LIST_NESTED, field.getName()));
-                 }
-             } else if (field.getScope() == ValidScopes.REQUIRED) {
-                 if (isValidType(field.getType())) {
-                     builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_FIELDS,
-                             JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getImplementationType()), field.getName()));
-                 } else { // Must be a custom type
-                     builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_NESTED, field.getName()));
-                 }
-             } else { // Must be optional
-                 if (isValidType(field.getType())) {
-                     builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_OPTIONAL,
-                             JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()),
-                             JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getImplementationType()), field.getName()));
-                 } else { // Must be a custom type
-                     builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_OPTIONAL_NESTED,
-                             JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()), field.getName()));
-                 }
-             }
-         }
-
-         builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PUBLIC_WRITEJSONFIELDS_END));
-    	 return builder.toString();
-    }
 
     private String createParseFields(final String className) {
         return resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFIELDS, className,
@@ -229,34 +189,5 @@ public final class InstanceMethodsBuilderImpl implements InstanceMethodsBuilder 
         builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_POPULATEWITHFIELD_END));
 
         return builder.toString();
-    }
-    
-    private String createParseFromJson(String className){
-    	final StringBuilder builder = new StringBuilder();
-    	builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_START,
-    			className));
-    	for(FieldData field : protoInput.getFields()) {
-    		builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_NULLCHECK,
-                    field.getName()));
-    		if(field.isList()) {
-    			if(isValidType(field.getType())) {
-    				builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_LIST,
-                            field.getName(), JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()), JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getImplementationType()), field.getName())); 
-    			} else {
-    				builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_LIST_NESTED,
-                            field.getName(), JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()), JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getImplementationType())));
-    			}
-    		} else {
-    			if(isValidType(field.getType())) {
-    				 builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS,
-                             JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()), JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getImplementationType()), field.getName()));
-    			} else {
-    				builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_NESTED,
-                            field.getName(), JavaSourceCodeUtil.createCapitalLetterMethod(field.getName()),JavaSourceCodeUtil.createCapitalLetterMethod(field.getType().getImplementationType())));
-    			}
-    		}
-    	}
-    	builder.append(resourceFormat.getString(InstanceMethodsConstants.KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_END));
-    	return builder.toString();
     }
 }

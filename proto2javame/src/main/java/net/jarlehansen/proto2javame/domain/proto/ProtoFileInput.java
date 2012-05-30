@@ -15,11 +15,8 @@ public class ProtoFileInput {
 
     private EnumData currentEnum = null;
     private final Map<String, EnumData> enums = new HashMap<String, EnumData>();
-    
-    //TODO for json option
-    private boolean supportJsonOpt = false; 
 
-	public ProtoFileInput() {
+    public ProtoFileInput() {
     }
 
     public void setPackageName(final String packageName) {
@@ -37,14 +34,6 @@ public class ProtoFileInput {
     public String getProtoClassName() {
         return protoClassName;
     }
-    
-    public boolean isSupportJsonOpt() {
-		return supportJsonOpt;
-	}
-
-	public void setSupportJsonOpt(boolean supportJsonOpt) {
-		this.supportJsonOpt = supportJsonOpt;
-	}
 
     public void addFieldData(final FieldData messageData) {
         boolean duplicate = false;

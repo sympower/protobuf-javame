@@ -29,15 +29,6 @@ enum InstanceMethodsConstants {
     public static final String KEY_PUBLIC_WRITEFIELDS_FIELDS_OPTIONAL = "public.writefields.fields.optional";
     public static final String KEY_PUBLIC_WRITEFIELDS_FIELDS_OPTIONAL_NESTED = "public.writefields.fields.optional.nested";
     public static final String KEY_PUBLIC_WRITEFIELDS_END = "public.writefields.end";
-    
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_START = "public.writejsonfields.start";
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_FIELDS = "public.writejsonfields.fields";
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_NESTED = "public.writejsonfields.fields.nested";
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_LIST = "public.writejsonfields.fields.list";
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_LIST_NESTED = "public.writejsonfields.fields.list.nested";
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_OPTIONAL = "public.writejsonfields.fields.optional";
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_FIELDS_OPTIONAL_NESTED = "public.writejsonfields.fields.optional.nested";
-    public static final String KEY_PUBLIC_WRITEJSONFIELDS_END = "public.writejsonfields.end";
 	
 	public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFIELDS = "packageprotected.static.parsefields";
 
@@ -49,12 +40,4 @@ enum InstanceMethodsConstants {
     public static final String KEY_PACKAGEPRIVATE_STATIC_POPULATEWITHFIELD_FIELDS_NESTED = "packageprotected.static.populatewithfield.fields.nested";
     public static final String KEY_PACKAGEPRIVATE_STATIC_POPULATEWITHFIELD_FIELDS_LIST_NESTED = "packageprotected.static.populatewithfield.fields.list.nested";
     public static final String KEY_PACKAGEPRIVATE_STATIC_POPULATEWITHFIELD_END = "packageprotected.static.populatewithfield.end";
-    
-    public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_START = "packageprotected.static.parsefromjson.start";
-    public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_NULLCHECK = "packageprotected.static.parsefromjson.nullcheck";
-    public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS = "packageprotected.static.parsefromjson.fields";
-    public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_LIST = "packageprotected.static.parsefromjson.fields.list";
-    public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_NESTED = "packageprotected.static.parsefromjson.fields.nested";
-    public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_LIST_NESTED = "packageprotected.static.parsefromjson.fields.list.nested";
-    public static final String KEY_PACKAGEPRIVATE_STATIC_PARSEFROMJSON_FIELDS_END = "packageprotected.static.parsefromjson.fields.end";
 }

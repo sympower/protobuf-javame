@@ -10,7 +10,6 @@ enum MainClassConstants {
 	
 	public static final String KEY_PACKAGE = "main.package";
 	public static final String KEY_IMPORTS = "main.import.statements";
-	public static final String KEY_IMPORTS_JSON = "main.import.statements.json";
 	
 	public static final String KEY_INIT = "main.init";
 	public static final String KEY_METHOD_END = "main.method.end";
