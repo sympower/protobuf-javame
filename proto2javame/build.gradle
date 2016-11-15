@@ -4,6 +4,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'application'
+apply plugin: 'maven'
 
 ext.libDir = 'lib'
 ext.libTestDir = libDir + '/test'
