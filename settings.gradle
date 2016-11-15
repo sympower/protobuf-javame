@@ -1,0 +1,1 @@
+include 'proto2javame', 'protobuf-javame', 'protobuf-javame-examples', 'protobuf-javame-multiproject', 'protobuf-javame-tests'
