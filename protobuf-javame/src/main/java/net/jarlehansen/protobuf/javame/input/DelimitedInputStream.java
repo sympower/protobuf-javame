@@ -19,7 +19,7 @@ public class DelimitedInputStream extends InputStream {
 	}
 
 	public int available() throws IOException {
-		return Math.min(super.available(), limit);
+		return Math.min(input.available(), limit);
 	}
 
 	public int read() throws IOException {
@@ -35,14 +35,14 @@ public class DelimitedInputStream extends InputStream {
 		if (limit <= 0)
 			return -1;
 		len = Math.min(len, limit);
-		int result = super.read(b, off, len);
+		int result = input.read(b, off, len);
 		if (result >= 0)
 			limit -= result;
 		return result;
 	}
 
 	public long skip(long n) throws IOException {
-		long result = super.skip(Math.min(n, limit));
+		long result = input.skip(Math.min(n, limit));
 		if (result >= 0)
 			limit -= result;
 		return result;
