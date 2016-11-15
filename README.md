@@ -49,4 +49,4 @@ person.setName("foo");
 person.setEmail("bar@gmail.com");
 ```
 
-See also [User Documentation](wiki/User-documentation).
+See also [User Documentation](../../wiki/User-documentation).
