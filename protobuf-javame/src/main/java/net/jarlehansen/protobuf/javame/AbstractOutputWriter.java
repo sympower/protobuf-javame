@@ -36,6 +36,7 @@ public abstract class AbstractOutputWriter implements CustomListWriter {
 
 		writer.writeDelimitedSize(dataSize);
 		writeFields(writer);
+		writer.writeData();
 	}
 	
 	public byte[] createByteArray() {
