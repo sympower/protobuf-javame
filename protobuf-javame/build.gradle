@@ -11,7 +11,7 @@ version = protobufVersion
 sourceCompatibility = sourceVersion
 targetCompatibility = targetVersion
 
-tempFolder = 'build/temp-files/'
+ext.tempFolder = 'build/temp-files/'
 
 task createFolderStructure << {
 	new File(tempFolder).mkdir()

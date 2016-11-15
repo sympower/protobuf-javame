@@ -3,7 +3,7 @@ defaultTasks 'clean', 'test', 'packageZipFile'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-proto2javameFile = '../protobuf-javame-multiproject/shared-lib/proto2javame-' + protobufVersion + '.jar'
+ext.proto2javameFile = '../protobuf-javame-multiproject/shared-lib/proto2javame-' + protobufVersion + '.jar'
 
 version=protobufVersion
 
@@ -18,7 +18,7 @@ dependencies {
 	testCompile fileTree(dir: '../protobuf-javame-multiproject/shared-lib/', includes: ['*.jar'])
 }
 
-tempFolder = 'build/temp-files/'
+ext.tempFolder = 'build/temp-files/'
 
 task createFolderStructure << {
 	new File(tempFolder).mkdirs()
