@@ -37,7 +37,6 @@ task packageZipFile(dependsOn: createFolderStructure, type: Zip) {
 }
 
 
-protobufVersion=proto2javameVersion
 ext.proto2javameFile = '../protobuf-javame-multiproject/shared-lib/proto2javame-' + protobufVersion + '.jar'
 
 // Generates the Java source code from the proto-file used in the examples
