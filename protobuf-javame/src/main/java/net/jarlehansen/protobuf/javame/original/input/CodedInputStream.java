@@ -122,7 +122,7 @@ public final class CodedInputStream {
 	
 	/**
 	 * Use Breadth First Search (BFS) Algorithm to get all nested messages
-	 * @param fieldNumber
+	 * @param currentFieldNumber
 	 * @return
 	 * @throws IOException
 	 */
