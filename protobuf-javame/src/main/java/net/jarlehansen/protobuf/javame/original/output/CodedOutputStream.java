@@ -80,7 +80,7 @@ public final class CodedOutputStream {
 	 * array is faster than writing to an {@code OutputStream}. See also
 	 * {@link ByteString#newCodedBuilder}.
 	 */
-	private static CodedOutputStream newInstance(byte[] flatArray, int offset, int length) {
+	public static CodedOutputStream newInstance(byte[] flatArray, int offset, int length) {
 		return new CodedOutputStream(flatArray, offset, length);
 	}
 

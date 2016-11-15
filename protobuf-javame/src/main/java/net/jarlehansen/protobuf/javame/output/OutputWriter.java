@@ -20,10 +20,14 @@ public class OutputWriter {
 	private final CodedOutputStream codedOutput;
 
 	public OutputWriter(final byte[] dataHolder) {
+		this(dataHolder, 0, dataHolder.length);
+	}
+
+	public OutputWriter(final byte[] dataHolder, int offset, int len) {
 		this.dataHolder = dataHolder;
 		output = null;
 
-		codedOutput = CodedOutputStream.newInstance(dataHolder);
+		codedOutput = CodedOutputStream.newInstance(dataHolder, offset, len);
 	}
 
 	public OutputWriter(final byte[] dataHolder, final OutputStream output) {
